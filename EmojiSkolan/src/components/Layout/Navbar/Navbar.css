@@ -1,0 +1,12 @@
+.btns-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+}
+
+.invisible {
+    visibility: hidden;
+    pointer-events: none;
+}
+}

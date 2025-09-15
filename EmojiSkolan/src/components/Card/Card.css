@@ -1,0 +1,143 @@
+@keyframes flashIncorrectBg {
+    0% { background-color: var(--cardF); }
+    50% { background-color: var(--incorrect); }
+    100% { background-color: var(--cardF); }
+}
+.flash-wrong {
+    animation: flashIncorrectBg 0.6s;
+    animation-delay: 0.4s;
+    border-radius: 4px;
+}
+.card {
+    width: var(--card-size-mobile);
+    height: var(--card-size-mobile);
+    perspective: 600px;
+    font-family: var(--f1), sans-serif;
+    font-weight: bolder;
+    color: var(--buttonsFontColor);
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 4px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    font-size: 2.5rem;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-word;
+    flex-direction: column;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+    transition: box-shadow 0.3s;
+}
+
+/* Hide box-shadow when card is flipped (rotating) */
+.card.flipped .card-front,
+.card.flipped .card-back {
+    box-shadow: none;
+}
+
+.card-front {
+    background-color: var(--cardF);
+    transform: rotateY(180deg);
+    /* Ingen box-shadow på fronten */
+}
+
+.card-back {
+    background-color: var(--cardB);
+    transform: rotateY(0deg);
+    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+}
+
+/* If text is long, aka not an emoji, make the text 1rem instead of 2rem */
+.card-front.long-content {
+    font-size: 1rem;
+}
+
+.card-front {
+    background-color: var(--cardF);
+    transform: rotateY(180deg);
+}
+
+.card-back {
+    background-color: var(--cardB);
+}
+
+
+.card.matched .card-front,
+.card.matched .card-back {
+    transition: background-color 0.3s 0.5s;
+    background-color: var(--correct);
+}
+
+/*
+    When a card is matched and the game is won, this rule gives the card pair a unique color.
+    Each match-color-X corresponds to a different color variable defined in :root (App.css).
+    The !important ensures this color overrides the default matched (green) color.
+*/
+.card.matched.match-color-1 .card-front,
+.card.matched.match-color-1 .card-back {
+    background-color: var(--match1) !important;
+}
+/* Unique color for pair 2 */
+.card.matched.match-color-2 .card-front,
+.card.matched.match-color-2 .card-back {
+    background-color: var(--match2) !important;
+}
+/* Unique color for pair 3 */
+.card.matched.match-color-3 .card-front,
+.card.matched.match-color-3 .card-back {
+    background-color: var(--match3) !important;
+}
+/* Unique color for pair 4 */
+.card.matched.match-color-4 .card-front,
+.card.matched.match-color-4 .card-back {
+    background-color: var(--match4) !important;
+}
+/* Unique color for pair 5 */
+.card.matched.match-color-5 .card-front,
+.card.matched.match-color-5 .card-back {
+    background-color: var(--match5) !important;
+}
+/* Unique color for pair 6 */
+.card.matched.match-color-6 .card-front,
+.card.matched.match-color-6 .card-back {
+    background-color: var(--match6) !important;
+}
+/* Unique color for pair 7 */
+.card.matched.match-color-7 .card-front,
+.card.matched.match-color-7 .card-back {
+    background-color: var(--match7) !important;
+}
+/* Unique color for pair 8 */
+.card.matched.match-color-8 .card-front,
+.card.matched.match-color-8 .card-back {
+    background-color: var(--match8) !important;
+}
+

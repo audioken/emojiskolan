@@ -1,0 +1,72 @@
+import Button from "../../UI/Button/Button";
+import LevelNavigation from "../../LevelNavigation/LevelNavigation";
+import "./Navbar.css";
+import "../../UI/Button/Button.css";
+import { useAuth } from "../../../context/AuthContext";
+import { useResults } from "../../../context/ResultContext";
+import { useLocation } from "react-router-dom";
+import { useMultiForm } from "../../../context/MultiFormContext";
+
+const Navbar = () => {
+  const { user, logout } = useAuth();
+  const { currentLevel } = useResults();
+  const { submitForm, formValid } = useMultiForm();
+  const location = useLocation();
+
+  // Configuration for which buttons to show based on the current route and user state
+  const navConfig = {
+    "/login": !user
+      ? ["back-to-start", "login-submit", "register-navigate"]
+      : ["profile", "logout"],
+    "/register": !user
+      ? ["back-to-start", "login-navigate", "register-submit"]
+      : ["profile", "logout"],
+    "/profile": ["back-to-start", "profile-submit", "logout"],
+    "/highscore": ["profile", currentLevel ? "goToLevel" : null, "logout"],
+    "/": user
+      ? ["profile", "levelNavigation", "logout"]
+      : ["login-navigate", "register-navigate"],
+    "/forgot-password": !user
+      ? ["back-to-start", "login-navigate", "register-navigate"]
+      : ["profile", "logout"],
+  };
+
+  const buttonsToShow = navConfig[location.pathname] || [];
+
+  return (
+    <nav className="footer-nav">
+      <div className="btns-nav">
+        {buttonsToShow.includes('back-to-start') && (
+          <Button label="↶ Hem" path="/" className="button" />
+        )}
+        {buttonsToShow.includes('login-navigate') && (
+          <Button label="Logga in" path="/login" className="button" />
+        )}
+        {buttonsToShow.includes('login-submit') && (
+          <Button label="Logga in" className="button" onClick={() => submitForm('login')} />
+        )}
+        {buttonsToShow.includes('register-navigate') && (
+          <Button label="Registrera" path="/register" className="button" />
+        )}
+        {buttonsToShow.includes('register-submit') && (
+          <Button label="Registrera" className="button" onClick={() => submitForm('register')} />
+        )}
+        {buttonsToShow.includes('profile-submit') && (
+          <Button label="Spara profil" className="button" onClick={() => submitForm('profile')} disabled={!formValid.profile} />
+        )}
+        {buttonsToShow.includes('goToLevel') && (
+          <Button label={`↶ Gå till nivå ${currentLevel}`} path="/" className="button" />
+        )}
+        {buttonsToShow.includes('profile') && (
+          <Button label="Profil" path="/profile" className="button" />
+        )}
+        {buttonsToShow.includes('levelNavigation') && <LevelNavigation />}
+        {buttonsToShow.includes('logout') && (
+          <Button label="Logga ut" onClick={logout} className="button" path="/" />
+        )}
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;

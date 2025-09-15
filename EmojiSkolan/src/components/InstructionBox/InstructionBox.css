@@ -1,0 +1,24 @@
+.instruction-box {
+  background-color: var(--headerFontColor); /* blue accent for a more neutral look */
+  border: none;
+  height: 7rem;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44,62,80,0.10);
+  color: var(--headerFontColorContrast);
+  width: 100%;
+  /* Makes the instructionbox the same width as the cards */
+  max-width: calc(4 * var(--card-size-mobile) + 3 * 0.625rem);
+  box-sizing: border-box;
+}
+
+.instruction-box-content {
+  font-family: var(--f1), sans-serif;
+  font-weight: bold;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
