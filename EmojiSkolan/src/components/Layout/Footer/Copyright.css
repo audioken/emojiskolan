@@ -1,0 +1,9 @@
+.footer-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.footer-container > .copyright {
+	margin-top: 2rem;
+}

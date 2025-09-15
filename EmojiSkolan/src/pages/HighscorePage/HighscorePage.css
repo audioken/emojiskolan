@@ -1,0 +1,33 @@
+.highscore-row.locked {
+    background: var(--lockedBackground);
+}
+
+.highscore-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.highscore-header {
+    display: flex;
+    width: 100%;
+    font-weight: bold;
+    background: var(--background);
+    border-bottom: 1px solid #ccc;
+}
+
+.header {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+}
+
+.highscore-row {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    min-height: 40px;
+    align-items: center;
+}

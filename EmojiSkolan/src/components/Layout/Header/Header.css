@@ -1,0 +1,109 @@
+fieldset {
+    border-radius: 8px;
+    overflow: hidden;
+    border: none;
+    min-height: 2.1rem;
+    background-color: var(--accent1);
+    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44,62,80,0.10);
+}
+
+@media (max-width: 600px) {
+    .header-top {
+        font-size: 0.85rem;
+    }
+
+
+}
+
+.header-title {
+    font-family: var(--f2), var(--f1), sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    color: var(--headerFontColor);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 8px rgba(44,62,80,0.10);
+    border-bottom: 3px solid var(--accent1);
+    display: inline-block;
+    padding-bottom: 0.15em;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.summary-fields {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.2rem 0.5rem;
+}
+
+
+
+.avatar {
+    min-width: 50px;
+    max-width: 220px;
+}
+
+.best-result {
+    min-width: 130px;
+}
+
+.fieldset-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.start-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+}
+
+.start-content h1 {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+}
+
+.summary-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.fieldset-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5rem;
+    /* lite luft runt användarnamnet */
+    margin: 0 auto;
+    /* centrera den i fieldset */
+}
+
+.fieldset-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5rem;
+    /* lite luft runt ikonen */
+    margin: 0 auto;
+    /* centrera den i fieldset */
+    font-weight: bold;
+    font-style: var(--f2), var(--f1), sans-serif;
+    background-color: var(--headerFontColor);
+    color: var(--headerFontColorContrast);
+    min-height: 1.5rem;
+
+    border-radius: 8px;
+}

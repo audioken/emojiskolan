@@ -1,0 +1,16 @@
+.level-navigation{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.level-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+/* .lock-overlay borttagen, endast pil syns på disabled-knapp */
+
+
