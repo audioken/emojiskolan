@@ -11,19 +11,18 @@ function LevelNavigation() {
 
   return (
     <div className="level-navigation">
-      {currentLevel > 1 && (
-        <Button
-          
-          label={`🡄`}
-          onClick={() => setCurrentLevel(Math.max(1, currentLevel - 1))}
-        />
-      )}
+      <Button
+      className="button lvl-nav"
+        label={`🡄`}
+        onClick={() => setCurrentLevel(Math.max(1, currentLevel - 1))}
+        disabled={currentLevel === 1}
+      />
       <div className="level-indicator">
         <span>Nivå</span>
         <span>{currentLevel}</span>
       </div>
       <Button
-        
+        className="button lvl-nav"
         label={isCurrentLevelCompleted ? `🡆` : `🡆🔒`}
         onClick={() => {
           if (isCurrentLevelCompleted)
