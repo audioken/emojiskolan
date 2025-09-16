@@ -1,11 +1,11 @@
 import './RegisterPage.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, use } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { validateInputs } from '../../utils/validateInputs';
-import { useAuth } from '../../context/AuthContext';
 import { useMultiForm } from '../../context/MultiFormContext';
+import { useInstruction } from '../../context/InstructionContext';
+import { validateInputs } from '../../utils/validateInputs';
+import instructionMessages from '../../utils/instructionMessages';
 import Input from '../../components/UI/Input/Input';
-import Button from '../../components/UI/Button/Button';
 import bcrypt from 'bcryptjs';
 
 // Avatar options (index matches avatar in db.json)
@@ -18,6 +18,7 @@ const avatars = [
 const RegisterPage = () => {
   const formRef = useRef();
   const navigate = useNavigate();
+  const { showMessage } = useInstruction();
   const { setFormRef } = useMultiForm();
   // State for user input values
   const [formData, setFormData] = useState({
@@ -44,6 +45,10 @@ const RegisterPage = () => {
 
   // State to track which input is currently hovered
   const [hoveredField, setHoveredField] = useState(null);
+
+  useEffect(() => {
+    showMessage(instructionMessages.get('register'));
+  }, []);
 
   useEffect(() => {
     setFormRef('register', formRef);
