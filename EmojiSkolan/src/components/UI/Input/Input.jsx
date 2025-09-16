@@ -27,6 +27,7 @@ function Input({
       onMouseLeave={() => setHovered?.(false)}
     >
       {/* Label above the field */}
+
       <label className="label-title" htmlFor={name}>
         {label}
       </label>
@@ -55,6 +56,7 @@ function Input({
             outline: 'none',
           }}
           required
+          {...(typeof autoFocus !== 'undefined' ? { autoFocus } : {})}
         />
 
         {/* Clear button (X) only shown if showClear is true */}
@@ -63,6 +65,7 @@ function Input({
             className="clear-button"
             onClick={onClear} // Calls the function that resets the field
             type="button"
+            tabIndex={-1}
           >
             ✖
           </button>
