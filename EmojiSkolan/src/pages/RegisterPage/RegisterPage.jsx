@@ -183,6 +183,7 @@ const RegisterPage = () => {
       <form ref={formRef} onSubmit={handleSubmit}>
         {/* Username input */}
         <Input
+          className="input-field"
           label="Användarnamn"
           type="text"
           name="username"
@@ -193,6 +194,7 @@ const RegisterPage = () => {
           valid={valid.username}
           hovered={hoveredField === 'username'}
           setHovered={(val) => setHoveredField(val ? 'username' : null)}
+          autoFocus
         />
 
         {/* Email input */}
@@ -227,6 +229,7 @@ const RegisterPage = () => {
             type="button"
             onClick={() => setShowPassword((prev) => !prev)}
             style={{ marginLeft: '0.5rem', height: '2.5rem' }}
+            tabIndex={-1}
           >
             {showPassword ? 'Dölj' : 'Visa'}
           </button>
@@ -250,6 +253,7 @@ const RegisterPage = () => {
             type="button"
             onClick={() => setShowConfirmPassword((prev) => !prev)}
             style={{ marginLeft: '0.5rem', height: '2.5rem' }}
+            tabIndex={-1}
           >
             {showConfirmPassword ? 'Dölj' : 'Visa'}
           </button>
