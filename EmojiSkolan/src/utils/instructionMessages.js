@@ -45,6 +45,21 @@ const messages = {
     "Fantastiskt! Du klarade spelet!",
     "Du är en mästare! Spelet är ditt!",
   ],
+  login: [
+    "Skriv in ditt användarnamn och lösenord och klicka sedan på Logga in.",
+  ],
+  register: [
+    "Redo att bli medlem? Registrera dig nu genom att fylla i hela formuläret.",
+  ],
+  profile: [
+    "Här kan du uppdatera dina profiluppgifter.",
+  ],
+  highscore: [
+    "Här kan du se dina bästa resultat för varje nivå. Välj en nivå för att börja spela igen!",
+  ],
+  training: [
+    "Här kan du träna på betydelsen av olika emojis!",
+  ],
   forgottenPasswordPrompt: [
     "Vänligen fyll i den e-postadress du vill skapa ett nytt lösenord för.",
   ],

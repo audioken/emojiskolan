@@ -1,13 +1,20 @@
 import "./LoginPage.css";
 import { useState, useEffect, useRef } from "react";
-import Input from "../../components/UI/Input/Input";
 import { useAuth } from "../../context/AuthContext";
 import { useMultiForm } from "../../context/MultiFormContext";
+import { useInstruction } from "../../context/InstructionContext";
+import instructionMessages from "../../utils/instructionMessages";
+import Input from "../../components/UI/Input/Input";
 import Button from "../../components/UI/Button/Button";
 
 // LoginPage component handles user login form
 const LoginPage = () => {
   const { login } = useAuth();
+  const { showMessage } = useInstruction();
+
+  useEffect(() => {
+    showMessage(instructionMessages.get("login"));
+  }, []);
 
   // Ref and context for multi-form handling
   const formRef = useRef();

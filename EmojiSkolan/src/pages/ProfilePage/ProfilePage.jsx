@@ -2,8 +2,10 @@ import './ProfilePage.css';
 import { useEffect, useState, useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useMultiForm } from '../../context/MultiFormContext';
+import { useInstruction } from '../../context/InstructionContext';
 import { validateInputs } from '../../utils/validateInputs';
 import { avatars } from '../../utils/avatars';
+import instructionMessages from '../../utils/instructionMessages';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import bcrypt from 'bcryptjs';
@@ -12,7 +14,7 @@ import bcrypt from 'bcryptjs';
 const ProfilePage = () => {
   // Get current user and updateUser function from auth context
   const { user, updateUser } = useAuth();
-
+  const { showMessage } = useInstruction();
   // Ref and context for multi-form handling
   const formRef = useRef();
   const { setFormRef, setFormValidStatus } = useMultiForm();
@@ -25,6 +27,10 @@ const ProfilePage = () => {
     confirmPassword: '',
     avatar: user?.avatar ?? 0,
   });
+
+  useEffect(() => {
+    showMessage(instructionMessages.get('profile'));
+  }, []);
 
   // Update profile state when user changes (e.g. after reload)
   useEffect(() => {
