@@ -1,3 +1,16 @@
+/* Disabled button styling */
+.button.button-disabled,
+.button:disabled,
+.button-disabled {
+    background-color: #e0e0e0 !important;
+    color: #a0a0a0 !important;
+    border-color: #cccccc !important;
+    cursor: not-allowed !important;
+    opacity: 0.7;
+    pointer-events: none;
+    box-shadow: none;
+    text-decoration: none;
+}
 .button{
     border: 1px solid var(--buttonsAndDetailsClicked); 
     min-width: 44px;
