@@ -29,6 +29,9 @@ const Navbar = () => {
     "/forgot-password": !user
       ? ["back-to-start", "login-navigate", "register-navigate"]
       : ["profile", "logout"],
+    "/training": user
+      ? ["profile", "levelNavigation", "logout"]
+      : ["login-navigate", "register-navigate"],
   };
 
   const buttonsToShow = navConfig[location.pathname] || [];
