@@ -1,13 +1,20 @@
-import React from 'react'
-import HighscoreCard from '../../components/HighscoreCard/HighscoreCard'
+import { useEffect } from 'react';
 import { useResults } from '../../context/ResultContext'
-import { useNavigate } from 'react-router-dom';
+import { useInstruction } from '../../context/InstructionContext';
+import instructionMessages from '../../utils/instructionMessages';
+import HighscoreCard from '../../components/HighscoreCard/HighscoreCard'
 import "./HighscorePage.css"
 
 const TOTAL_LEVELS = 10;
 
 const HighscorePage = () => {
   const { bestResults, currentLevel, setCurrentLevel } = useResults();
+  const { showMessage } = useInstruction();
+
+  // Show instruction message on component mount
+  useEffect(() => {
+    showMessage(instructionMessages.get('highscore'));
+  }, []);
 
   const levels = Array.from({ length: TOTAL_LEVELS }, (_, i) => i + 1);
 

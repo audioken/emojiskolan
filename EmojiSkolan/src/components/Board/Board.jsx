@@ -31,6 +31,10 @@ function Board({}) {
   // Lägg till en state-flagga
   const [gameWon, setGameWon] = useState(false);
 
+  useEffect(() => {
+    !user ? showMessage(instructionMessages.get('welcomeGuest')) : showMessage(instructionMessages.get('newGame'));
+  }, [user]);
+
   // När korten uppdateras, kolla om spelet är klart
   useEffect(() => {
     if (cards.length > 0 && cards.every((c) => c.isMatched)) {
@@ -102,11 +106,11 @@ function Board({}) {
       setCards(createShuffledCards(allEmojis, currentLevel));
       setDisableClick(false);
       // Visa rätt meddelande beroende på om användare är inloggad
-      if (!user) {
-        showMessage(instructionMessages.get('welcomeGuest'));
-      } else {
-        showMessage(instructionMessages.get('newGame'));
-      }
+      // if (!user) {
+      //   showMessage(instructionMessages.get('welcomeGuest'));
+      // } else {
+      //   showMessage(instructionMessages.get('newGame'));
+      // }
     }, 600);
   };
 
