@@ -1,17 +1,34 @@
-import Button from '../../UI/Button/Button';
-import LevelNavigation from '../../LevelNavigation/LevelNavigation';
 import './Navbar.css';
 import '../../UI/Button/Button.css';
 import { useAuth } from '../../../context/AuthContext';
 import { useResults } from '../../../context/ResultContext';
 import { useLocation } from 'react-router-dom';
 import { useMultiForm } from '../../../context/MultiFormContext';
+import { useGameProtection } from '../../../hooks/useGameProtection';
+import Button from '../../UI/Button/Button';
+import LevelNavigation from '../../LevelNavigation/LevelNavigation';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
   const { currentLevel } = useResults();
   const { submitForm, formValid } = useMultiForm();
+  const { protectedAction } = useGameProtection();
   const location = useLocation();
+
+  // Protected actions to prevent navigation or logout during an active game
+  const protectedLogout = protectedAction(logout, 'Ett spel pågår! Vill du verkligen logga ut?');
+  const protectedNavigateToProfile = protectedAction(
+    () => navigate('/profile'),
+    'Ett spel pågår! Vill du verkligen gå till profilen?'
+  );
+  const protectedNavigateToLogin = protectedAction(
+    () => navigate('/login'),
+    'Ett spel pågår! Vill du verkligen gå till inloggningen?'
+  );
+  const protectedNavigateToRegister = protectedAction(
+    () => navigate('/register'),
+    'Ett spel pågår! Vill du verkligen gå till registreringen?'
+  );
 
   // Configuration for which buttons to show based on the current route and user state
   const navConfig = {
@@ -42,13 +59,13 @@ const Navbar = () => {
           <Button label="↶ Hem" path="/" className="button" />
         )}
         {buttonsToShow.includes('login-navigate') && (
-          <Button label="Logga in" path="/login" className="button" />
+          <Button label="Logga in" className="button" onClick={protectedNavigateToLogin} />
         )}
         {buttonsToShow.includes('login-submit') && (
           <Button label="Logga in" className="button" onClick={() => submitForm('login')} />
         )}
         {buttonsToShow.includes('register-navigate') && (
-          <Button label="Registrera" path="/register" className="button" />
+          <Button label="Registrera" className="button" onClick={protectedNavigateToRegister} />
         )}
         {buttonsToShow.includes('register-submit') && (
           <Button label="Registrera" className="button" onClick={() => submitForm('register')} />
@@ -65,11 +82,11 @@ const Navbar = () => {
           <Button label={`↶ Gå till nivå ${currentLevel}`} path="/" className="button" />
         )}
         {buttonsToShow.includes('profile') && (
-          <Button label="Profil" path="/profile" className="button" />
+          <Button label="Profil" className="button" onClick={protectedNavigateToProfile} />
         )}
         {buttonsToShow.includes('levelNavigation') && <LevelNavigation />}
         {buttonsToShow.includes('logout') && (
-          <Button label="Logga ut" onClick={logout} className="button" path="/" />
+          <Button label="Logga ut" onClick={protectedLogout} className="button" path="/" />
         )}
       </div>
     </nav>

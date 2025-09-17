@@ -18,7 +18,16 @@ function Board({}) {
   const { allEmojis } = useEmoji();
   const { showMessage } = useInstruction();
   const { currentLevel, updateBestResult } = useResults();
-  const { cards, setCards, roundCounter, setRoundCounter, seconds, setSeconds, timerActive, setTimerActive } = useBoard();
+  const {
+    cards,
+    setCards,
+    roundCounter,
+    setRoundCounter,
+    seconds,
+    setSeconds,
+    timerActive,
+    setTimerActive,
+  } = useBoard();
   const { protectedAction } = useGameProtection();
 
   const prevUserRef = useRef(user);
@@ -137,7 +146,13 @@ function Board({}) {
         setTimerActive(true); // Start the timer when the first card is clicked
       }
       setFirstCard(clickedCard);
-      showMessage(instructionMessages.get('selectCard'));
+      if (clickedCard.type === 'emoji') {
+        showMessage(instructionMessages.get('selectEmoji'));
+      } else if (clickedCard.type === 'text') {
+        showMessage(instructionMessages.get('selectDescription'));
+      } else {
+        showMessage(instructionMessages.get('selectCard'));
+      }
     } else {
       const first = firstCard;
       setRoundCounter((r) => r + 1);
