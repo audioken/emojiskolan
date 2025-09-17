@@ -1,17 +1,22 @@
-import { StrictMode } from 'react' // Makes it easier to find logical errors in the console. Not affecting build.
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
 import './App.css'
-import { AuthProvider } from './context/AuthContext.jsx'; 
+import { AuthProvider } from './context/AuthContext.jsx'
+
+const router = createBrowserRouter([
+  {
+    path: "*",
+    element: <App />
+  }
+])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Router>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </Router>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 )
