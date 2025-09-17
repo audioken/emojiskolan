@@ -29,6 +29,14 @@ const messages = {
     'Dags att välja ännu ett kort!',
     'Vilket kort tar du nu?',
   ],
+  selectEmoji: ['Välj ett kort till och hitta en matchande beskrivning till denna emoji!',
+    'Hitta en beskrivning som passar till den här emojin genom att välja ett kort!',
+    'Kan du hitta rätt beskrivning till den här emojin? Välj ett kort!'
+  ],
+  selectDescription: ['Välj ett kort till och hitta en matchande emoji till denna beskrivning!',
+    'Hitta en emoji som passar till den här beskrivningen genom att välja ett kort!',
+    'Kan du hitta rätt emoji till den här beskrivningen? Välj ett kort!'
+  ],
   matchFail: [
     'Oops, det var fel. Försök igen!',
     'Inte riktigt rätt. Testa en gång till!',
