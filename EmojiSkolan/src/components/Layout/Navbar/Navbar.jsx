@@ -1,11 +1,11 @@
-import Button from "../../UI/Button/Button";
-import LevelNavigation from "../../LevelNavigation/LevelNavigation";
-import "./Navbar.css";
-import "../../UI/Button/Button.css";
-import { useAuth } from "../../../context/AuthContext";
-import { useResults } from "../../../context/ResultContext";
-import { useLocation } from "react-router-dom";
-import { useMultiForm } from "../../../context/MultiFormContext";
+import Button from '../../UI/Button/Button';
+import LevelNavigation from '../../LevelNavigation/LevelNavigation';
+import './Navbar.css';
+import '../../UI/Button/Button.css';
+import { useAuth } from '../../../context/AuthContext';
+import { useResults } from '../../../context/ResultContext';
+import { useLocation } from 'react-router-dom';
+import { useMultiForm } from '../../../context/MultiFormContext';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -15,26 +15,25 @@ const Navbar = () => {
 
   // Configuration for which buttons to show based on the current route and user state
   const navConfig = {
-    "/login": !user
-      ? ["back-to-start", "login-submit", "register-navigate"]
-      : ["profile", "logout"],
-    "/register": !user
-      ? ["back-to-start", "login-navigate", "register-submit"]
-      : ["profile", "logout"],
-    "/profile": ["back-to-start", "profile-submit", "logout"],
-    "/highscore": ["profile", currentLevel ? "goToLevel" : null, "logout"],
-    "/": user
-      ? ["profile", "levelNavigation", "logout"]
-      : ["login-navigate", "register-navigate"],
-    "/forgot-password": !user
-      ? ["back-to-start", "login-navigate", "register-navigate"]
-      : ["profile", "logout"],
-    "/training": user
-      ? ["profile", "levelNavigation", "logout"]
-      : ["login-navigate", "register-navigate"],
+    '/login': !user
+      ? ['back-to-start', 'login-submit', 'register-navigate']
+      : ['profile', 'logout'],
+    '/register': !user
+      ? ['back-to-start', 'login-navigate', 'register-submit']
+      : ['profile', 'logout'],
+    '/profile': ['back-to-start', 'profile-submit', 'logout'],
+    '/highscore': ['profile', currentLevel ? 'goToLevel' : null, 'logout'],
+    '/': user ? ['profile', 'levelNavigation', 'logout'] : ['login-navigate', 'register-navigate'],
+    '/forgot-password': !user
+      ? ['back-to-start', 'login-navigate', 'register-navigate']
+      : ['profile', 'logout'],
+    '/training': user
+      ? ['profile', 'levelNavigation', 'logout']
+      : ['login-navigate', 'register-navigate'],
+    '*': !user ? ['back-to-start'] : ['back-to-start'],
   };
 
-  const buttonsToShow = navConfig[location.pathname] || [];
+  const buttonsToShow = navConfig[location.pathname] ?? navConfig['*'];
 
   return (
     <nav className="footer-nav">
@@ -55,7 +54,12 @@ const Navbar = () => {
           <Button label="Registrera" className="button" onClick={() => submitForm('register')} />
         )}
         {buttonsToShow.includes('profile-submit') && (
-          <Button label="Spara profil" className="button" onClick={() => submitForm('profile')} disabled={!formValid.profile} />
+          <Button
+            label="Spara profil"
+            className="button"
+            onClick={() => submitForm('profile')}
+            disabled={!formValid.profile}
+          />
         )}
         {buttonsToShow.includes('goToLevel') && (
           <Button label={`↶ Gå till nivå ${currentLevel}`} path="/" className="button" />
