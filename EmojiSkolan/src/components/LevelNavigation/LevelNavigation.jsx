@@ -6,8 +6,8 @@ import Button from "../UI/Button/Button";
 function LevelNavigation() {
   const { bestResults, currentLevel, setCurrentLevel } = useResults();
   const { protectedAction } = useGameProtection();
+  
   const records = bestResults || {};
-
   const isCurrentLevelCompleted = !!records[currentLevel];
 
   return (
@@ -15,11 +15,9 @@ function LevelNavigation() {
       <Button
         className="button lvl-nav"
         label={`🡄`}
-        onClick={protectedAction(() =>
-          setCurrentLevel(
-            Math.max(1, currentLevel - 1),
-            'Ett spel pågår! Vill du verkligen byta nivå?'
-          )
+        onClick={protectedAction(
+          () => setCurrentLevel(Math.max(1, currentLevel - 1)),
+          'Ett spel pågår! Vill du verkligen byta nivå?'
         )}
         disabled={currentLevel === 1}
       />

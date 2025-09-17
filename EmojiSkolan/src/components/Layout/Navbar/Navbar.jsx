@@ -2,7 +2,7 @@ import './Navbar.css';
 import '../../UI/Button/Button.css';
 import { useAuth } from '../../../context/AuthContext';
 import { useResults } from '../../../context/ResultContext';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useMultiForm } from '../../../context/MultiFormContext';
 import { useGameProtection } from '../../../hooks/useGameProtection';
 import Button from '../../UI/Button/Button';
@@ -12,6 +12,7 @@ const Navbar = () => {
   const { user, logout } = useAuth();
   const { currentLevel } = useResults();
   const { submitForm, formValid } = useMultiForm();
+  const navigate = useNavigate();
   const { protectedAction } = useGameProtection();
   const location = useLocation();
 

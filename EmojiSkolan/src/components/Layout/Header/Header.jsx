@@ -1,18 +1,19 @@
 import './Header.css';
 import logo from '../../../public/images/logo.svg';
+import { useNavigate } from 'react-router-dom';
 import { useResults } from '../../../context/ResultContext';
+import { useAuth } from '../../../context/AuthContext';
+import { useGameProtection } from '../../../hooks/useGameProtection';
 import { formatTime } from '../../../utils/formatTime';
 import { avatars } from '../../../utils/avatars.js';
-import { useAuth } from '../../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import { useGameProtection } from '../../../hooks/useGameProtection';
 
 function Header() {
-  const { user } = useAuth(); // 👈 get logged-in user
+  const { user } = useAuth();
   const { bestResults, currentLevel } = useResults();
   const { protectedAction } = useGameProtection();
   const navigate = useNavigate();
 
+  // Protected navigation during an active game
   const protectedNavigateToHighscore = protectedAction(
     () => navigate('/highscore'),
     'Ett spel pågår! Vill du verkligen gå till highscore?'
