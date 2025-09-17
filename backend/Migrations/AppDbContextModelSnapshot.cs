@@ -44,7 +44,7 @@ namespace backend.Migrations
 
                     b.HasIndex("LevelId");
 
-                    b.ToTable("Emojis");
+                    b.ToTable("Emojis", (string)null);
 
                     b.HasData(
                         new
@@ -202,7 +202,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Levels");
+                    b.ToTable("Levels", (string)null);
 
                     b.HasData(
                         new
@@ -283,7 +283,7 @@ namespace backend.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Records");
+                    b.ToTable("Records", (string)null);
 
                     b.HasData(
                         new
@@ -321,7 +321,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("backend.Models.Emoji", b =>

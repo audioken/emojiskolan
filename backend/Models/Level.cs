@@ -8,6 +8,6 @@ namespace backend.Models
         public int Number { get; set; }
 
         [JsonIgnore]
-        public ICollection<Emoji> Emojis { get; set; }
+        public ICollection<Emoji>? Emojis { get; set; }
     }
 }
