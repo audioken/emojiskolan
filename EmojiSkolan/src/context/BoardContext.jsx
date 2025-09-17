@@ -6,6 +6,7 @@ export const BoardProvider = ({ children }) => {
   const [cards, setCards] = useState([]);
   const [roundCounter, setRoundCounter] = useState(0);
   const [seconds, setSeconds] = useState(0);
+  const [timerActive, setTimerActive] = useState(false);
 
   return (
     <BoardContext.Provider
@@ -16,12 +17,14 @@ export const BoardProvider = ({ children }) => {
         setRoundCounter,
         seconds,
         setSeconds,
+        timerActive,
+        setTimerActive,
       }}
     >
       {children}
     </BoardContext.Provider>
   );
 };
-// ...existing code...
+
 
 export const useBoard = () => useContext(BoardContext);
