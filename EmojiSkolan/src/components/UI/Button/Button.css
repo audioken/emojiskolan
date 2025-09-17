@@ -29,6 +29,11 @@
     padding: 0 1.25rem;
     font-weight: 600;
     letter-spacing: 0.02em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.button:hover:not(:disabled):not(.button-disabled) {
+    background-color: var(--buttonsAndDetailsClicked);
 }
 
 .button:active {

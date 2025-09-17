@@ -129,14 +129,17 @@ const ProfilePage = () => {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: 'auto', padding: '1rem' }}>
+    <div className="profile-container">
       <h2>Profil</h2>
+      
       {/* Show server error if any */}
-      {serverError && <div style={{ color: 'red', marginBottom: '1em' }}>{serverError}</div>}
-      {/* Registration form */}
-      <form ref={formRef} onSubmit={handleSubmit}>
+      {serverError && <div className="error-message">{serverError}</div>}
+      
+      {/* Profile form */}
+      <form ref={formRef} onSubmit={handleSubmit} className="profile-form">
         {/* Username input */}
         <Input
+          className="input-field"
           label="Användarnamn"
           type="text"
           name="username"
@@ -147,10 +150,12 @@ const ProfilePage = () => {
           valid={valid.username}
           hovered={hoveredField === 'username'}
           setHovered={(val) => setHoveredField(val ? 'username' : null)}
+          autoFocus
         />
 
         {/* Email input */}
         <Input
+          className="input-field"
           label="E-post"
           type="email"
           name="email"
@@ -165,6 +170,7 @@ const ProfilePage = () => {
 
         {/* Password input */}
         <Input
+          className="input-field"
           label="Lösenord"
           type="password"
           name="password"
@@ -179,6 +185,7 @@ const ProfilePage = () => {
 
         {/* Confirm Password input */}
         <Input
+          className="input-field"
           label="Bekräfta lösenord"
           type="password"
           name="confirmPassword"
@@ -190,11 +197,13 @@ const ProfilePage = () => {
           hovered={hoveredField === 'confirmPassword'}
           setHovered={(val) => setHoveredField(val ? 'confirmPassword' : null)}
         />
-        <div style={{ margin: '1rem 0' }}>
-          <span>Välj avatar:</span>
-          <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem' }}>
+        
+        {/* Avatar selection */}
+        <div className="avatar-selection">
+          <label className="label-title">Välj avatar:</label>
+          <div className="avatar-options">
             {avatars.map((a, idx) => (
-              <div key={idx}>
+              <label key={idx} className="avatar-option">
                 <input
                   id={`avatar-${idx}`}
                   type="radio"
@@ -202,15 +211,24 @@ const ProfilePage = () => {
                   value={idx}
                   checked={profile.avatar === idx}
                   onChange={() => setProfile((prev) => ({ ...prev, avatar: idx }))}
-                  style={{ marginRight: '0.5rem' }}
                 />
-                <label htmlFor={`avatar-${idx}`} style={{ cursor: 'pointer', fontSize: '2rem' }}>
-                  {a.emoji}
-                </label>
-              </div>
+                {a.emoji}
+              </label>
             ))}
           </div>
         </div>
+        
+        {/* Submit section */}
+        <div className="submit-section">
+          <button
+            type="submit"
+            disabled={!isFormValid}
+            className="submit-btn"
+          >
+            Spara profil
+          </button>
+        </div>
+
         {/* Save profile button */}
         <Button
           type="submit"

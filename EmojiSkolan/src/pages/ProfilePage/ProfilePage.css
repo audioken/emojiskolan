@@ -1,3 +1,104 @@
+/* Profile Page Container */
+.profile-container {
+  max-width: 400px;
+  margin: auto;
+  padding: var(--page-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+.profile-container h2 {
+  text-align: center;
+  margin-bottom: var(--section-gap);
+  color: #333;
+}
+
+/* Form Layout */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+/* Input Fields */
+.input-field {
+  width: 100%;
+}
+
+/* Avatar Selection */
+.avatar-selection {
+  margin: var(--section-gap) 0;
+}
+
+.avatar-selection .label-title {
+  display: block;
+  margin-bottom: var(--element-gap);
+  color: #333;
+  font-weight: 600;
+}
+
+.avatar-options {
+  display: flex;
+  gap: var(--section-gap);
+  margin-top: var(--element-gap);
+  flex-wrap: wrap;
+}
+
+.avatar-option {
+  cursor: pointer;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: var(--element-gap);
+}
+
+.avatar-option input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+/* Submit Section */
+.submit-section {
+  margin-top: var(--section-gap);
+  display: flex;
+  justify-content: center;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--cardB);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: var(--match3);
+}
+
+.submit-btn:disabled {
+  background-color: var(--lockedBackground);
+  color: var(--buttonsFontColor);
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.75rem;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin-bottom: var(--section-gap);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Invisible submit button for Enter key functionality */
 .invisible-btn {
-    display: none;
+  display: none;
 }
