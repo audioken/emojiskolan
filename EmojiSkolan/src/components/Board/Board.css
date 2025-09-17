@@ -9,7 +9,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem; /* extra luft mot footer */
+  padding: var(--page-padding);
+  margin-bottom: var(--section-gap); /* extra luft mot footer */
 }
 
 .temp-level-control {
@@ -17,14 +18,14 @@
   align-items: center;
   height: 1rem;
   gap: 0.625rem;
-  margin: 1rem 0;
+  margin: var(--section-gap) 0;
 }
 
 .scoreboard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--section-gap);
 }
 
 .stats {

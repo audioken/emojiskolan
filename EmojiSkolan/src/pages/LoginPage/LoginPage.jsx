@@ -55,21 +55,29 @@ const LoginPage = () => {
 
   // Render login form
   return (
-    <div style={{ maxWidth: "400px", margin: "auto", padding: "1rem" }}>
+    <div className="login-container">
       <h2>Logga in här</h2>
+      
+      {/* Show error message if exists */}
+      {error && <div className="error-message">{error}</div>}
+      
       {/* Login form with two input fields */}
-      <form ref={formRef} onSubmit={handleSubmit}>
+      <form ref={formRef} onSubmit={handleSubmit} className="login-form">
         {/* Identifier input (username or email) */}
         <Input
+          className="input-field"
           label="Användarnamn eller E-post"
           type="text"
           name="identifier"
           value={formData.identifier}
           onChange={handleChange}
+          autoFocus
         />
+        
         {/* Password input */}
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div className="password-input-group">
           <Input
+            className="input-field"
             label="Lösenord"
             type={showPassword ? "text" : "password"}
             name="password"
@@ -79,25 +87,27 @@ const LoginPage = () => {
           <button
             type="button"
             onClick={() => setShowPassword((prev) => !prev)}
-            style={{ marginLeft: "0.5rem", height: "2.5rem" }}
+            className="password-toggle-btn"
+            tabIndex={-1}
           >
             {showPassword ? "Dölj" : "Visa"}
           </button>
         </div>
 
         {/* Forgot password link under password field */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginTop: "0.5rem",
-          }}
-        >
+        <div className="forgot-password-section">
           <Button
             label="Glömt lösenord?"
             path="/forgot-password"
             className="forgot-password-btn"
           />
+        </div>
+
+        {/* Submit section */}
+        <div className="submit-section">
+          <button type="submit" className="submit-btn">
+            Logga in
+          </button>
         </div>
 
         {/* Invisible button to enable the form submission with the key "Enter" */}

@@ -52,9 +52,14 @@
     text-overflow: ellipsis;
     white-space: normal;
     word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
     flex-direction: column;
     box-shadow: 0 2px 8px rgba(44,62,80,0.10);
     transition: box-shadow 0.3s;
+    box-sizing: border-box;
+    padding: 4px;
+    line-height: 1.1;
 }
 
 /* Hide box-shadow when card is flipped (rotating) */
@@ -75,9 +80,30 @@
     box-shadow: 0 2px 8px rgba(44,62,80,0.10);
 }
 
-/* If text is long, aka not an emoji, make the text 1rem instead of 2rem */
-.card-front.long-content {
-    font-size: 1rem;
+/* Text content with dynamic sizing based on length */
+.card-front.text-content {
+    font-size: 1rem; /* Default size - good for short words */
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+    white-space: normal;
+    padding: 4px;
+    line-height: 1.1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* For longer text - automatically applied via JavaScript */
+.card-front.text-content.long-text {
+    font-size: 0.8rem;
+}
+
+/* For very long text */
+.card-front.text-content.very-long-text {
+    font-size: 0.65rem;
+    line-height: 1;
 }
 
 .card-front {
