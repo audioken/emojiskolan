@@ -15,6 +15,7 @@ import HighscorePage from './pages/HighscorePage/HighscorePage';
 import TrainingPage from './pages/TrainingPage/TrainingPage';
 import InstructionBox from './components/InstructionBox/InstructionBox';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
+import PageNotFound from './pages/PageNotFound/PageNotFound';
 
 function App() {
   return (
@@ -56,6 +57,9 @@ function App() {
                       </ProtectedRoute>
                     }
                   />
+
+                  {/* Catch-all */}
+                  <Route path="*" element={<PageNotFound />} />
                 </Routes>
               </InstructionProvider>
               <Footer />
