@@ -2,8 +2,8 @@
   background-color: var(--headerFontColor); /* blue accent for a more neutral look */
   border: none;
   height: 7rem;
-  padding: 1rem;
-  margin: 1rem auto;
+  padding: var(--page-padding);
+  margin: var(--component-margin) auto;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44,62,80,0.10);
   color: var(--headerFontColorContrast);

@@ -9,10 +9,8 @@
   /* --buttonsAndDetails: #4a6fa5;
     --buttonsAndDetailsClicked: #4a6fa5; */
 
-  /* Test på accentfärger */
+
   --accent1: #ffb347; /* orange */
-  --accent2: #77dd77; /* green */
-  --accent3: #3498db; /* blue*/
 
   --headerFontColor: #3498db;
   --headerFontColorContrast: #f5f5f5;
@@ -42,8 +40,12 @@
   --f2: 'Fredoka', cursive;
   --f3: 'Roboto', sans-serif;
   
-
+  /* Layout spacing variables */
   --spacing: clamp(0.75rem, 2vw, 2rem);
+  --page-padding: 1rem;
+  --section-gap: 1rem;
+  --component-margin: 0.5rem;
+  --element-gap: 0.5rem;
 
   --card-size-mobile: 80px;
 }
