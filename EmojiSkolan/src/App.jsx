@@ -60,7 +60,6 @@ function App() {
                     }
                   />
 
-                  {/* Catch-all */}
                   <Route path="*" element={<PageNotFound />} />
                 </Routes>
               </InstructionProvider>

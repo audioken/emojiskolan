@@ -8,7 +8,6 @@ import instructionMessages from '../../utils/instructionMessages';
 import Input from '../../components/UI/Input/Input';
 import bcrypt from 'bcryptjs';
 
-// Avatar options (index matches avatar in db.json)
 const avatars = [
   { id: 0, emoji: '😊', label: 'Glad' },
   { id: 1, emoji: '🤓', label: 'Glasögon' },
@@ -20,7 +19,7 @@ const RegisterPage = () => {
   const navigate = useNavigate();
   const { showMessage } = useInstruction();
   const { setFormRef } = useMultiForm();
-  // State for user input values
+
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -29,21 +28,16 @@ const RegisterPage = () => {
     avatar: 0,
   });
 
-  // State for checkbox: accept terms
   const [acceptTerms, setAcceptTerms] = useState(false);
 
-  // State for validation errors and valid flags
   const [errors, setErrors] = useState({});
   const [valid, setValid] = useState({});
 
-  // State for server-side error messages
   const [serverError, setServerError] = useState('');
 
-  // State to track password visibility
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  // State to track which input is currently hovered
   const [hoveredField, setHoveredField] = useState(null);
 
   useEffect(() => {
@@ -54,18 +48,15 @@ const RegisterPage = () => {
     setFormRef('register', formRef);
   }, [setFormRef]);
 
-  // Validate inputs every time formData changes
   useEffect(() => {
     const { errors, valid } = validateInputs(formData);
     setErrors(errors);
     setValid(valid);
-    setServerError(''); // Clear server error when user changes input
+    setServerError('');
   }, [formData]);
 
-  // Check if all fields are valid AND terms are accepted
   const isFormValid = Object.values(valid).every(Boolean) && acceptTerms;
 
-  // Updates formData when user types in any input field
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -74,17 +65,14 @@ const RegisterPage = () => {
     }));
   };
 
-  // Clears the value of a specific input field
   const handleClear = (field) => {
     setFormData((prev) => ({ ...prev, [field]: '' }));
   };
 
-  // Handles form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setServerError(''); // reset server error on each submit
+    setServerError('');
 
-    // Validate again on submit
     const { errors: newErrors, valid: newValid } = validateInputs(formData);
     setErrors(newErrors);
     setValid(newValid);
@@ -92,7 +80,6 @@ const RegisterPage = () => {
     if (!Object.values(newValid).every(Boolean)) return;
 
     try {
-      // Check if username or email already exists
       const res = await fetch('http://localhost:5132/api/users');
       const users = await res.json();
 
@@ -102,24 +89,18 @@ const RegisterPage = () => {
 
       if (exists) {
         setServerError('Användarnamn eller e-post är redan registrerat.');
-        return; // stop registration
+        return;
       }
 
-      // Hash the password before sending to server
       const hashedPassword = await bcrypt.hash(formData.password, 10);
 
-      // Create user object with hashed password
       const newUser = {
         username: formData.username,
         email: formData.email,
-        passwordHash: hashedPassword, // matchar backend
-        avatarId: formData.avatar, // matchar backend
-        // level: 1,
+        passwordHash: hashedPassword,
+        avatarId: formData.avatar,
       };
 
-      console.log('New user object:', newUser);
-
-      // Send user data to json-server
       const postRes = await fetch('http://localhost:5132/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -129,20 +110,16 @@ const RegisterPage = () => {
       if (!postRes.ok) {
         throw new Error('Failed to save user');
       }
-      console.log('User registration response status:', postRes.status); // Debug log
-      // ...efter postRes...
+
       if (postRes.ok) {
         const createdUser = await postRes.json();
-        console.log('Created user response:', createdUser); // Debug log
-        const newUserId = createdUser.id; // Använd camelCase som backend returnerar
-        console.log('New user ID:', newUserId); // Debug log
-        console.log('localStorage lastResult:', localStorage.getItem('lastResult')); // Debug log
-        // Spara gästresultat om det finns
+
+        const newUserId = createdUser.id;
+
         const lastResult = localStorage.getItem('lastResult');
-        console.log('Last result from localStorage:', lastResult); // Debug log
+
         if (lastResult) {
           const { rounds, time, level } = JSON.parse(lastResult);
-          console.log('Saving guest result:', rounds, time, level);
 
           try {
             const recordResponse = await fetch(
@@ -151,15 +128,14 @@ const RegisterPage = () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                  LevelId: level, // PascalCase för backend
-                  Rounds: rounds, // PascalCase för backend
-                  Time: time, // PascalCase för backend
+                  LevelId: level,
+                  Rounds: rounds,
+                  Time: time,
                 }),
               }
             );
 
             if (recordResponse.ok) {
-              console.log('Guest result saved successfully');
               localStorage.removeItem('lastResult');
             } else {
               console.error('Failed to save guest result:', recordResponse.status);
@@ -170,7 +146,7 @@ const RegisterPage = () => {
         }
 
         alert('Registrering lyckades!');
-        navigate('/login'); // Byter till useNavigate istället för window.location
+        navigate('/login');
       }
     } catch (err) {
       console.error('Registration failed:', err);
@@ -179,14 +155,12 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="register-container">
+    <main className="register-container">
       <h2>Registrera här</h2>
 
-      {/* Show server-side error if exists */}
       {serverError && <div className="error-message">{serverError}</div>}
 
       <form ref={formRef} onSubmit={handleSubmit} className="register-form">
-        {/* Username input */}
         <Input
           className="input-field"
           label="Användarnamn"
@@ -202,7 +176,6 @@ const RegisterPage = () => {
           autoFocus
         />
 
-        {/* Email input */}
         <Input
           label="E-post"
           type="email"
@@ -216,7 +189,6 @@ const RegisterPage = () => {
           setHovered={(val) => setHoveredField(val ? 'email' : null)}
         />
 
-        {/* Password input */}
         <div className="password-input-group">
           <Input
             label="Lösenord"
@@ -240,7 +212,6 @@ const RegisterPage = () => {
           </button>
         </div>
 
-        {/* Confirm password input */}
         <div className="password-input-group">
           <Input
             label="Bekräfta lösenord"
@@ -264,7 +235,6 @@ const RegisterPage = () => {
           </button>
         </div>
 
-        {/* Avatar selection */}
         <div className="avatar-selection">
           <label className="label-title" htmlFor="avatar">
             Välj en avatar:
@@ -285,11 +255,8 @@ const RegisterPage = () => {
           </div>
         </div>
 
-        {/* Terms section */}
         <div className="terms-section">
-          <div className="terms-text">
-            Villkor för att bli bäst och äga detta spelet!
-          </div>
+          <div className="terms-text">Villkor för att bli bäst och äga detta spelet!</div>
           <label className="terms-checkbox">
             <input
               type="checkbox"
@@ -300,8 +267,10 @@ const RegisterPage = () => {
           </label>
         </div>
 
+        {/* Invisible submit button to allow form submission via MultiFormContext */}
+        <button type="submit" className="invisible-btn"></button>
       </form>
-    </div>
+    </main>
   );
 };
 
