@@ -2,7 +2,7 @@
   max-width: 400px;
   margin: auto;
   padding: var(--page-padding);
-  min-height: 80vh;
+  min-height: 0;
   display: flex;
   flex-direction: column;
 }
@@ -60,7 +60,8 @@
 }
 
 .terms-section {
-  margin: 1rem 0;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

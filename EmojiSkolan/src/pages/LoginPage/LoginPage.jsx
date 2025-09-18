@@ -103,15 +103,7 @@ const LoginPage = () => {
           />
         </div>
 
-        {/* Submit section */}
-        <div className="submit-section">
-          <button type="submit" className="submit-btn">
-            Logga in
-          </button>
-        </div>
 
-        {/* Invisible button to enable the form submission with the key "Enter" */}
-        <button type="submit" className="invisible-btn" />
       </form>
     </div>
   );

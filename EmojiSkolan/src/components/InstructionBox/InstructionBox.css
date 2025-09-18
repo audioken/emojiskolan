@@ -4,6 +4,7 @@
   height: 7rem;
   padding: var(--page-padding);
   margin: var(--component-margin) auto;
+  margin-bottom: 0;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44,62,80,0.10);
   color: var(--headerFontColorContrast);
@@ -11,6 +12,13 @@
   /* Makes the instructionbox the same width as the cards */
   max-width: calc(4 * var(--card-size-mobile) + 3 * 0.625rem);
   box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .instruction-box {
+    max-width: calc(4 * var(--card-size-desktop) + 3 * 0.625rem);
+    width: 100%;
+  }
 }
 
 .instruction-box-content {

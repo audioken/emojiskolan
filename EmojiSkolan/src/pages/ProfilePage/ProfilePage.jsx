@@ -217,17 +217,6 @@ const ProfilePage = () => {
             ))}
           </div>
         </div>
-        
-        {/* Submit section */}
-        <div className="submit-section">
-          <button
-            type="submit"
-            disabled={!isFormValid}
-            className="submit-btn"
-          >
-            Spara profil
-          </button>
-        </div>
 
         {/* Save profile button */}
         <Button

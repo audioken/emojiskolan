@@ -33,7 +33,7 @@ function Header() {
     <div className="header-top">
       {!user ? (
         <div className="start-content">
-          <img src={logo} alt="Logo" style={{ cursor: 'pointer' }} onClick={() => navigate('/')} />
+          <img src={logo} alt="Logo" className="header-logo" style={{ cursor: 'pointer' }} onClick={() => navigate('/')} />
           <h1 className="header-title">EmojiSkolan</h1>
         </div>
       ) : (
