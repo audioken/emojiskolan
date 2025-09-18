@@ -1,10 +1,9 @@
-
 function Copyright() {
   return (
     <div className="copyright">
-      <span>© 2025 EmojiSkolan. All rights reserved.</span>
+      <small>© 2025 EmojiSkolan. All rights reserved.</small>
     </div>
-  )
+  );
 }
 
-export default Copyright
+export default Copyright;
