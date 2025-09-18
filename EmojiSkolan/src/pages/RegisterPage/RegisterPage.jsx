@@ -300,16 +300,6 @@ const RegisterPage = () => {
           </label>
         </div>
 
-        {/* Submit section */}
-        <div className="submit-section">
-          <button
-            type="submit"
-            disabled={!isFormValid}
-            className="submit-btn"
-          >
-            Registrera användare
-          </button>
-        </div>
       </form>
     </div>
   );
