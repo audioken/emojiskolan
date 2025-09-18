@@ -1,0 +1,15 @@
+.input-wrapper input {
+    border: 1px solid var(--cardF);
+    /* default border */
+    outline: none;
+    transition: border 0.2s;
+    padding: 0.5rem;
+}
+
+.input-wrapper input.valid {
+    border: 2px solid var(--correct);
+}
+
+.input-wrapper input.invalid {
+    border: 2px solid var(--incorrect);
+}

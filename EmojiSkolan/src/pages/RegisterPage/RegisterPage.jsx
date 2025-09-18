@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMultiForm } from '../../context/MultiFormContext';
 import { useInstruction } from '../../context/InstructionContext';
 import { validateInputs } from '../../utils/validateInputs';
+import Button from '../../components/UI/Button/Button';
 import instructionMessages from '../../utils/instructionMessages';
 import Input from '../../components/UI/Input/Input';
 import bcrypt from 'bcryptjs';
@@ -202,14 +203,13 @@ const RegisterPage = () => {
             hovered={hoveredField === 'password'}
             setHovered={(val) => setHoveredField(val ? 'password' : null)}
           />
-          <button
+          <Button
             type="button"
             onClick={() => setShowPassword((prev) => !prev)}
             className="password-toggle-btn"
             tabIndex={-1}
-          >
-            {showPassword ? 'Dölj' : 'Visa'}
-          </button>
+            label={showPassword ? 'Dölj' : 'Visa'}
+          />
         </div>
 
         <div className="password-input-group">

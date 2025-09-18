@@ -7,18 +7,15 @@ import instructionMessages from '../../utils/instructionMessages';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 
-// LoginPage component handles user login form
 const LoginPage = () => {
   const { login } = useAuth();
   const { showMessage } = useInstruction();
+  const { setFormRef } = useMultiForm();
+  const formRef = useRef();
 
   useEffect(() => {
     showMessage(instructionMessages.get('login'));
   }, []);
-
-  // Ref and context for multi-form handling
-  const formRef = useRef();
-  const { setFormRef } = useMultiForm();
 
   // State for storing input values for identifier (username or email) and password
   const [formData, setFormData] = useState({
@@ -84,14 +81,14 @@ const LoginPage = () => {
             value={formData.password}
             onChange={handleChange}
           />
-          <button
+          <Button
             type="button"
             onClick={() => setShowPassword((prev) => !prev)}
             className="password-toggle-btn"
+            label={showPassword ? 'Dölj' : 'Visa'}
             tabIndex={-1}
           >
-            {showPassword ? 'Dölj' : 'Visa'}
-          </button>
+          </Button>
         </div>
 
         {/* Forgot password link under password field */}
