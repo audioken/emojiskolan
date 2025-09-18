@@ -4,6 +4,12 @@
     gap: 0.625rem;
 }
 
+@media (min-width: 1024px) {
+  .board {
+    gap: 1.5rem;
+  }
+}
+
 .board-container {
   display: flex;
   flex-direction: column;

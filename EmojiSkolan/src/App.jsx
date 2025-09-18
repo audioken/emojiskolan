@@ -24,9 +24,11 @@ function App() {
         <BoardProvider>
           <MultiFormProvider>
             <ResultProvider>
-              <Header />
               <InstructionProvider>
-                <InstructionBox />
+                <div className="header-instruction-wrapper">
+                  <Header />
+                  <InstructionBox />
+                </div>
                 <Routes>
                   <Route path="/" element={<StartPage />} />
                   <Route path="/login" element={<LoginPage />} />

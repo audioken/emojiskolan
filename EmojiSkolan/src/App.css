@@ -1,6 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+
+.header-instruction-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-margin);
+}
+
+
+.header-instruction-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-margin);
+}
+
+@media (min-width: 1024px) {
+  body {
+    background-color: #e6e9f2 !important;
+  }
+  #root {
+    background-color: transparent !important;
+  }
+  html {
+    background-color: #e6e9f2 !important;
+  }
+  .app-container {
+    border-left: 3px solid var(--cardB);
+    border-right: 3px solid var(--cardB);
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100vh;
+    background: var(--background);
+  }
+}
+
 :root {
   /* --header-height: clamp(3.75rem, 8vw, 6rem); */
   /* --footerNavEx: #881600; Se om vi ska använda får se */
@@ -36,7 +71,7 @@
   --match8: #b57edc; /* purple*/
 
   --f1: 'Quicksand', sans-serif;
-  --f2: 'Fredoka', cursive;
+  --f2: 'Fredoka', 'Quicksand', Arial, sans-serif;
   --f3: 'Roboto', sans-serif;
   
   /* Layout spacing variables */
@@ -48,6 +83,8 @@
   --element-gap: 0.5rem;
 
   --card-size-mobile: 80px;
+  --card-size-tablet: 100px;
+  --card-size-desktop: 120px;
 }
 
 .app-container {
@@ -71,4 +108,6 @@ body,
   height: 100%;
   font-family: var(--f1), sans-serif;
   background-color: var(--background);
+  margin: 0;
+  padding: 0;
 }

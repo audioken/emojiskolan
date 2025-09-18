@@ -14,6 +14,13 @@
   box-sizing: border-box;
 }
 
+@media (min-width: 1024px) {
+  .instruction-box {
+    max-width: calc(4 * var(--card-size-desktop) + 3 * 0.625rem);
+    width: 100%;
+  }
+}
+
 .instruction-box-content {
   font-family: var(--f1), sans-serif;
   font-weight: bold;
