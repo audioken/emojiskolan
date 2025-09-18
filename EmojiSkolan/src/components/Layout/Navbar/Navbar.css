@@ -1,12 +1,18 @@
 .btns-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
 }
 
 .invisible {
-    visibility: hidden;
-    pointer-events: none;
+  visibility: hidden;
+  pointer-events: none;
 }
+
+.training-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
 }

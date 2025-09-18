@@ -30,6 +30,10 @@ const Navbar = () => {
     () => navigate('/register'),
     'Ett spel pågår! Vill du verkligen gå till registreringen?'
   );
+  const protectedNavigateToTraining = protectedAction(
+    () => navigate('/training'),
+    'Ett spel pågår! Vill du verkligen gå till träningen?'
+  );
 
   // Configuration for which buttons to show based on the current route and user state
   const navConfig = {
@@ -41,12 +45,14 @@ const Navbar = () => {
       : ['profile', 'logout'],
     '/profile': ['back-to-start', 'profile-submit', 'logout'],
     '/highscore': ['profile', currentLevel ? 'goToLevel' : null, 'logout'],
-    '/': user ? ['profile', 'levelNavigation', 'logout'] : ['login-navigate', 'register-navigate'],
+    '/': user
+      ? ['training-navigate', 'profile', 'levelNavigation', 'logout']
+      : ['login-navigate', 'register-navigate'],
     '/forgot-password': !user
       ? ['back-to-start', 'login-navigate', 'register-navigate']
       : ['profile', 'logout'],
     '/training': user
-      ? ['profile', 'levelNavigation', 'logout']
+      ? ['back-to-start', 'levelNavigation', 'logout']
       : ['login-navigate', 'register-navigate'],
     '*': !user ? ['back-to-start'] : ['back-to-start'],
   };
@@ -55,6 +61,11 @@ const Navbar = () => {
 
   return (
     <nav className="footer-nav">
+      {buttonsToShow.includes('training-navigate') && (
+        <div className="training-wrapper">
+          <Button label="Träning" className="button" onClick={protectedNavigateToTraining} />
+        </div>
+      )}
       <div className="btns-nav">
         {buttonsToShow.includes('back-to-start') && (
           <Button label="↶ Hem" path="/" className="button" />
