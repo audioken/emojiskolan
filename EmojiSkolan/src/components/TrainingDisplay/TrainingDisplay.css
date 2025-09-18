@@ -44,4 +44,19 @@
 
 .emoji-col {
     font-size: 1.2rem;
+    width: 48px;
+    min-width: 48px;
+    max-width: 48px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.meaning-col {
+    max-width: 220px;
+    min-width: 120px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
 }
