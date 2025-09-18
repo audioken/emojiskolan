@@ -18,19 +18,20 @@ function TrainingDisplay() {
   }, [currentLevel]);
 
   return (
-    <div className="training-display">
-      <table>
+    <div className="training-table-container">
+      <div className="training-table-header">Träning: Emoji & Betydelse</div>
+      <table className="training-table">
         <thead>
           <tr>
-            <th>Emoji</th>
-            <th>Betydelse</th>
+            <th className="training-header-col">Emoji</th>
+            <th className="training-header-col">Betydelse</th>
           </tr>
         </thead>
         <tbody>
           {levelEmojis.map((emoji) => (
-            <tr key={emoji.id}>
-              <td>{emoji.symbol}</td>
-              <td>{emoji.description}</td>
+            <tr className="training-row" key={emoji.id}>
+              <td className="training-col emoji-col">{emoji.symbol}</td>
+              <td className="training-col meaning-col">{emoji.description}</td>
             </tr>
           ))}
         </tbody>
