@@ -1,8 +1,8 @@
 function Copyright() {
   return (
-    <div className="copyright">
-      <small>© 2025 EmojiSkolan. All rights reserved.</small>
-    </div>
+    <small className="copyright" aria-label="Copyright 2025 EmojiSkolan. All rights reserved.">
+      © 2025 EmojiSkolan. All rights reserved. 🏫
+    </small>
   );
 }
 

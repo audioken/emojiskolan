@@ -13,7 +13,6 @@ function Header() {
   const { protectedAction } = useGameProtection();
   const navigate = useNavigate();
 
-  // Protected navigation during an active game
   const protectedNavigateToHighscore = protectedAction(
     () => navigate('/highscore'),
     'Ett spel pågår! Vill du verkligen gå till highscore?'
@@ -25,21 +24,25 @@ function Header() {
 
   const currentBest = bestResults[currentLevel];
 
-  // Format the time string
   const timeString = currentBest ? formatTime(currentBest.time) : '-';
   const roundsString = currentBest ? currentBest.rounds : '-';
 
   return (
-    <div className="header-top">
+    <header className="header-top">
       {!user ? (
-        <div className="start-content">
-          <img src={logo} alt="Logo" className="header-logo" style={{ cursor: 'pointer' }} onClick={() => navigate('/')} />
+        <div
+          className="start-content"
+          aria-label="Sidhuvud som länkar till startsidan"
+          title="Gå till startsidan"
+        >
+          <img src={logo} alt="Logo" className="header-logo" onClick={() => navigate('/')} />
           <h1 className="header-title">EmojiSkolan</h1>
         </div>
       ) : (
         <div
           className="summary-content"
-          style={{ cursor: 'pointer' }}
+          aria-label="Sammanfattning av bästa resultat, nivå och användare. Klicka för att gå till highscore."
+          title="Gå till highscore"
           onClick={() => {
             if (window.location.pathname === '/highscore') {
               navigate('/');
@@ -66,7 +69,7 @@ function Header() {
           </div>
         </div>
       )}
-    </div>
+    </header>
   );
 }
 
