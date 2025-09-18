@@ -161,7 +161,6 @@ const RegisterPage = () => {
       {serverError && <div className="error-message">{serverError}</div>}
 
       <form ref={formRef} onSubmit={handleSubmit} className="register-form">
-       
         <Input
           className="input-field"
           label="Användarnamn"
@@ -177,7 +176,6 @@ const RegisterPage = () => {
           autoFocus
         />
 
-      
         <Input
           label="E-post"
           type="email"
@@ -191,7 +189,6 @@ const RegisterPage = () => {
           setHovered={(val) => setHoveredField(val ? 'email' : null)}
         />
 
-        
         <div className="password-input-group">
           <Input
             label="Lösenord"
@@ -215,7 +212,6 @@ const RegisterPage = () => {
           </button>
         </div>
 
-       
         <div className="password-input-group">
           <Input
             label="Bekräfta lösenord"
@@ -259,7 +255,6 @@ const RegisterPage = () => {
           </div>
         </div>
 
-     
         <div className="terms-section">
           <div className="terms-text">Villkor för att bli bäst och äga detta spelet!</div>
           <label className="terms-checkbox">
@@ -271,6 +266,9 @@ const RegisterPage = () => {
             Jag godkänner villkoren
           </label>
         </div>
+
+        {/* Invisible submit button to allow form submission via MultiFormContext */}
+        <button type="submit" className="invisible-btn"></button>
       </form>
     </main>
   );
