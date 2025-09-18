@@ -1,15 +1,3 @@
-// const instructionMessages = {
-//     matchSuccess: "Bra jobbat! Du hittade rätt matchning. Fortsätt jakten genom att välja nästa kort!",
-//     matchFail: "Oops, det var fel. Försök igen!",
-//     selectCard: "Välj ett till kort och försök matcha",
-//     newRound: "Välja ett kort!",
-//     gameWon: "Grattis! Du har vunnit spelet!",
-//     newGame: "Starta ett spel genom att välja ett kort!"
-// }
-
-// export default instructionMessages;
-
-// KOD NÄR VI KAN ÄNDRA I BOARD
 const messages = {
   welcomeGuest: [
     'Välkommen! Spela som gäst genom att välja ett kort.',
@@ -29,13 +17,15 @@ const messages = {
     'Dags att välja ännu ett kort!',
     'Vilket kort tar du nu?',
   ],
-  selectEmoji: ['Välj ett kort till och hitta en matchande beskrivning till denna emoji!',
+  selectEmoji: [
+    'Välj ett kort till och hitta en matchande beskrivning till denna emoji!',
     'Hitta en beskrivning som passar till den här emojin genom att välja ett kort!',
-    'Kan du hitta rätt beskrivning till den här emojin? Välj ett kort!'
+    'Kan du hitta rätt beskrivning till den här emojin? Välj ett kort!',
   ],
-  selectDescription: ['Välj ett kort till och hitta en matchande emoji till denna beskrivning!',
+  selectDescription: [
+    'Välj ett kort till och hitta en matchande emoji till denna beskrivning!',
     'Hitta en emoji som passar till den här beskrivningen genom att välja ett kort!',
-    'Kan du hitta rätt emoji till den här beskrivningen? Välj ett kort!'
+    'Kan du hitta rätt emoji till den här beskrivningen? Välj ett kort!',
   ],
   matchFail: [
     'Oops, det var fel. Försök igen!',
@@ -73,7 +63,7 @@ const messages = {
   ],
 };
 
-// Exportera ett objekt med en get-metod
+// export an object with a get method to fetch a random message from the array
 const instructionMessages = {
   get(type) {
     const arr = messages[type];
