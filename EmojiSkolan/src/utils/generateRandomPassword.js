@@ -1,14 +1,12 @@
-// Generate a random password of given length
-// Includes lowercase, uppercase, numbers and special chars
 function generateRandomPassword(length = 12) {
   if (length < 4) {
-    throw new Error("Password length must be at least 4");
+    throw new Error('Password length must be at least 4');
   }
 
-  const lowercase = "abcdefghijklmnopqrstuvwxyz";
-  const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const digits = "0123456789";
-  const specials = "!@#$%^&*()-_=+[]{};:,.<>?";
+  const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+  const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const digits = '0123456789';
+  const specials = '!@#$%^&*()-_=+[]{};:,.<>?';
   const allChars = lowercase + uppercase + digits + specials;
 
   // Ensure at least one of each category
@@ -31,7 +29,7 @@ function generateRandomPassword(length = 12) {
     [passwordChars[i], passwordChars[j]] = [passwordChars[j], passwordChars[i]];
   }
 
-  return passwordChars.join("");
+  return passwordChars.join('');
 }
 
 export default generateRandomPassword;
