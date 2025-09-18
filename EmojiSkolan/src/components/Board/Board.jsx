@@ -1,26 +1,39 @@
 import './Board.css';
 import { useState, useEffect } from 'react';
-import { createShuffledCards } from '../../utils/helpers';
 import { useInstruction } from '../../context/InstructionContext';
 import { useResults } from '../../context/ResultContext';
-import { formatTime } from '../../utils/formatTime';
 import { useAuth } from '../../context/AuthContext';
 import { useEmoji } from '../../context/EmojiContext';
 import { useBoard } from '../../context/BoardContext';
+import { useRef } from 'react';
+import { createShuffledCards } from '../../utils/helpers';
+import { formatTime } from '../../utils/formatTime';
+import { useGameProtection } from '../../hooks/useGameProtection';
+import instructionMessages from '../../utils/instructionMessages';
 import Card from '../Card/Card';
 import Button from '../UI/Button/Button';
-import instructionMessages from '../../utils/instructionMessages';
 
 function Board({}) {
   const { user } = useAuth();
+  const { allEmojis } = useEmoji();
   const { showMessage } = useInstruction();
   const { currentLevel, updateBestResult } = useResults();
-  const { allEmojis } = useEmoji();
-  const { cards, setCards, roundCounter, setRoundCounter, seconds, setSeconds } = useBoard();
+  const {
+    cards,
+    setCards,
+    roundCounter,
+    setRoundCounter,
+    seconds,
+    setSeconds,
+    timerActive,
+    setTimerActive,
+  } = useBoard();
+  const { protectedAction } = useGameProtection();
 
+  const prevUserRef = useRef(user);
   const [firstCard, setFirstCard] = useState(null);
   const [disableClick, setDisableClick] = useState(false);
-  const [timerActive, setTimerActive] = useState(false);
+  const [gameWon, setGameWon] = useState(false);
 
   // Keep track of the game state
   const isGameWon = cards.length > 0 && cards.every((card) => card.isMatched);
@@ -28,14 +41,22 @@ function Board({}) {
   // Displays correct colors for matching cards when game is won
   const displayCards = isGameWon ? cards.map((card) => ({ ...card, isGameWon: true })) : cards;
 
-  // Lägg till en state-flagga
-  const [gameWon, setGameWon] = useState(false);
-
+  // Reset game state if user logs out
   useEffect(() => {
-    !user ? showMessage(instructionMessages.get('welcomeGuest')) : showMessage(instructionMessages.get('newGame'));
+    const prevUser = prevUserRef.current;
+
+    if (prevUser && !user) {
+      setupNewGame();
+    } else if (!user) {
+      showMessage(instructionMessages.get('welcomeGuest'));
+    } else {
+      showMessage(instructionMessages.get('newGame'));
+    }
+
+    prevUserRef.current = user;
   }, [user]);
 
-  // När korten uppdateras, kolla om spelet är klart
+  // Check if all cards are matched to determine if the game is won
   useEffect(() => {
     if (cards.length > 0 && cards.every((c) => c.isMatched)) {
       setTimerActive(false);
@@ -43,7 +64,7 @@ function Board({}) {
     }
   }, [cards]);
 
-  // Reagera på att spelet är vunnet
+  // React to the game being won
   useEffect(() => {
     if (gameWon && roundCounter > 0) {
       if (user) {
@@ -72,7 +93,7 @@ function Board({}) {
     return () => clearInterval(interval);
   }, [timerActive]);
 
-  // Setup a new game when emojis are loaded or level changes
+  // Setup a new game when the level or emojis change
   useEffect(() => {
     if (allEmojis.length > 0) {
       console.log('det finns något i emojislistan: ', allEmojis);
@@ -105,12 +126,6 @@ function Board({}) {
       setFirstCard(null);
       setCards(createShuffledCards(allEmojis, currentLevel));
       setDisableClick(false);
-      // Visa rätt meddelande beroende på om användare är inloggad
-      // if (!user) {
-      //   showMessage(instructionMessages.get('welcomeGuest'));
-      // } else {
-      //   showMessage(instructionMessages.get('newGame'));
-      // }
     }, 600);
   };
 
@@ -120,7 +135,6 @@ function Board({}) {
   };
 
   const handleCardClick = (clickedCard) => {
-    // Prevent action if card is already matched or turned over
     if (clickedCard.isMatched || clickedCard.isTurnedOver || disableClick) return;
 
     // Turn over the clicked card
@@ -132,7 +146,13 @@ function Board({}) {
         setTimerActive(true); // Start the timer when the first card is clicked
       }
       setFirstCard(clickedCard);
-      showMessage(instructionMessages.get('selectCard'));
+      if (clickedCard.type === 'emoji') {
+        showMessage(instructionMessages.get('selectEmoji'));
+      } else if (clickedCard.type === 'text') {
+        showMessage(instructionMessages.get('selectDescription'));
+      } else {
+        showMessage(instructionMessages.get('selectCard'));
+      }
     } else {
       const first = firstCard;
       setRoundCounter((r) => r + 1);
@@ -179,7 +199,11 @@ function Board({}) {
         <div className="stats">
           <p className="tries">Antal försök: {roundCounter}</p>
           <p className="timer">Tid: {formatTime(seconds)}</p>
-          <Button label="Omstart" className="button" onClick={setupNewGame} />
+          <Button
+            label="Omstart"
+            className="button"
+            onClick={protectedAction(setupNewGame, 'Ett spel pågår! Vill du verkligen starta om?')}
+          />
         </div>
       </div>
       <div className="board">

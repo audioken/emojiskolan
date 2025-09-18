@@ -1,3 +1,128 @@
-.invisible-btn{
-    display: none;
+/* Login Page Container */
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  padding: var(--page-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: var(--section-gap);
+  color: #333;
+}
+
+/* Form Layout */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+/* Input Fields */
+.input-field {
+  width: 100%;
+}
+
+/* Password Input Group */
+.password-input-group {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--element-gap);
+  position: relative;
+}
+
+.password-input-group .input-field {
+  flex: 1;
+}
+
+.password-toggle-btn {
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.password-toggle-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.password-toggle-btn:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Forgot Password Section */
+.forgot-password-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--element-gap);
+  min-height: 2rem;
+  align-items: center;
+}
+
+.forgot-password-btn {
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+.forgot-password-btn:hover {
+  color: #0056b3;
+}
+
+/* Submit Section */
+.submit-section {
+  margin-top: var(--section-gap);
+  display: flex;
+  justify-content: center;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.75rem;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin-bottom: var(--section-gap);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Invisible submit button for Enter key functionality */
+.invisible-btn {
+  display: none;
 }

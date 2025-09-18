@@ -179,13 +179,13 @@ const RegisterPage = () => {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: 'auto', padding: '1rem' }}>
+    <div className="register-container">
       <h2>Registrera här</h2>
 
       {/* Show server-side error if exists */}
-      {serverError && <p style={{ color: 'red', fontWeight: 'bold' }}>{serverError}</p>}
+      {serverError && <div className="error-message">{serverError}</div>}
 
-      <form ref={formRef} onSubmit={handleSubmit}>
+      <form ref={formRef} onSubmit={handleSubmit} className="register-form">
         {/* Username input */}
         <Input
           className="input-field"
@@ -217,7 +217,7 @@ const RegisterPage = () => {
         />
 
         {/* Password input */}
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="password-input-group">
           <Input
             label="Lösenord"
             type={showPassword ? 'text' : 'password'}
@@ -233,7 +233,7 @@ const RegisterPage = () => {
           <button
             type="button"
             onClick={() => setShowPassword((prev) => !prev)}
-            style={{ marginLeft: '0.5rem', height: '2.5rem' }}
+            className="password-toggle-btn"
             tabIndex={-1}
           >
             {showPassword ? 'Dölj' : 'Visa'}
@@ -241,7 +241,7 @@ const RegisterPage = () => {
         </div>
 
         {/* Confirm password input */}
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="password-input-group">
           <Input
             label="Bekräfta lösenord"
             type={showConfirmPassword ? 'text' : 'password'}
@@ -257,7 +257,7 @@ const RegisterPage = () => {
           <button
             type="button"
             onClick={() => setShowConfirmPassword((prev) => !prev)}
-            style={{ marginLeft: '0.5rem', height: '2.5rem' }}
+            className="password-toggle-btn"
             tabIndex={-1}
           >
             {showConfirmPassword ? 'Dölj' : 'Visa'}
@@ -265,20 +265,19 @@ const RegisterPage = () => {
         </div>
 
         {/* Avatar selection */}
-        <div style={{ margin: '1rem 0' }}>
+        <div className="avatar-selection">
           <label className="label-title" htmlFor="avatar">
             Välj en avatar:
           </label>
-          <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem' }}>
+          <div className="avatar-options">
             {avatars.map((a) => (
-              <label key={a.id} style={{ cursor: 'pointer', fontSize: '2rem' }}>
+              <label key={a.id} className="avatar-option">
                 <input
                   type="radio"
                   name="avatar"
                   value={a.id}
                   checked={formData.avatar === a.id}
                   onChange={handleChange}
-                  style={{ marginRight: '0.5rem' }}
                 />
                 {a.emoji}
               </label>
@@ -286,14 +285,12 @@ const RegisterPage = () => {
           </div>
         </div>
 
-        {/* Text above the terms checkbox */}
-        <div style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>
-          <span>Villkor för att bli bäst och äga detta spelet!</span>
-        </div>
-
-        {/* Checkbox for accepting terms */}
-        <div>
-          <label>
+        {/* Terms section */}
+        <div className="terms-section">
+          <div className="terms-text">
+            Villkor för att bli bäst och äga detta spelet!
+          </div>
+          <label className="terms-checkbox">
             <input
               type="checkbox"
               checked={acceptTerms}
@@ -303,15 +300,16 @@ const RegisterPage = () => {
           </label>
         </div>
 
-        {/* Submit button and terms accepted */}
-        <button
-          type="submit"
-          disabled={!isFormValid}
-          className="invisible-btn"
-          style={{ marginTop: '1rem' }}
-        >
-          Registrera användare
-        </button>
+        {/* Submit section */}
+        <div className="submit-section">
+          <button
+            type="submit"
+            disabled={!isFormValid}
+            className="submit-btn"
+          >
+            Registrera användare
+          </button>
+        </div>
       </form>
     </div>
   );

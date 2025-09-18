@@ -5,6 +5,7 @@ import Button from '../../components/UI/Button/Button.jsx';
 import { useInstruction } from '../../context/InstructionContext';
 import generateRandomPassword from '../../utils/generateRandomPassword';
 import instructionMessages from '../../utils/instructionMessages';
+import './ForgottenPasswordPage.css';
 
 const ForgottenPasswordPage = () => {
   const [email, setEmail] = useState(''); // State for email input
@@ -52,18 +53,31 @@ const ForgottenPasswordPage = () => {
   };
 
   return (
-    <div className="forgotten-password-page">
-      <h2>Forgotten Password</h2>
+    <div className="forgotten-password-container">
+      <h2>Glömt lösenord</h2>
 
-      <Input
-        label="Email"
-        name="email"
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <form className="forgotten-password-form">
+        <Input
+          className="input-field"
+          label="E-post"
+          name="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          autoFocus
+        />
 
-      <Button label="Reset Password" onClick={handleResetPassword} />
+        <div className="submit-section">
+          <button
+            type="button"
+            onClick={handleResetPassword}
+            className="submit-btn"
+            disabled={!email.trim()}
+          >
+            Återställ lösenord
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
