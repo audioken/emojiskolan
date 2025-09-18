@@ -41,16 +41,22 @@ function Board({}) {
   // Displays correct colors for matching cards when game is won
   const displayCards = isGameWon ? cards.map((card) => ({ ...card, isGameWon: true })) : cards;
 
-  // Reset game state if user logs out
+  const showWelcomeMessage = () => {
+    if (!user) {
+      showMessage(instructionMessages.get('welcomeGuest'));
+    } else {
+      showMessage(instructionMessages.get('newGame'));
+    }
+  };
+
+  // Detect user login/logout to setup a new game or show welcome message
   useEffect(() => {
     const prevUser = prevUserRef.current;
 
     if (prevUser && !user) {
       setupNewGame();
-    } else if (!user) {
-      showMessage(instructionMessages.get('welcomeGuest'));
     } else {
-      showMessage(instructionMessages.get('newGame'));
+      showWelcomeMessage();
     }
 
     prevUserRef.current = user;
@@ -126,6 +132,7 @@ function Board({}) {
       setFirstCard(null);
       setCards(createShuffledCards(allEmojis, currentLevel));
       setDisableClick(false);
+      showWelcomeMessage();
     }, 600);
   };
 
