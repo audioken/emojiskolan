@@ -38,18 +38,16 @@ const Navbar = () => {
   // Configuration for which buttons to show based on the current route and user state
   const navConfig = {
     '/login': !user ? ['back-to-start', 'login-submit'] : ['profile', 'logout'],
-    '/register': !user ? ['back-to-start', 'register-submit'] : ['profile', 'logout'],
+    '/register': !user ? ['back-to-start', 'register-submit'] : ['profile'],
     '/profile': ['back-to-start', 'profile-submit', 'logout'],
-    '/highscore': ['profile', currentLevel ? 'goToLevel' : null, 'logout'],
+    '/highscore': ['profile', currentLevel ? 'goToLevel' : null],
     '/': user
-      ? ['training-navigate', 'profile', 'levelNavigation', 'logout']
+      ? ['training-navigate', 'profile', 'levelNavigation']
       : ['login-navigate', 'register-navigate'],
     '/forgot-password': !user
       ? ['back-to-start', 'login-navigate', 'forgot-password-submit']
       : ['profile', 'logout'],
-    '/training': user
-      ? ['back-to-start', 'levelNavigation', 'logout']
-      : ['login-navigate', 'register-navigate'],
+    '/training': ['back-to-start', 'levelNavigation'],
     '*': !user ? ['back-to-start'] : ['back-to-start'],
   };
 
@@ -57,17 +55,6 @@ const Navbar = () => {
 
   return (
     <nav className="footer-nav">
-      {buttonsToShow.includes('training-navigate') && (
-        <div className="training-wrapper">
-          <Button
-            label="Träning"
-            className="button"
-            aria-label="Gå till träningssidan"
-            title="Gå till träningssidan"
-            onClick={protectedNavigateToTraining}
-          />
-        </div>
-      )}
       <div className="btns-nav">
         {buttonsToShow.includes('back-to-start') && (
           <Button
@@ -163,6 +150,15 @@ const Navbar = () => {
             onClick={() => submitForm('forgottenPassword')}
             title="Återställ lösenord"
             disabled={!formValid.forgottenPassword}
+          />
+        )}
+        {buttonsToShow.includes('training-navigate') && (
+          <Button
+            label="Träning"
+            className="button"
+            aria-label="Gå till träningssidan"
+            title="Gå till träningssidan"
+            onClick={protectedNavigateToTraining}
           />
         )}
       </div>

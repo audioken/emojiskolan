@@ -6,18 +6,21 @@ import { useInstruction } from '../../context/InstructionContext';
 import { validateInputs } from '../../utils/validateInputs';
 import { avatars } from '../../utils/avatars';
 import Input from '../../components/UI/Input/Input';
+import Button from '../../components/UI/Button/Button';
 import instructionMessages from '../../utils/instructionMessages';
 import bcrypt from 'bcryptjs';
 
 const ProfilePage = () => {
   const { user, updateUser } = useAuth();
   const { showMessage } = useInstruction();
-  const { setFormRef, setFormValidStatus } = useMultiForm();  
+  const { setFormRef, setFormValidStatus } = useMultiForm();
 
   const [errors, setErrors] = useState({});
   const [valid, setValid] = useState({});
   const [hoveredField, setHoveredField] = useState(null);
   const [serverError, setServerError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [profile, setProfile] = useState({
     username: user?.username || '',
     email: user?.email || '',
@@ -27,7 +30,7 @@ const ProfilePage = () => {
   });
 
   const formRef = useRef();
-  
+
   useEffect(() => {
     showMessage(instructionMessages.get('profile'));
   }, []);
@@ -47,7 +50,7 @@ const ProfilePage = () => {
   useEffect(() => {
     setFormRef('profile', formRef);
   }, [setFormRef]);
-  
+
   useEffect(() => {
     const { errors, valid } = validateInputs(profile, 'profile');
     setErrors(errors);
@@ -152,33 +155,51 @@ const ProfilePage = () => {
           setHovered={(val) => setHoveredField(val ? 'email' : null)}
         />
 
-        <Input
-          className="input-field"
-          label="Lösenord"
-          type="password"
-          name="password"
-          value={profile.password}
-          onChange={handleChange}
-          onClear={() => setProfile((prev) => ({ ...prev, password: '' }))}
-          error={errors.password}
-          valid={valid.password}
-          hovered={hoveredField === 'password'}
-          setHovered={(val) => setHoveredField(val ? 'password' : null)}
-        />
+        <div className="password-input-group">
+          <Input
+            className="input-field"
+            label="Lösenord"
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            value={profile.password}
+            onChange={handleChange}
+            onClear={() => setProfile((prev) => ({ ...prev, password: '' }))}
+            error={errors.password}
+            valid={valid.password}
+            hovered={hoveredField === 'password'}
+            setHovered={(val) => setHoveredField(val ? 'password' : null)}
+          />
+          <Button
+            type="button"
+            onClick={() => setShowPassword((prev) => !prev)}
+            className="password-toggle-btn"
+            tabIndex={-1}
+            label={showPassword ? 'Dölj' : 'Visa'}
+          />
+        </div>
 
-        <Input
-          className="input-field"
-          label="Bekräfta lösenord"
-          type="password"
-          name="confirmPassword"
-          value={profile.confirmPassword}
-          onChange={handleChange}
-          onClear={() => setProfile((prev) => ({ ...prev, confirmPassword: '' }))}
-          error={errors.confirmPassword}
-          valid={valid.confirmPassword}
-          hovered={hoveredField === 'confirmPassword'}
-          setHovered={(val) => setHoveredField(val ? 'confirmPassword' : null)}
-        />
+        <div className="password-input-group">
+          <Input
+            className="input-field"
+            label="Bekräfta lösenord"
+            type={showConfirmPassword ? 'text' : 'password'}
+            name="confirmPassword"
+            value={profile.confirmPassword}
+            onChange={handleChange}
+            onClear={() => setProfile((prev) => ({ ...prev, confirmPassword: '' }))}
+            error={errors.confirmPassword}
+            valid={valid.confirmPassword}
+            hovered={hoveredField === 'confirmPassword'}
+            setHovered={(val) => setHoveredField(val ? 'confirmPassword' : null)}
+          />
+          <Button
+            type="button"
+            onClick={() => setShowConfirmPassword((prev) => !prev)}
+            className="password-toggle-btn"
+            tabIndex={-1}
+            label={showConfirmPassword ? 'Dölj' : 'Visa'}
+          ></Button>
+        </div>
 
         <div className="avatar-selection">
           <label className="label-title">Välj avatar:</label>
