@@ -61,16 +61,17 @@
 
 @media (min-width: 1024px) {
   .instruction-box {
-    max-width: calc(4 * var(--card-size-desktop) + 3 * 0.7rem);
-    height: 6rem; /* Lite högre på desktop */
+    max-width: calc(4 * var(--card-size-desktop) + 3 * 1.5rem); /* Större bredd */
+    height: 8rem; /* Större höjd */
+    padding: 1.5rem;
   }
   .instruction-box-content {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .speak-button {
-    width: 2rem;
-    height: 2rem;
-    font-size: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.3rem;
   }
 }
 
