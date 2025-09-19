@@ -4,16 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { useMultiForm } from '../../context/MultiFormContext';
 import { useInstruction } from '../../context/InstructionContext';
 import { validateInputs } from '../../utils/validateInputs';
-import Button from '../../components/UI/Button/Button';
+import { avatars } from '../../utils/avatars';
 import instructionMessages from '../../utils/instructionMessages';
 import Input from '../../components/UI/Input/Input';
+import Button from '../../components/UI/Button/Button';
 import bcrypt from 'bcryptjs';
-
-const avatars = [
-  { id: 0, emoji: '😊', label: 'Glad' },
-  { id: 1, emoji: '🤓', label: 'Glasögon' },
-  { id: 2, emoji: '👽', label: 'Alien' },
-];
 
 const RegisterPage = () => {
   const { showMessage } = useInstruction();
@@ -222,14 +217,13 @@ const RegisterPage = () => {
             hovered={hoveredField === 'confirmPassword'}
             setHovered={(val) => setHoveredField(val ? 'confirmPassword' : null)}
           />
-          <button
+          <Button
             type="button"
             onClick={() => setShowConfirmPassword((prev) => !prev)}
             className="password-toggle-btn"
             tabIndex={-1}
-          >
-            {showConfirmPassword ? 'Dölj' : 'Visa'}
-          </button>
+            label={showConfirmPassword ? 'Dölj' : 'Visa'}
+          ></Button>
         </div>
 
         <div className="avatar-selection">
