@@ -1,7 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
+
 namespace backend.Models
 {
+    [Index(nameof(Username), IsUnique = true)]
+    [Index(nameof(Email), IsUnique = true)]
     public class User
     {
         public int Id { get; set; }
@@ -15,5 +20,4 @@ namespace backend.Models
         public int AvatarId { get; set; }
         public List<Record>? Records { get; set; } = new();
     }
-
 }
