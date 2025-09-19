@@ -6,9 +6,30 @@
     transition: height 0.2s;
 }
 
+@media (min-width: 600px) and (max-width: 1023px) {
+    .header-logo {
+        height: 7rem;
+    }
+    .summary-fields {
+        gap: 1rem;
+        padding: 0.5rem 1rem;
+    }
+    .header-title {
+        font-size: 2rem;
+        max-width: 75% !important; /* Lagom begränsat orange streck på tablet */
+    }
+}
+
 @media (min-width: 1024px) {
     .header-logo {
-        height: 8rem;
+        height: 8rem; 
+    }
+    .header-top {
+        margin-top: 0; 
+    }
+    .summary-fields {
+        gap: 0.2rem; 
+        padding: 0.05rem 0.1rem;
     }
 }
 /* Luft ovanför hela headern */
@@ -48,6 +69,13 @@ fieldset {
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+}
+
+/* Mobil - lite mer orange streck än tidigare */
+@media (max-width: 599px) {
+    .header-title {
+        max-width: 75% !important; /* Mindre bredd för att skapa gap på mobil */
+    }
 }
 
 @media (min-width: 1024px) {
