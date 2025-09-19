@@ -4,9 +4,15 @@
     gap: 0.625rem;
 }
 
+@media (min-width: 600px) and (max-width: 1023px) {
+  .board {
+    gap: 1.2rem; /* Mer gap på tablet */
+  }
+}
+
 @media (min-width: 1024px) {
   .board {
-    gap: 1.5rem;
+    gap: 0.7rem; /* Lite mer gap på desktop */
   }
 }
 
