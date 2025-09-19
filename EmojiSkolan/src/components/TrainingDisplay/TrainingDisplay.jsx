@@ -19,7 +19,6 @@ function TrainingDisplay() {
 
   return (
     <div className="training-table-container">
-      <div className="training-table-header">Träning: Emoji & Betydelse</div>
       <table className="training-table">
         <thead>
           <tr>

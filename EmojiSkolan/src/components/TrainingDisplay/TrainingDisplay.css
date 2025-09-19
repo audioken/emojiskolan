@@ -22,6 +22,7 @@
 .training-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 .training-header-col {
@@ -44,19 +45,19 @@
 
 .emoji-col {
     font-size: 1.2rem;
-    width: 48px;
-    min-width: 48px;
-    max-width: 48px;
+    width: 50%;
+    min-width: 0;
+    max-width: none;
     text-align: center;
     overflow: hidden;
     white-space: nowrap;
 }
 .meaning-col {
-    max-width: 220px;
-    min-width: 120px;
-    width: 100%;
+    width: 50%;
+    min-width: 0;
+    max-width: none;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
 }
