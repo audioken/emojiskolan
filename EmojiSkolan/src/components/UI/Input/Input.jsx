@@ -1,27 +1,11 @@
-import "./Input.css";
+import './Input.css';
 
-function Input({
-  label,
-  name,
-  value,
-  onChange,
-  error,
-  valid, 
-  readOnly,
-  disabled,
-  type = 'text',
-}) {
+function Input({ label, name, value, onChange, error, valid, readOnly, disabled, type = 'text' }) {
   return (
-    <div
-      className="form-group"
-    >
+    <div className="form-group">
       <label className="label-title" htmlFor={name}>
         {label}
       </label>
-
-      {/* Show error message only if field has value and error exists */}
-      {error && value && <div className="error">{error}</div>}
-
       <div className="input-wrapper">
         <input
           id={name}
@@ -36,6 +20,8 @@ function Input({
           required
           {...(typeof autoFocus !== 'undefined' ? { autoFocus } : {})}
         />
+        {/* Show error only if field has value and error exists */}
+        {value && error ? <div className="error">{error}</div> : null}
       </div>
     </div>
   );
