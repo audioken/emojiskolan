@@ -1,6 +1,6 @@
 .register-container {
   max-width: 400px;
-  margin: auto;
+  /* margin: auto; */
   padding: var(--page-padding);
   min-height: 0;
   display: flex;

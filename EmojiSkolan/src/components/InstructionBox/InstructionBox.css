@@ -12,31 +12,24 @@
   width: 100%;
   max-width: calc(4 * var(--card-size-mobile) + 3 * 0.625rem);
   box-sizing: border-box;
+  text-align: center;
 }
 
 /* Speak-knapp för att läsa upp instruktionen */
 .speak-button {
   position: absolute;
-  bottom: 0.5rem;
+  bottom: -1rem;
   right: 0.5rem;
-  background: var(--buttonsAndDetails);
-  background: transparent;
-  color: var(--buttonsFontColor);
+  background: var(--match6);
   border: none;
   border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
+  line-height: 1;
   cursor: pointer;
-  transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
-  margin-left: 0.5rem;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.50);
 }
 
 .speaker-icon {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .speak-button:hover {
@@ -51,10 +44,17 @@
 }
 
 .speak-button-on{
-  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
   background: var(--match2);
 }
 
+.instruction-box-content {
+  font-family: var(--f1), sans-serif;
+  font-weight: bold;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 @media (min-width: 600px) and (max-width: 1023px) {
   .instruction-box {
@@ -63,11 +63,11 @@
     font-size: 1.3rem;
     padding: var(--page-padding);
   }
-
+  
   .instruction-box-content {
     font-size: 1.3rem;
   }
-
+  
   .speak-button {
     width: 3rem;
     height: 3rem;
@@ -90,13 +90,4 @@
     height: 2.5rem;
     font-size: 1.3rem;
   }
-}
-
-.instruction-box-content {
-  font-family: var(--f1), sans-serif;
-  font-weight: bold;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
