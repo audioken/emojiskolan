@@ -77,11 +77,8 @@
 
 @media (min-width: 1024px) {
   .instruction-box {
-    max-width: calc(4 * var(--card-size-desktop) + 3 * 1.5rem);
-    /* Större bredd */
-    height: 8rem;
-    /* Större höjd */
-    padding: 1.5rem;
+    max-width: calc(4 * var(--card-size-desktop) + 3 * 0.7rem);
+    height: 6rem; /* Lite högre på desktop */
   }
 
   .instruction-box-content {
