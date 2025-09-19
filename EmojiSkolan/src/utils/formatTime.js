@@ -4,7 +4,7 @@ export function formatTime(seconds) {
   return `${minutes}:${secs.toString().padStart(2, "0")}`;
 }
 
-function formatTimeHighScore(seconds) {
+export function formatTimeHighScore(seconds) {
   if (!seconds && seconds !== 0) return '';
   const m = Math.floor(seconds / 60);
   const s = seconds % 60;
