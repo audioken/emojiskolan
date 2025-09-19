@@ -1,6 +1,26 @@
+.instruction-box {
+  position: relative;
+  background-color: var(--headerFontColor);
+  border: none;
+  height: 7rem;
+  padding: var(--page-padding);
+  margin: var(--component-margin) auto;
+  margin-bottom: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44, 62, 80, 0.10);
+  color: var(--headerFontColorContrast);
+  width: 100%;
+  max-width: calc(4 * var(--card-size-mobile) + 3 * 0.625rem);
+  box-sizing: border-box;
+}
+
 /* Speak-knapp för att läsa upp instruktionen */
 .speak-button {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
   background: var(--buttonsAndDetails);
+  background: transparent;
   color: var(--buttonsFontColor);
   border: none;
   border-radius: 50%;
@@ -10,37 +30,31 @@
   align-items: center;
   justify-content: center;
   font-size: 1.3rem;
-  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
   cursor: pointer;
   transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
   margin-left: 0.5rem;
 }
 
-.speak-button:hover, .speak-button:focus {
+.speaker-icon {
+  font-size: 2rem;
+}
+
+.speak-button:hover {
   background: var(--buttonsAndDetailsClicked);
-  box-shadow: 0 4px 16px rgba(44,62,80,0.18);
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
   outline: none;
   transform: scale(1.08);
 }
 
 .speak-button:active {
-  background: var(--accent1);
   transform: scale(0.96);
 }
-.instruction-box {
-  background-color: var(--headerFontColor);
-  border: none;
-  height: 7rem;
-  padding: var(--page-padding);
-  margin: var(--component-margin) auto;
-  margin-bottom: 0;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44,62,80,0.10);
-  color: var(--headerFontColorContrast);
-  width: 100%;
-  max-width: calc(4 * var(--card-size-mobile) + 3 * 0.625rem);
-  box-sizing: border-box;
+
+.speak-button-on{
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+  background: var(--match2);
 }
+
 
 @media (min-width: 600px) and (max-width: 1023px) {
   .instruction-box {
@@ -49,9 +63,11 @@
     font-size: 1.3rem;
     padding: var(--page-padding);
   }
+
   .instruction-box-content {
     font-size: 1.3rem;
   }
+
   .speak-button {
     width: 3rem;
     height: 3rem;
@@ -61,16 +77,21 @@
 
 @media (min-width: 1024px) {
   .instruction-box {
-    max-width: calc(4 * var(--card-size-desktop) + 3 * 0.7rem);
-    height: 6rem; /* Lite högre på desktop */
+    max-width: calc(4 * var(--card-size-desktop) + 3 * 1.5rem);
+    /* Större bredd */
+    height: 8rem;
+    /* Större höjd */
+    padding: 1.5rem;
   }
+
   .instruction-box-content {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
+
   .speak-button {
-    width: 2rem;
-    height: 2rem;
-    font-size: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.3rem;
   }
 }
 
