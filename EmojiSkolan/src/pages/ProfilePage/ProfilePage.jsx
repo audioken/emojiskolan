@@ -55,7 +55,6 @@ const ProfilePage = () => {
     const { errors, valid } = validateInputs(profile, 'profile');
     setErrors(errors);
     setValid(valid);
-    setServerError('');
 
     const isFormValid = Object.values(valid).every(Boolean);
     setFormValidStatus('profile', isFormValid);
@@ -76,6 +75,7 @@ const ProfilePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setServerError('');
 
     const updatedUser = {
       id: user.id,
@@ -90,6 +90,20 @@ const ProfilePage = () => {
     }
 
     try {
+      const res = await fetch('http://localhost:5132/api/users');
+      const users = await res.json();
+
+      const exists = users.find(
+        (existingUser) =>
+          existingUser.id !== user.id &&
+          (existingUser.username === profile.username || existingUser.email === profile.email)
+      );
+
+      if (exists) {
+        setServerError('Användarnamn eller e-post är redan registrerat.');
+        return;
+      }
+
       const response = await fetch(`http://localhost:5132/api/users/${user.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -115,7 +129,8 @@ const ProfilePage = () => {
         setServerError('Misslyckades med att uppdatera profilen. Försök igen.');
       }
     } catch (err) {
-      setServerError('Serverfel. Försök igen senare.');
+      console.error('Profiluppdatering misslyckades:', err);
+      alert('Profiluppdatering misslyckades!');
     }
   };
 
