@@ -1,8 +1,8 @@
 import './ForgottenPasswordPage.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useInstruction } from '../../context/InstructionContext';
+import { useMultiForm } from '../../context/MultiFormContext';
 import Input from '../../components/UI/Input/Input.jsx';
-import Button from '../../components/UI/Button/Button.jsx';
 import generateRandomPassword from '../../utils/generateRandomPassword';
 import instructionMessages from '../../utils/instructionMessages';
 import bcrypt from 'bcryptjs';
@@ -10,12 +10,25 @@ import bcrypt from 'bcryptjs';
 const ForgottenPasswordPage = () => {
   const [email, setEmail] = useState('');
   const { showMessage } = useInstruction();
+  const { setFormRef, setFormValidStatus } = useMultiForm();
+  const formRef = useRef();
 
   useEffect(() => {
     showMessage(instructionMessages.get('forgottenPasswordPrompt'));
   }, []);
 
-  const handleResetPassword = async () => {
+  useEffect(() => {
+    setFormRef('forgottenPassword', formRef);
+  }, [setFormRef]);
+
+  useEffect(() => {
+    const isValidEmail =
+      email.trim() !== '' && /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email);
+    setFormValidStatus('forgottenPassword', isValidEmail);
+  }, [email, setFormValidStatus]);
+
+  const handleResetPassword = async (e) => {
+    e.preventDefault();
     try {
       const res = await fetch('http://localhost:5132/api/users');
       const users = await res.json();
@@ -48,7 +61,7 @@ const ForgottenPasswordPage = () => {
     <main className="forgotten-password-container">
       <h2>Glömt lösenord</h2>
 
-      <form className="forgotten-password-form">
+      <form ref={formRef} onSubmit={handleResetPassword} className="forgotten-password-form">
         <Input
           className="input-field"
           label="E-post"
@@ -59,17 +72,8 @@ const ForgottenPasswordPage = () => {
           autoFocus
         />
 
-        <div className="submit-section">
-          <Button
-            type="button"
-            onClick={handleResetPassword}
-            className="submit-btn"
-            label="Återställ lösenord"
-            aria-label="Återställ lösenord"
-            title="Återställ lösenord"
-            disabled={!email.trim()}
-          ></Button>
-        </div>
+        {/* Invisible submit button to allow form submission via MultiFormContext */}
+        <button type="submit" className="invisible-btn"></button>
       </form>
     </main>
   );

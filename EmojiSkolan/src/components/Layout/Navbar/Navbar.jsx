@@ -37,19 +37,15 @@ const Navbar = () => {
 
   // Configuration for which buttons to show based on the current route and user state
   const navConfig = {
-    '/login': !user
-      ? ['back-to-start', 'login-submit', 'register-navigate']
-      : ['profile', 'logout'],
-    '/register': !user
-      ? ['back-to-start', 'login-navigate', 'register-submit']
-      : ['profile', 'logout'],
+    '/login': !user ? ['back-to-start', 'login-submit'] : ['profile', 'logout'],
+    '/register': !user ? ['back-to-start', 'register-submit'] : ['profile', 'logout'],
     '/profile': ['back-to-start', 'profile-submit', 'logout'],
     '/highscore': ['profile', currentLevel ? 'goToLevel' : null, 'logout'],
     '/': user
       ? ['training-navigate', 'profile', 'levelNavigation', 'logout']
       : ['login-navigate', 'register-navigate'],
     '/forgot-password': !user
-      ? ['back-to-start', 'login-navigate', 'register-navigate']
+      ? ['back-to-start', 'login-navigate', 'forgot-password-submit']
       : ['profile', 'logout'],
     '/training': user
       ? ['back-to-start', 'levelNavigation', 'logout']
@@ -157,6 +153,16 @@ const Navbar = () => {
             path="/"
             aria-label="Klicka här för att logga ut"
             title="Klicka här för att logga ut"
+          />
+        )}
+        {buttonsToShow.includes('forgot-password-submit') && (
+          <Button
+            className="button"
+            label="Återställ lösenord"
+            aria-label="Återställ lösenord"
+            onClick={() => submitForm('forgottenPassword')}
+            title="Återställ lösenord"
+            disabled={!formValid.forgottenPassword}
           />
         )}
       </div>
