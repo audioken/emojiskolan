@@ -2,9 +2,9 @@ import TrainingDisplay from "../../components/TrainingDisplay/TrainingDisplay"
 
 function TrainingPage() {
   return (
-    <div>
+    <main>
       <TrainingDisplay />
-    </div>
+    </main>
   )
 }
 

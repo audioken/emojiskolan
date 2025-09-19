@@ -2,7 +2,7 @@ import './TrainingDisplay.css';
 import { useResults } from '../../context/ResultContext';
 import { useEmoji } from '../../context/EmojiContext';
 import { useInstruction } from '../../context/InstructionContext';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import instructionMessages from '../../utils/instructionMessages';
 
 function TrainingDisplay() {
