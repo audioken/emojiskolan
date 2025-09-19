@@ -3,7 +3,7 @@
   background-color: var(--headerFontColor);
   border: none;
   height: 7rem;
-  padding: var(--page-padding);
+  padding: var(--instruction-box-padding);
   margin: var(--component-margin) auto;
   margin-bottom: 0;
   border-radius: 8px;
@@ -18,9 +18,11 @@
 /* Speak-knapp för att läsa upp instruktionen */
 .speak-button {
   position: absolute;
+  width: 2.2rem;
+  height: 2.2rem;
   bottom: -1rem;
   right: 0.5rem;
-  background: var(--match6);
+  background: var(--off);
   border: none;
   border-radius: 50%;
   line-height: 1;
@@ -44,7 +46,7 @@
 }
 
 .speak-button-on{
-  background: var(--match2);
+  background: var(--on);
 }
 
 .instruction-box-content {

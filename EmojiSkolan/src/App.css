@@ -20,6 +20,9 @@
   --correct: #37de2e;
   --incorrect: #ed2323;
 
+  --on: #4eb84e;
+  --off: #c44e48;
+
   --match1: #ffb347;
   --match2: #77dd77;
   --match3: #3498db;
@@ -35,7 +38,9 @@
 
   --spacing: 1.2rem;
   --page-padding: 1.5rem;
+  --instruction-box-padding: 4rem;
   --section-gap: 1rem;
+  --form-gap: 1rem;
   --component-margin: 1rem;
   --element-gap: 0.8rem;
 
@@ -82,6 +87,21 @@ main {
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.75rem;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin-bottom: var(--section-gap);
+  text-align: center;
+  font-weight: 500;
+}
+
+.invisible-btn {
+  display: none;
 }
 
 /* Tablet */

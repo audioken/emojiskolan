@@ -201,24 +201,28 @@ function Board({}) {
   };
 
   return (
-    <div className="board-container">
-      <div className="scoreboard">
+    <section className="board-container" aria-label="Spelbräde">
+      <aside className="scoreboard">
         <div className="stats">
-          <p className="tries">Antal försök: {roundCounter}</p>
-          <p className="timer">Tid: {formatTime(seconds)}</p>
+          <ul>
+            <li>Rundor: {roundCounter}</li>
+            <li>Tid: {formatTime(seconds)}</li>
+          </ul>
+          {/* <p className="tries">Antal försök: {roundCounter}</p>
+          <p className="timer">Tid: {formatTime(seconds)}</p> */}
           <Button
             label="Omstart"
             className="button"
             onClick={protectedAction(setupNewGame, 'Ett spel pågår! Vill du verkligen starta om?')}
           />
         </div>
-      </div>
+      </aside>
       <div className="board">
         {displayCards.map((card, i) => (
           <Card key={i} card={card} onClick={() => handleCardClick(card)} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

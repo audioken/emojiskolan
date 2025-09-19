@@ -67,23 +67,16 @@ const LoginPage = () => {
           autoFocus
         />
 
-        <div className="password-input-group">
-          <Input
-            className="input-field"
-            label="Lösenord"
-            type={showPassword ? 'text' : 'password'}
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-          <Button
-            type="button"
-            onClick={() => setShowPassword((prev) => !prev)}
-            className="password-toggle-btn"
-            label={showPassword ? 'Dölj' : 'Visa'}
-            tabIndex={-1}
-          ></Button>
-        </div>
+        <Input
+          className="input-field"
+          label="Lösenord"
+          type={showPassword ? 'text' : 'password'}
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          showPasswordToggle={true}
+          onPasswordToggle={() => setShowPassword((prev) => !prev)}
+        />
 
         <div className="forgot-password-section">
           <Button label="Glömt lösenord?" path="/forgot-password" className="forgot-password-btn" />
