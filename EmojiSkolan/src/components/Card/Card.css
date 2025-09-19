@@ -17,7 +17,7 @@
     color: var(--buttonsFontColor);
 }
 
-@media (min-width: 600px) {
+/* @media (min-width: 600px) {
   .card {
     width: var(--card-size-tablet);
     height: var(--card-size-tablet);
@@ -29,7 +29,7 @@
     width: var(--card-size-desktop);
     height: var(--card-size-desktop);
   }
-}
+} */
 
 .card-inner {
     position: relative;
