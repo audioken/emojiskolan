@@ -4,23 +4,20 @@
 }
 
 .highscore-row {
-	display: flex;
-	width: 100%;
 	border-bottom: 1px solid #eee;
 	min-height: 40px;
-	align-items: center;
+	user-select: none;
 }
+
 .highscore-row.unlocked {
 	background: var(--unlocked-background);
 }
+
 .highscore-row.locked {
 	background: var(--locked-background);
 }
+
 .highscore-col {
-	flex: 1;
 	text-align: center;
 	padding: 8px 0;
 }
-.level-col {}
-.score-col {}
-.time-col {}
