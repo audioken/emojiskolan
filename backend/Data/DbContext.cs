@@ -124,7 +124,7 @@ namespace backend.Data
                 new Emoji { Id = 62, Symbol = "🚕", Description = "Taxi", LevelId = 5 },
                 new Emoji { Id = 63, Symbol = "🚌", Description = "Buss", LevelId = 5 },
                 new Emoji { Id = 64, Symbol = "🚎", Description = "Spårvagn", LevelId = 5 },
-                new Emoji { Id = 65, Symbol = "🚓", Description = "Polis", LevelId = 5 },
+                new Emoji { Id = 65, Symbol = "🚓", Description = "Polisbil", LevelId = 5 },
                 new Emoji { Id = 66, Symbol = "🚑", Description = "Ambulans", LevelId = 5 },
                 new Emoji { Id = 67, Symbol = "🚒", Description = "Brandbil", LevelId = 5 },
                 new Emoji { Id = 68, Symbol = "🚐", Description = "Van", LevelId = 5 },
