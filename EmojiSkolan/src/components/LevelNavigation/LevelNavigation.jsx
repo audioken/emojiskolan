@@ -15,6 +15,8 @@ function LevelNavigation() {
       <Button
         className="button lvl-nav"
         label={`🡄`}
+        aria-label={currentLevel === 1 ? "Inaktiv knapp. Du är på den första nivån" : "Gå till föregående nivå"}
+        title={currentLevel === 1 ? "" : "Gå till föregående nivå"}
         onClick={protectedAction(
           () => setCurrentLevel(Math.max(1, currentLevel - 1)),
           'Ett spel pågår! Vill du verkligen byta nivå?'
@@ -28,6 +30,8 @@ function LevelNavigation() {
       <Button
         className="button lvl-nav"
         label={isCurrentLevelCompleted ? `🡆` : `🡆🔒`}
+        aria-label={isCurrentLevelCompleted ? "Gå till nästa nivå" : "Nästa nivå låst"}
+        title={isCurrentLevelCompleted ? "Gå till nästa nivå" : ""}
         onClick={protectedAction(
           () => setCurrentLevel(Math.min(10, currentLevel + 1)),
           'Ett spel pågår! Vill du verkligen byta nivå?'

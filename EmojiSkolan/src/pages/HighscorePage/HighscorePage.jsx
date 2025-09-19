@@ -1,9 +1,9 @@
+import './HighscorePage.css';
 import { useEffect } from 'react';
-import { useResults } from '../../context/ResultContext'
+import { useResults } from '../../context/ResultContext';
 import { useInstruction } from '../../context/InstructionContext';
+import HighscoreCard from '../../components/HighscoreCard/HighscoreCard';
 import instructionMessages from '../../utils/instructionMessages';
-import HighscoreCard from '../../components/HighscoreCard/HighscoreCard'
-import "./HighscorePage.css"
 
 const TOTAL_LEVELS = 10;
 
@@ -11,20 +11,19 @@ const HighscorePage = () => {
   const { bestResults, currentLevel, setCurrentLevel } = useResults();
   const { showMessage } = useInstruction();
 
-  // Show instruction message on component mount
   useEffect(() => {
     showMessage(instructionMessages.get('highscore'));
   }, []);
 
   const levels = Array.from({ length: TOTAL_LEVELS }, (_, i) => i + 1);
 
-  //Back to startpage when choosing a level
+  // Return to selected level when clicking a highscore card
   const handleLevelClick = (level) => {
     setCurrentLevel(level);
   };
 
   return (
-    <div>
+    <main>
       <div className="highscore-table">
         <div className="highscore-header">
           <span className="header">Level</span>
@@ -50,8 +49,8 @@ const HighscorePage = () => {
           );
         })}
       </div>
-    </div>
+    </main>
   );
-}
+};
 
-export default HighscorePage
+export default HighscorePage;

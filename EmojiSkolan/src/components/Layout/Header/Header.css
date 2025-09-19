@@ -83,6 +83,7 @@ fieldset {
     justify-content: flex-start;
     gap: 1rem;
     width: 100%;
+    cursor: pointer;
 }
 
 .start-content h1 {
@@ -96,6 +97,7 @@ fieldset {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .fieldset-content {

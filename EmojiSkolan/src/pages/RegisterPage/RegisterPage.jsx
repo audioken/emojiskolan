@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMultiForm } from '../../context/MultiFormContext';
 import { useInstruction } from '../../context/InstructionContext';
 import { validateInputs } from '../../utils/validateInputs';
+import Button from '../../components/UI/Button/Button';
 import instructionMessages from '../../utils/instructionMessages';
 import Input from '../../components/UI/Input/Input';
 import bcrypt from 'bcryptjs';
@@ -15,11 +16,16 @@ const avatars = [
 ];
 
 const RegisterPage = () => {
-  const formRef = useRef();
-  const navigate = useNavigate();
   const { showMessage } = useInstruction();
-  const { setFormRef } = useMultiForm();
+  const { setFormRef, setFormValidStatus } = useMultiForm();
 
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [valid, setValid] = useState({});
+  const [serverError, setServerError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [hoveredField, setHoveredField] = useState(null);
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -28,17 +34,8 @@ const RegisterPage = () => {
     avatar: 0,
   });
 
-  const [acceptTerms, setAcceptTerms] = useState(false);
-
-  const [errors, setErrors] = useState({});
-  const [valid, setValid] = useState({});
-
-  const [serverError, setServerError] = useState('');
-
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const [hoveredField, setHoveredField] = useState(null);
+  const navigate = useNavigate();
+  const formRef = useRef();
 
   useEffect(() => {
     showMessage(instructionMessages.get('register'));
@@ -53,9 +50,10 @@ const RegisterPage = () => {
     setErrors(errors);
     setValid(valid);
     setServerError('');
-  }, [formData]);
 
-  const isFormValid = Object.values(valid).every(Boolean) && acceptTerms;
+    const isFormValid = Object.values(valid).every(Boolean) && acceptTerms;
+    setFormValidStatus('register', isFormValid);
+  }, [formData, acceptTerms, setFormValidStatus]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -202,14 +200,13 @@ const RegisterPage = () => {
             hovered={hoveredField === 'password'}
             setHovered={(val) => setHoveredField(val ? 'password' : null)}
           />
-          <button
+          <Button
             type="button"
             onClick={() => setShowPassword((prev) => !prev)}
             className="password-toggle-btn"
             tabIndex={-1}
-          >
-            {showPassword ? 'Dölj' : 'Visa'}
-          </button>
+            label={showPassword ? 'Dölj' : 'Visa'}
+          />
         </div>
 
         <div className="password-input-group">

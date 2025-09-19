@@ -1,6 +1,6 @@
+import "./Footer.css";
 import Navbar from "../Navbar/Navbar";
 import Copyright from "./Copyright";
-import "./Footer.css";
 
 function Footer() {
   return (

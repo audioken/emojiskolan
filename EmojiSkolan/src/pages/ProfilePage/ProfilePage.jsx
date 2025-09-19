@@ -5,18 +5,19 @@ import { useMultiForm } from '../../context/MultiFormContext';
 import { useInstruction } from '../../context/InstructionContext';
 import { validateInputs } from '../../utils/validateInputs';
 import { avatars } from '../../utils/avatars';
-import instructionMessages from '../../utils/instructionMessages';
 import Input from '../../components/UI/Input/Input';
-import Button from '../../components/UI/Button/Button';
+import instructionMessages from '../../utils/instructionMessages';
 import bcrypt from 'bcryptjs';
 
 const ProfilePage = () => {
   const { user, updateUser } = useAuth();
   const { showMessage } = useInstruction();
+  const { setFormRef, setFormValidStatus } = useMultiForm();  
 
-  const formRef = useRef();
-  const { setFormRef, setFormValidStatus } = useMultiForm();
-
+  const [errors, setErrors] = useState({});
+  const [valid, setValid] = useState({});
+  const [hoveredField, setHoveredField] = useState(null);
+  const [serverError, setServerError] = useState('');
   const [profile, setProfile] = useState({
     username: user?.username || '',
     email: user?.email || '',
@@ -25,6 +26,8 @@ const ProfilePage = () => {
     avatar: user?.avatar ?? 0,
   });
 
+  const formRef = useRef();
+  
   useEffect(() => {
     showMessage(instructionMessages.get('profile'));
   }, []);
@@ -41,27 +44,24 @@ const ProfilePage = () => {
     }
   }, [user]);
 
-  const [errors, setErrors] = useState({});
-  const [valid, setValid] = useState({});
-  const [hoveredField, setHoveredField] = useState(null);
-  const [serverError, setServerError] = useState('');
-
-  const isFormValid = Object.values(valid).every(Boolean);
-
   useEffect(() => {
     setFormRef('profile', formRef);
   }, [setFormRef]);
-
-  useEffect(() => {
-    setFormValidStatus('profile', isFormValid);
-  }, [isFormValid, setFormValidStatus]);
-
+  
   useEffect(() => {
     const { errors, valid } = validateInputs(profile, 'profile');
     setErrors(errors);
     setValid(valid);
     setServerError('');
-  }, [profile]);
+
+    const isFormValid = Object.values(valid).every(Boolean);
+    setFormValidStatus('profile', isFormValid);
+  }, [profile, setFormValidStatus]);
+
+  useEffect(() => {
+    const passwordFilled = profile.password || profile.confirmPassword;
+    setFormValidStatus('profilePasswordFilled', !!passwordFilled);
+  }, [profile.password, profile.confirmPassword, setFormValidStatus]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -199,13 +199,8 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        {/* Save profile button, invisible but reacts on enter */}
-        <Button
-          type="submit"
-          label="Spara profil"
-          className="invisible-btn"
-          disabled={!isFormValid}
-        />
+        {/* Invisible submit button to allow form submission via MultiFormContext */}
+        <button type="submit" className="invisible-btn" />
       </form>
     </main>
   );

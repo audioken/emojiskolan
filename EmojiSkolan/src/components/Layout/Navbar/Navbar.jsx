@@ -12,8 +12,8 @@ const Navbar = () => {
   const { user, logout } = useAuth();
   const { currentLevel } = useResults();
   const { submitForm, formValid } = useMultiForm();
-  const navigate = useNavigate();
   const { protectedAction } = useGameProtection();
+  const navigate = useNavigate();
   const location = useLocation();
 
   // Protected actions to prevent navigation or logout during an active game
@@ -63,42 +63,101 @@ const Navbar = () => {
     <nav className="footer-nav">
       {buttonsToShow.includes('training-navigate') && (
         <div className="training-wrapper">
-          <Button label="Träning" className="button" onClick={protectedNavigateToTraining} />
+          <Button
+            label="Träning"
+            className="button"
+            aria-label="Gå till träningssidan"
+            title="Gå till träningssidan"
+            onClick={protectedNavigateToTraining}
+          />
         </div>
       )}
       <div className="btns-nav">
         {buttonsToShow.includes('back-to-start') && (
-          <Button label="↶ Hem" path="/" className="button" />
+          <Button
+            label="↶ Hem"
+            path="/"
+            className="button"
+            aria-label="Gå tillbaka till startsidan"
+            title="Gå tillbaka till startsidan"
+          />
         )}
         {buttonsToShow.includes('login-navigate') && (
-          <Button label="Logga in" className="button" onClick={protectedNavigateToLogin} />
+          <Button
+            label="Logga in"
+            className="button"
+            aria-label="Gå till inloggningen"
+            title="Gå till inloggningen"
+            onClick={protectedNavigateToLogin}
+          />
         )}
         {buttonsToShow.includes('login-submit') && (
-          <Button label="Logga in" className="button" onClick={() => submitForm('login')} />
+          <Button
+            label="Logga in"
+            className="button"
+            aria-label="Klicka här för att logga in"
+            title="Klicka här för att logga in"
+            disabled={!formValid.login}
+            onClick={() => submitForm('login')}
+          />
         )}
         {buttonsToShow.includes('register-navigate') && (
-          <Button label="Registrera" className="button" onClick={protectedNavigateToRegister} />
+          <Button
+            label="Registrera"
+            className="button"
+            aria-label="Gå till registreringen"
+            title="Gå till registreringen"
+            onClick={protectedNavigateToRegister}
+          />
         )}
         {buttonsToShow.includes('register-submit') && (
-          <Button label="Registrera" className="button" onClick={() => submitForm('register')} />
+          <Button
+            label="Registrera"
+            className="button"
+            aria-label="Klicka här för att registrera"
+            title="Klicka här för att registrera"
+            disabled={!formValid.register}
+            onClick={() => submitForm('register')}
+          />
         )}
         {buttonsToShow.includes('profile-submit') && (
           <Button
             label="Spara profil"
             className="button"
+            aria-label="Klicka här för att spara profilen"
+            title="Klicka här för att spara profilen"
+            disabled={!formValid.profile || !formValid.profilePasswordFilled}
             onClick={() => submitForm('profile')}
-            disabled={!formValid.profile}
           />
         )}
         {buttonsToShow.includes('goToLevel') && (
-          <Button label={`↶ Gå till nivå ${currentLevel}`} path="/" className="button" />
+          <Button
+            label={`↶ Gå till nivå ${currentLevel}`}
+            path="/"
+            className="button"
+            aria-label={`Gå till nivå ${currentLevel}`}
+            title={`Gå till nivå ${currentLevel}`}
+          />
         )}
         {buttonsToShow.includes('profile') && (
-          <Button label="Profil" className="button" onClick={protectedNavigateToProfile} />
+          <Button
+            label="Profil"
+            className="button"
+            aria-label="Gå till profilen"
+            title="Gå till profilen"
+            onClick={protectedNavigateToProfile}
+          />
         )}
         {buttonsToShow.includes('levelNavigation') && <LevelNavigation />}
         {buttonsToShow.includes('logout') && (
-          <Button label="Logga ut" onClick={protectedLogout} className="button" path="/" />
+          <Button
+            label="Logga ut"
+            onClick={protectedLogout}
+            className="button"
+            path="/"
+            aria-label="Klicka här för att logga ut"
+            title="Klicka här för att logga ut"
+          />
         )}
       </div>
     </nav>
