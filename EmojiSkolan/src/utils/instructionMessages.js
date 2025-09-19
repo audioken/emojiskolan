@@ -1,31 +1,31 @@
 const messages = {
   welcomeGuest: [
-    'Välkommen! Spela som gäst genom att välja ett kort.',
-    'Hej där! Välj ett kort för att börja spela som gäst.',
+    'Välkommen! Spela som gäst genom att välja en bricka.',
+    'Hej där! Välj en bricka för att börja spela som gäst.',
   ],
   pleaseRegister: [
     'Bra jobbat! Vill du spara din poäng? Registrera dig nu!',
     'Du är grym! Registrera dig för att spara dina framsteg.',
   ],
   newGame: [
-    'Starta ett spel genom att välja ett kort!',
-    'Redo för en ny spelomgång? Välj ett kort!',
-    'Nytt spel, nya möjligheter! Välj ett kort!',
+    'Starta ett spel genom att välja en bricka!',
+    'Redo för en ny spelomgång? Välj en bricka!',
+    'Nytt spel, nya möjligheter! Välj en bricka!',
   ],
   selectCard: [
-    'Välj ett till kort och försök matcha',
-    'Dags att välja ännu ett kort!',
-    'Vilket kort tar du nu?',
+    'Välj en bricka och försök matcha',
+    'Dags att välja ännu en bricka!',
+    'Vilken bricka tar du nu?',
   ],
   selectEmoji: [
-    'Välj ett kort till och hitta en matchande beskrivning till denna emoji!',
-    'Hitta en beskrivning som passar till den här emojin genom att välja ett kort!',
-    'Kan du hitta rätt beskrivning till den här emojin? Välj ett kort!',
+    'Välj en bricka till och hitta en matchande beskrivning till denna emoji!',
+    'Hitta en beskrivning som passar till den här emojin genom att välja en bricka!',
+    'Kan du hitta rätt beskrivning till den här emojin? Välj en bricka!',
   ],
   selectDescription: [
-    'Välj ett kort till och hitta en matchande emoji till denna beskrivning!',
-    'Hitta en emoji som passar till den här beskrivningen genom att välja ett kort!',
-    'Kan du hitta rätt emoji till den här beskrivningen? Välj ett kort!',
+    'Välj en bricka till och hitta en matchande emoji till denna beskrivning!',
+    'Hitta en emoji som passar till den här beskrivningen genom att välja en bricka!',
+    'Kan du hitta rätt emoji till den här beskrivningen? Välj en bricka!',
   ],
   matchFail: [
     'Oops, det var fel. Försök igen!',
