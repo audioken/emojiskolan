@@ -6,14 +6,13 @@ export function MultiFormProvider({ children }) {
   const formRefs = useRef({});
   const [formValid, setFormValid] = useState({});
 
-  // Byt namn till något generellt!
   const setFormRef = (name, ref) => {
     formRefs.current[name] = ref;
   };
 
   const setFormValidStatus = (name, valid) => {
     setFormValid((prev) => {
-      if (prev[name] === valid) return prev; // undvik onödig update
+      if (prev[name] === valid) return prev;
       return { ...prev, [name]: valid };
     });
   };

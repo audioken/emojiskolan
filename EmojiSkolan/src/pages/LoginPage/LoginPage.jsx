@@ -1,5 +1,6 @@
 import './LoginPage.css';
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useMultiForm } from '../../context/MultiFormContext';
 import { useInstruction } from '../../context/InstructionContext';
@@ -10,26 +11,28 @@ import Button from '../../components/UI/Button/Button';
 const LoginPage = () => {
   const { login } = useAuth();
   const { showMessage } = useInstruction();
-  const { setFormRef } = useMultiForm();
+  const { setFormRef, setFormValidStatus } = useMultiForm();
+  const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    identifier: '', // Can be either username or email
+    password: '',
+  });
+  const navigate = useNavigate();
   const formRef = useRef();
 
   useEffect(() => {
     showMessage(instructionMessages.get('login'));
   }, []);
 
-  // State for storing input values for identifier (username or email) and password
-  const [formData, setFormData] = useState({
-    identifier: '', // Can be either username or email
-    password: '',
-  });
-
   useEffect(() => {
     setFormRef('login', formRef);
   }, [setFormRef]);
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
-  // Updates formData when user types in any input field
+  useEffect(() => {
+    const isFormValid = formData.identifier.trim() !== '' && formData.password.trim() !== '';
+    setFormValidStatus('login', isFormValid);
+  }, [formData, setFormValidStatus]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -38,29 +41,22 @@ const LoginPage = () => {
     }));
   };
 
-  // Handles form submission when user clicks "Login"
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevents page reload
+    e.preventDefault();
 
     try {
-      await login(formData.identifier, formData.password); //  call context login
-      window.location.href = '/'; // optional redirect after login
+      await login(formData.identifier, formData.password);
+      navigate('/');
     } catch (err) {
       setError(err.message);
     }
   };
 
-  // Render login form
   return (
-    <div className="login-container">
+    <main className="login-container">
       <h2>Logga in här</h2>
 
-      {/* Show error message if exists */}
-      {error && <div className="error-message">{error}</div>}
-
-      {/* Login form with two input fields */}
       <form ref={formRef} onSubmit={handleSubmit} className="login-form">
-        {/* Identifier input (username or email) */}
         <Input
           className="input-field"
           label="Användarnamn eller E-post"
@@ -71,7 +67,6 @@ const LoginPage = () => {
           autoFocus
         />
 
-        {/* Password input */}
         <div className="password-input-group">
           <Input
             className="input-field"
@@ -87,11 +82,9 @@ const LoginPage = () => {
             className="password-toggle-btn"
             label={showPassword ? 'Dölj' : 'Visa'}
             tabIndex={-1}
-          >
-          </Button>
+          ></Button>
         </div>
 
-        {/* Forgot password link under password field */}
         <div className="forgot-password-section">
           <Button label="Glömt lösenord?" path="/forgot-password" className="forgot-password-btn" />
         </div>
@@ -99,7 +92,7 @@ const LoginPage = () => {
         {/* Invisible submit button to allow form submission via MultiFormContext */}
         <button type="submit" className="invisible-btn"></button>
       </form>
-    </div>
+    </main>
   );
 };
 

@@ -97,6 +97,7 @@ const Navbar = () => {
             className="button"
             aria-label="Klicka här för att logga in"
             title="Klicka här för att logga in"
+            disabled={!formValid.login}
             onClick={() => submitForm('login')}
           />
         )}
@@ -115,6 +116,7 @@ const Navbar = () => {
             className="button"
             aria-label="Klicka här för att registrera"
             title="Klicka här för att registrera"
+            disabled={!formValid.register}
             onClick={() => submitForm('register')}
           />
         )}
@@ -124,8 +126,8 @@ const Navbar = () => {
             className="button"
             aria-label="Klicka här för att spara profilen"
             title="Klicka här för att spara profilen"
+            disabled={!formValid.profile || !formValid.profilePasswordFilled}
             onClick={() => submitForm('profile')}
-            disabled={!formValid.profile}
           />
         )}
         {buttonsToShow.includes('goToLevel') && (
