@@ -17,37 +17,42 @@ const HighscorePage = () => {
 
   const levels = Array.from({ length: TOTAL_LEVELS }, (_, i) => i + 1);
 
-  // Return to selected level when clicking a highscore card
   const handleLevelClick = (level) => {
     setCurrentLevel(level);
   };
 
   return (
     <main>
-      <div className="highscore-table">
-        <div className="highscore-header">
-          <span className="header">Level</span>
-          <span className="header">Highscore</span>
-          <span className="header">Tid</span>
-        </div>
-        {levels.map((level) => {
-          const result = bestResults[level];
-          const isUnlocked = level === 1 || !!result;
-          const isNextUnlocked = !!bestResults[level - 1] && !isUnlocked;
-          const isSelectable = isUnlocked || isNextUnlocked;
-          const isSelected = currentLevel === level;
-          return (
-            <HighscoreCard
-              key={level}
-              level={level}
-              isUnlocked={isUnlocked || isNextUnlocked}
-              rounds={result?.rounds}
-              time={result?.time}
-              selected={isSelected}
-              onClick={isSelectable ? () => handleLevelClick(level) : undefined}
-            />
-          );
-        })}
+      <div className="highscore-wrapper">
+        <table className="highscore-table">
+          <thead className="highscore-header">
+            <tr>
+              <th className="header">Level</th>
+              <th className="header">Highscore</th>
+              <th className="header">Tid</th>
+            </tr>
+          </thead>
+          <tbody>
+            {levels.map((level) => {
+              const result = bestResults[level];
+              const isUnlocked = level === 1 || !!result;
+              const isNextUnlocked = !!bestResults[level - 1] && !isUnlocked;
+              const isSelectable = isUnlocked || isNextUnlocked;
+              const isSelected = currentLevel === level;
+              return (
+                <HighscoreCard
+                  key={level}
+                  level={level}
+                  isUnlocked={isUnlocked || isNextUnlocked}
+                  rounds={result?.rounds}
+                  time={result?.time}
+                  selected={isSelected}
+                  onClick={isSelectable ? () => handleLevelClick(level) : undefined}
+                />
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </main>
   );
