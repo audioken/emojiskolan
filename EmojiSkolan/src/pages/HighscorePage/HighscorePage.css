@@ -5,6 +5,7 @@
 .highscore-wrapper {
     padding: var(--page-padding);
     user-select: none;
+    width: 100%;
 }
 
 .highscore-table {
