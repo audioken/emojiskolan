@@ -5,7 +5,7 @@ const messages = {
   ],
   pleaseRegister: [
     'Bra jobbat! Vill du spara din poäng? Registrera dig nu!',
-    'Du är grym! Registrera dig för att spara dina framsteg.',
+    'Bra jobbat! Registrera dig för att spara dina framsteg.',
   ],
   newGame: [
     'Starta ett spel genom att välja en bricka!',
