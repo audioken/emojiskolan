@@ -65,3 +65,7 @@ ul {
   margin: 0 0.2rem;
   transition: transform 0.1s, box-shadow 0.1s;
 }
+
+.fa-rotate-right {
+  margin-right: 0.5rem;
+}

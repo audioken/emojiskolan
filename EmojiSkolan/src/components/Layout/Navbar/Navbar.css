@@ -9,3 +9,12 @@
   visibility: hidden;
   pointer-events: none;
 }
+
+.fa-right-to-bracket, .fa-address-card, .fa-user, .fa-graduation-cap, .fa-right-to-bracket, .fa-floppy-disk {
+  margin-right: 0.5rem;
+}
+
+.flip-horizontal {
+  transform: scaleX(-1);
+  margin-right: 0.5rem;
+}

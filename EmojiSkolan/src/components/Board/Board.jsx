@@ -208,11 +208,11 @@ function Board({}) {
             <li>Rundor: {roundCounter}</li>
             <li>Tid: {formatTime(seconds)}</li>
           </ul>
-          {/* <p className="tries">Antal försök: {roundCounter}</p>
-          <p className="timer">Tid: {formatTime(seconds)}</p> */}
           <Button
-            label="Omstart"
+            label={<><i className="fa-solid fa-rotate-right"></i> Omstart</>}
             className="button"
+            aria-label="Starta om spelet"
+            title="Starta om spelet"
             onClick={protectedAction(setupNewGame, 'Ett spel pågår! Vill du verkligen starta om?')}
           />
         </div>

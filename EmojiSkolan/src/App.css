@@ -20,8 +20,8 @@
   --correct: #37de2e;
   --incorrect: #ed2323;
 
-  --on: #4eb84e;
-  --off: #c44e48;
+  --on: #75d375;
+  --off: #e77973;
 
   --match1: #ffb347;
   --match2: #77dd77;
@@ -214,10 +214,10 @@ body,
 .app-container {
   display: flex;
   flex-direction: column;
+  /* justify-content: space-between; */
   min-height: 100vh;
-  max-width: 1240px;
+  max-width: 800px;
   margin: 0 auto;
-  width: 100%;
   gap: var(--spacing);
   flex: 1 1 auto;
 }

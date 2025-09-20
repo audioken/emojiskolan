@@ -67,7 +67,7 @@ const Navbar = () => {
         )}
         {buttonsToShow.includes('login-navigate') && (
           <Button
-            label="Logga in"
+            label={<><i className="fa-solid fa-right-to-bracket"></i> Logga in</>}
             className="button"
             aria-label="Gå till inloggningen"
             title="Gå till inloggningen"
@@ -76,7 +76,7 @@ const Navbar = () => {
         )}
         {buttonsToShow.includes('login-submit') && (
           <Button
-            label="Logga in"
+            label={<><i className="fa-solid fa-right-to-bracket"></i> Logga in</>}
             className="button"
             aria-label="Klicka här för att logga in"
             title="Klicka här för att logga in"
@@ -86,7 +86,7 @@ const Navbar = () => {
         )}
         {buttonsToShow.includes('register-navigate') && (
           <Button
-            label="Registrera"
+            label={<><i className="fa-solid fa-address-card"></i> Registrera</>}
             className="button"
             aria-label="Gå till registreringen"
             title="Gå till registreringen"
@@ -95,7 +95,7 @@ const Navbar = () => {
         )}
         {buttonsToShow.includes('register-submit') && (
           <Button
-            label="Registrera"
+            label={<><i className="fa-solid fa-address-card"></i> Registrera</>}
             className="button"
             aria-label="Klicka här för att registrera"
             title="Klicka här för att registrera"
@@ -105,7 +105,7 @@ const Navbar = () => {
         )}
         {buttonsToShow.includes('profile-submit') && (
           <Button
-            label="Spara profil"
+            label={<><i className="fa-solid fa-floppy-disk"></i> Spara profil</>}
             className="button"
             aria-label="Klicka här för att spara profilen"
             title="Klicka här för att spara profilen"
@@ -124,7 +124,7 @@ const Navbar = () => {
         )}
         {buttonsToShow.includes('profile') && (
           <Button
-            label="Profil"
+            label={<><i className="fa-solid fa-user"></i> Profil</>}
             className="button"
             aria-label="Gå till profilen"
             title="Gå till profilen"
@@ -134,7 +134,7 @@ const Navbar = () => {
         {buttonsToShow.includes('levelNavigation') && <LevelNavigation />}
         {buttonsToShow.includes('logout') && (
           <Button
-            label="Logga ut"
+            label={<><i className="fa-solid fa-right-from-bracket flip-horizontal"></i> Logga ut</>}
             onClick={protectedLogout}
             className="button"
             path="/"
@@ -154,7 +154,7 @@ const Navbar = () => {
         )}
         {buttonsToShow.includes('training-navigate') && (
           <Button
-            label="Träning"
+            label={<><i className="fa-solid fa-graduation-cap"></i> Träning</>}
             className="button"
             aria-label="Gå till träningssidan"
             title="Gå till träningssidan"

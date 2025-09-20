@@ -1,6 +1,6 @@
 .profile-container {
   max-width: 400px;
-  padding: var(--page-padding);
+  /* padding: var(--page-padding); */
   display: flex;
   flex-direction: column;
   justify-content: center;

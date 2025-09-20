@@ -20,14 +20,15 @@
   position: absolute;
   width: 2.2rem;
   height: 2.2rem;
-  bottom: -1rem;
+  bottom: 0.5rem;
   right: 0.5rem;
+  background: transparent;
+  background: var(--buttonsAndDetails);
   background: var(--off);
   border: none;
   border-radius: 50%;
-  line-height: 1;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.50);
 }
 
 .speaker-icon {
@@ -35,8 +36,6 @@
 }
 
 .speak-button:hover {
-  background: var(--buttonsAndDetailsClicked);
-  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
   outline: none;
   transform: scale(1.08);
 }
