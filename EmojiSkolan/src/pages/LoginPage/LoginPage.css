@@ -16,12 +16,13 @@
   width: 100%;
 }
 
+
 .forgot-password-section {
   display: flex;
   justify-content: flex-end;
-  margin-top: var(--element-gap);
   min-height: 2rem;
   align-items: center;
+  margin-top: -1rem;
 }
 
 .forgot-password-btn {
