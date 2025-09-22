@@ -1,4 +1,3 @@
-/* Disabled button styling */
 .button.button-disabled,
 .button:disabled,
 .button-disabled {
@@ -17,7 +16,7 @@
     min-height: 44px;
     border-radius: 8px;
     background-color: var(--buttonsAndDetails);
-    color: var(--buttonsFontColor); /* Svart text för maximal kontrast */
+    color: var(--buttonsFontColor);
     font-family: var(--f2), sans-serif;
     font-size: 1rem;
     text-decoration: none;
