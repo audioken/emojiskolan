@@ -7,7 +7,9 @@
   margin: var(--component-margin) auto;
   margin-bottom: 0;
   border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44, 62, 80, 0.10);
+  box-shadow:
+    0 4px 16px rgba(44, 62, 80, 0.18),
+    0 1.5px 6px rgba(44, 62, 80, 0.1);
   color: var(--headerFontColorContrast);
   width: 100%;
   max-width: calc(4 * var(--card-size-mobile) + 3 * 0.625rem);
@@ -15,7 +17,6 @@
   text-align: center;
 }
 
-/* Speak-knapp för att läsa upp instruktionen */
 .speak-button {
   position: absolute;
   width: 2.2rem;
@@ -44,7 +45,7 @@
   transform: scale(0.96);
 }
 
-.speak-button-on{
+.speak-button-on {
   background: var(--on);
 }
 
@@ -64,11 +65,11 @@
     font-size: 1.3rem;
     padding: var(--page-padding);
   }
-  
+
   .instruction-box-content {
     font-size: 1.3rem;
   }
-  
+
   .speak-button {
     width: 3rem;
     height: 3rem;
@@ -79,7 +80,7 @@
 @media (min-width: 1024px) {
   .instruction-box {
     max-width: calc(4 * var(--card-size-desktop) + 3 * 0.7rem);
-    height: 6rem; /* Lite högre på desktop */
+    height: 6rem;
   }
 
   .instruction-box-content {

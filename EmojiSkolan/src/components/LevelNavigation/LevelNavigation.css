@@ -12,10 +12,10 @@
     font-weight: bold;
 }
 
-/* Knapparna har fast bredd för att undvika att de ändrar storlek vid olika textinnehåll */
+
 .lvl-nav {
     width: 56px;
 }
-/* .lock-overlay borttagen, endast pil syns på disabled-knapp */
+
 
 
