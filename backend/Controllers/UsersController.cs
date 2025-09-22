@@ -32,7 +32,7 @@ namespace backend.Controllers
 
             if (user == null)
             {
-                return NotFound();
+                return NotFound("User not found.");
             }
 
             return user;
@@ -53,24 +53,19 @@ namespace backend.Controllers
         public async Task<IActionResult> UpdateUser(int id, [FromBody] User user)
         {
             if (id != user.Id)
-                return BadRequest();
+                return BadRequest("Id in URL does not match user Id.");
 
             var existingUser = await _context.Users.FindAsync(id);
             if (existingUser == null)
-                return NotFound();
+                return NotFound("User not found.");
 
-            // Uppdatera bara de fält som ska ändras
             existingUser.Username = user.Username ?? existingUser.Username;
             existingUser.Email = user.Email ?? existingUser.Email;
             existingUser.AvatarId = user.AvatarId != 0 ? user.AvatarId : existingUser.AvatarId;
             Console.WriteLine($"Updating user ID {id}: Username={existingUser.Username}, Email={existingUser.Email}, AvatarId={existingUser.AvatarId}");
 
-            // Endast om lösenord skickas med
             if (!string.IsNullOrEmpty(user.PasswordHash))
                 existingUser.PasswordHash = user.PasswordHash;
-
-            // Om du vill tillåta att Level ändras, lägg till:
-            // existingUser.Level = user.Level != 0 ? user.Level : existingUser.Level;
 
             try
             {
@@ -79,12 +74,11 @@ namespace backend.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!UserExists(id))
-                    return NotFound();
+                    return NotFound("User not found.");
                 else
                     throw;
             }
 
-            // Returnera uppdaterad användare (om frontend vill ha det)
             return Ok(existingUser);
         }
 
@@ -95,9 +89,8 @@ namespace backend.Controllers
             var user = await _context.Users.FindAsync(id);
             Console.WriteLine($"Updating password for user ID {id}");
             if (user == null)
-                return NotFound();
+                return NotFound("User not found.");
 
-            // Endast lösenordsbyte
             if (updates.ContainsKey("passwordHash"))
             {
                 user.PasswordHash = updates["passwordHash"]?.ToString();
@@ -106,8 +99,7 @@ namespace backend.Controllers
                 return NoContent();
             }
 
-            // Annars: kräver hela User-objektet (eller hantera fler fält här)
-            return BadRequest("Endast lösenordsbyte stöds i denna PUT.");
+            return BadRequest("Only password change is supported in this PUT request.");
         }
 
         // DELETE: api/users/5
@@ -116,14 +108,12 @@ namespace backend.Controllers
         {
             var user = await _context.Users.FindAsync(id);
             if (user == null)
-            {
-                return NotFound();
-            }
+                return NotFound("User not found.");
 
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return NoContent("User deleted successfully.");
         }
 
         private bool UserExists(int id)
@@ -137,23 +127,21 @@ namespace backend.Controllers
         {
             if (record == null)
             {
-                return BadRequest("Record data is required");
+                return BadRequest("Record data is required.");
             }
 
             var user = await _context.Users.FindAsync(userId);
             if (user == null)
             {
-                return NotFound("User not found");
+                return NotFound("User not found.");
             }
 
-            // Validate that level exists
             var level = await _context.Levels.FindAsync(record.LevelId);
             if (level == null)
             {
-                return BadRequest("Invalid level");
+                return BadRequest("Invalid level.");
             }
 
-            // Check if user already has a record for this level
             var existingRecord = await _context.Records
                 .FirstOrDefaultAsync(r => r.UserId == userId && r.LevelId == record.LevelId);
 
@@ -162,7 +150,6 @@ namespace backend.Controllers
                 return Conflict(new { message = "Record already exists for this level", existingRecord });
             }
 
-            // Create new record
             var newRecord = new Record
             {
                 UserId = userId,
@@ -185,43 +172,38 @@ namespace backend.Controllers
         {
             if (record == null)
             {
-                return BadRequest("Record data is required");
+                return BadRequest("Record data is required.");
             }
 
             var user = await _context.Users.FindAsync(userId);
             if (user == null)
             {
-                return NotFound("User not found");
+                return NotFound("User not found.");
             }
 
-            // Validate that level exists
             var level = await _context.Levels.FindAsync(levelId);
             if (level == null)
             {
-                return BadRequest("Invalid level");
+                return BadRequest("Invalid level.");
             }
 
-            // Find existing record
             var existingRecord = await _context.Records
                 .FirstOrDefaultAsync(r => r.UserId == userId && r.LevelId == levelId);
 
             if (existingRecord == null)
             {
-                return NotFound("No record found for this user and level");
+                return NotFound("No record found for this user and level.");
             }
 
-            // Check if new result is better (fewer rounds, or same rounds but faster time)
             bool isBetter = record.Rounds < existingRecord.Rounds ||
                            (record.Rounds == existingRecord.Rounds && record.Time < existingRecord.Time);
 
             if (!isBetter)
             {
-                // New result is not better, return existing record
                 Console.WriteLine($"New result is not better. Existing: {existingRecord.Rounds} rounds, {existingRecord.Time}s. New: {record.Rounds} rounds, {record.Time}s");
                 return Ok(new { message = "New result is not better than existing record", record = existingRecord });
             }
 
-            // Update existing record with better result
             existingRecord.Rounds = record.Rounds;
             existingRecord.Time = record.Time;
 

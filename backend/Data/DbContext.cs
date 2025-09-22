@@ -133,7 +133,7 @@ namespace backend.Data
                 new Emoji { Id = 71, Symbol = "🛴", Description = "Sparkcykel", LevelId = 5 },
                 new Emoji { Id = 72, Symbol = "🛵", Description = "Moped", LevelId = 5 },
                 new Emoji { Id = 73, Symbol = "🏍️", Description = "Motorcykel", LevelId = 5 },
-                new Emoji { Id = 74, Symbol = "🚂", Description = "Tåg", LevelId = 5 },
+                new Emoji { Id = 74, Symbol = "🚂", Description = "Lok", LevelId = 5 },
                 new Emoji { Id = 75, Symbol = "✈️", Description = "Flygplan", LevelId = 5 },
 
                 // Level 6 (Nature & Weather)
