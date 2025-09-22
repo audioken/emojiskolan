@@ -6,7 +6,7 @@ const HighscoreCard = ({ level, isUnlocked, rounds, time, onClick, selected }) =
     <tr
       className={`highscore-row${isUnlocked ? ' unlocked' : ' locked'}${selected ? ' selected' : ''}`}
       onClick={isUnlocked ? onClick : undefined}
-      style={{ cursor: isUnlocked ? 'pointer' : 'not-allowed', opacity: isUnlocked ? 1 : 0.5 }}
+      title={isUnlocked ? `Välj nivå ${level}` : `Lås upp nivå ${level} genom att klara föregående nivå`}
     >
       <td className="highscore-col level-col">
         {level}{' '}
