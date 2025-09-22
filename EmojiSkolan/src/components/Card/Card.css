@@ -59,7 +59,7 @@
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     -ms-backface-visibility: hidden;
-    font-size: 2.5rem;
+    font-size: 4rem;  /* Change this value to adjust emoji size on the card */
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -87,7 +87,6 @@
 .card-front {
     background-color: var(--cardF);
     transform: rotateY(180deg);
-    /* Ingen box-shadow på fronten */
 }
 
 .card-back {
@@ -196,5 +195,13 @@
 .card.matched.match-color-8 .card-front,
 .card.matched.match-color-8 .card-back {
     background-color: var(--match8) !important;
+}
+
+/* Style for the question mark icon on the back of the card */
+.card-back .fa-question {
+    color: var(--fa-icon-color);
+    font-size: 2.5rem; /* Smaller size */
+    opacity: 0.85;
+    pointer-events: none;
 }
 

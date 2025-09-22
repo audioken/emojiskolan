@@ -30,7 +30,9 @@ function Card({ card, onClick }) {
         <div className={`card-front${getTextClasses()}${card.flashWrong ? " flash-wrong" : ""}`}>
           {card.isTurnedOver || isMatched ? card.content : ""}
         </div>
-        <div className="card-back">❓</div>
+        <div className="card-back">
+          <i className="fa-solid fa-question" aria-label="Dolt kort"></i>
+        </div>
       </div>
     </div>
   );
