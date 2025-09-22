@@ -16,7 +16,7 @@ const messages = {
     'Dags att välja ännu en bricka!',
     'Vilken bricka tar du nu?',
   ],
-  selectSymbol: [
+  selectEmoji: [
     'Hitta en matchande beskrivning till denna symbol!',
     'Hitta en beskrivning som passar till den här symbolen?',
     'Kan du hitta rätt beskrivning till den här symbolen?',
