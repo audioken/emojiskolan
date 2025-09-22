@@ -17,7 +17,9 @@ const HighscoreCard = ({
       onClick={isUnlocked ? onClick : undefined}
       title={
         isGlobal
-          ? `Nivå ${level} - Global bästa`
+          ? isUnlocked
+            ? `Nivå ${level} - Global bästa (Klicka för att välja nivå)`
+            : `Lås upp nivå ${level} genom att klara föregående nivå`
           : isUnlocked
             ? `Välj nivå ${level}`
             : `Lås upp nivå ${level} genom att klara föregående nivå`
@@ -25,7 +27,7 @@ const HighscoreCard = ({
     >
       <td className="highscore-col level-col">
         {level}{' '}
-        {!isGlobal && !isUnlocked ? (
+        {!isUnlocked ? (
           <span role="img" aria-label="locked">
             🔒
           </span>

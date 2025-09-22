@@ -2,6 +2,7 @@ import './HighscorePage.css';
 import { useEffect, useState } from 'react';
 import { useResults } from '../../context/ResultContext';
 import { useInstruction } from '../../context/InstructionContext';
+import { useAuth } from '../../context/AuthContext';
 import HighscoreCard from '../../components/HighscoreCard/HighscoreCard';
 import instructionMessages from '../../utils/instructionMessages';
 
@@ -11,9 +12,12 @@ const HighscorePage = () => {
   const { bestResults, globalBestResults, currentLevel, setCurrentLevel } = useResults();
   const { showMessage } = useInstruction();
   const [showGlobal, setShowGlobal] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
-    showGlobal ? showMessage(instructionMessages.get('highscoreGlobal')) : showMessage(instructionMessages.get('highscore'));
+    showGlobal
+      ? showMessage(instructionMessages.get('highscoreGlobal'))
+      : showMessage(instructionMessages.get('highscore'));
   }, [showGlobal]);
 
   const levels = Array.from({ length: TOTAL_LEVELS }, (_, i) => i + 1);
@@ -41,7 +45,7 @@ const HighscorePage = () => {
               className="toggle-checkbox"
             />
             <span className="toggle-text">
-              {showGlobal ? 'Global Highscore' : 'Personlig Highscore'}
+              {showGlobal ? 'Global highscore' : `${user.username}'s highscore`}
             </span>
           </label>
         </div>
@@ -50,7 +54,7 @@ const HighscorePage = () => {
           <thead className="highscore-header">
             <tr>
               <th className="header">Nivå</th>
-              {showGlobal && (<th className="header">Användare</th>)}
+              {showGlobal && <th className="header">Användare</th>}
               <th className="header">Rundor</th>
               <th className="header">Tid</th>
             </tr>
@@ -58,20 +62,26 @@ const HighscorePage = () => {
           <tbody>
             {levels.map((level) => {
               const result = currentResults[level];
+              const personalResult = bestResults[level]; // Använd personlig data för låsning
 
               if (showGlobal) {
-                // Global view - always show level, even without data
+                // Global view - använd personlig progress för låsning/upplåsning
+                const isUnlocked = level === 1 || !!personalResult;
+                const isNextUnlocked = !!bestResults[level - 1] && !isUnlocked;
+                const isSelectable = isUnlocked || isNextUnlocked;
+                const isSelected = currentLevel === level;
+
                 return (
                   <HighscoreCard
                     key={level}
                     level={level}
-                    isUnlocked={true}
+                    isUnlocked={isUnlocked || isNextUnlocked}
                     rounds={result?.rounds}
                     time={result?.time}
                     username={result?.username}
-                    selected={false}
+                    selected={isSelected}
                     isGlobal={true}
-                    onClick={undefined}
+                    onClick={isSelectable ? () => handleLevelClick(level) : undefined}
                   />
                 );
               } else {

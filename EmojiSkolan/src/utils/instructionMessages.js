@@ -49,6 +49,9 @@ const messages = {
   highscore: [
     'Här kan du se dina bästa resultat för varje nivå. Välj en nivå för att börja spela igen!',
   ],
+  highscoreGlobal: [
+    'Här kan du se de bästa resultaten från alla spelare för varje nivå. Välj en nivå för att börja spela!',
+  ],
   training: ['Här kan du träna på betydelsen av olika emojis!'],
   forgottenPasswordPrompt: [
     'Vänligen fyll i den e-postadress du vill skapa ett nytt lösenord för.',
