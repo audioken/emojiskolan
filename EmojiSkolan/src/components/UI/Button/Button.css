@@ -33,6 +33,10 @@
     box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
 }
 
+.button-cancel {
+    background-color: var(--on);
+}
+
 .button:hover:not(:disabled):not(.button-disabled) {
     background-color: var(--buttonsAndDetailsClicked);
     box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
