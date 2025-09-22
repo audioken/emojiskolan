@@ -47,6 +47,8 @@
   --card-size-mobile: 85px;
   --card-size-tablet: 130px;
   --card-size-desktop: 100px;
+
+  
 }
 
 html {
@@ -71,15 +73,13 @@ body, #root {
 .app-container {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   min-height: 100vh;
-  max-width: 1240px;
+  max-width: 800px;
   margin: 0 auto;
   width: 100%;
   gap: var(--spacing);
   flex: 1 1 auto;
-  height: 100%;
 }
 
 main {
@@ -87,6 +87,10 @@ main {
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+header {
+  user-select: none;
 }
 
 .error-message {
@@ -117,13 +121,15 @@ main {
     min-height: 100vh;
     background-color: #e6e9f2 !important;
     overflow: hidden;
+    margin: 0;
+    padding: 0;
   }
+  
   #root {
     background-color: transparent !important;
   }
+  
   .app-container {
-    border-left: 3px solid var(--cardB);
-    border-right: 3px solid var(--cardB);
     border-radius: 0;
     box-shadow: none;
     min-height: 100vh;
@@ -131,10 +137,15 @@ main {
     background: var(--background);
     gap: 0.5rem;
     padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
   }
+  
   .header-instruction-wrapper {
     gap: 0.5rem;
   }
+  
   :root {
     --spacing: 0.5rem;
     --page-padding: 0.5rem;
@@ -144,83 +155,4 @@ main {
     --card-size-desktop: 80px;
     font-size: 14px;
   }
-}
-
-/* Enkel fontstorlek utan clamp */
-html {
-  font-size: 16px;
-}
-
-html,
-body,
-#root {
-  height: 100%;
-  font-family: var(--f1), sans-serif;
-  background-color: var(--background);
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Behåll bara desktop overflow för no-scroll */
-@media (min-width: 1024px) {
-  html, body, #root {
-    min-height: 100vh;
-    background-color: #e6e9f2 !important;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  #root {
-    background-color: transparent !important;
-  }
-  .app-container {
-    border-left: 3px solid var(--cardB);
-    border-right: 3px solid var(--cardB);
-    border-radius: 0;
-    box-shadow: none;
-    min-height: 100vh;
-    max-width: 900px; /* Mindre maxbredd på desktop */
-    background: var(--background);
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-    gap: 0.5rem; /* Mindre gap på desktop */
-    padding: 0.5rem 0; /* Mindre padding på desktop */
-  }
-  .header-instruction-wrapper {
-    gap: 0.5rem;
-  }
-  :root {
-    --spacing: 0.5rem;
-    --page-padding: 1.5rem;
-    --section-gap: 0.5rem;
-    --component-margin: 0.5rem;
-    --element-gap: 0.5rem;
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 600px) and (max-width: 1023px) {
-  html, body, #root {
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-  }
-  .app-container {
-    min-height: 100vh;
-  }
-}
-
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  max-width: 800px;
-  margin: 0 auto;
-  gap: var(--spacing);
-  flex: 1 1 auto;
-}
-
-header{
-  user-select: none;
 }

@@ -30,7 +30,8 @@
     font-weight: 600;
     letter-spacing: 0.02em;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+    cursor: pointer;
 }
 
 .button-cancel {
@@ -39,13 +40,15 @@
 
 .button:hover:not(:disabled):not(.button-disabled) {
     background-color: var(--buttonsAndDetailsClicked);
-    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+    cursor: pointer;
+    transform: scale(1.04);
 }
 
 .button:active {
     background-color: var(--buttonsAndDetailsClicked);
     transform: scale(0.96);
-    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
 }
 
 /* Makes the clickable area bigger for smaller screens */
