@@ -64,6 +64,25 @@ body, #root {
   padding: 0;
 }
 
+header {
+  user-select: none;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.75rem;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin-bottom: var(--section-gap);
+  text-align: center;
+  font-weight: 500;
+}
+
+.invisible-btn {
+  display: none;
+}
+
 .header-instruction-wrapper {
   display: flex;
   flex-direction: column;
@@ -89,37 +108,20 @@ main {
   width: 100%;
 }
 
-header {
-  user-select: none;
-}
-
-.error-message {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 0.75rem;
-  border: 1px solid #f5c6cb;
-  border-radius: 4px;
-  margin-bottom: var(--section-gap);
-  text-align: center;
-  font-weight: 500;
-}
-
-.invisible-btn {
-  display: none;
-}
-
-/* Tablet */
 @media (min-width: 600px) and (max-width: 1023px) {
   .app-container {
     min-height: 100vh;
   }
 }
 
-/* Desktop */
 @media (min-width: 1024px) {
-  html, body, #root {
+  html, body {
     min-height: 100vh;
     background-color: #e6e9f2 !important;
+    background-image: url('src/public/images/EmojiSkolanArvidFinal.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     overflow: hidden;
     margin: 0;
     padding: 0;
@@ -127,13 +129,14 @@ header {
   
   #root {
     background-color: transparent !important;
+    backdrop-filter: blur(3px);
   }
   
   .app-container {
     border-radius: 0;
     box-shadow: none;
     min-height: 100vh;
-    max-width: 900px;
+    max-width: 700px;
     background: var(--background);
     gap: 0.5rem;
     padding: 0.5rem 0;
