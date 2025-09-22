@@ -2,9 +2,9 @@ import Board from "../../components/Board/Board";
 
 function StartPage() {
   return (
-    <div>
+    <main>
       <Board />
-    </div>
+    </main>
   );
 }
 

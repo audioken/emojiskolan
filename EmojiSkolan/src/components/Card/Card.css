@@ -17,6 +17,22 @@
     color: var(--buttonsFontColor);
 }
 
+/* Större kort på tablet */
+@media (min-width: 600px) {
+  .card {
+    width: var(--card-size-tablet);
+    height: var(--card-size-tablet);
+  }
+}
+
+/* Mindre kort på desktop för att spara plats */
+@media (min-width: 1024px) {
+  .card {
+    width: var(--card-size-desktop);
+    height: var(--card-size-desktop);
+  }
+}
+
 .card-inner {
     position: relative;
     width: 100%;
@@ -150,6 +166,21 @@
 .card.matched.match-color-5 .card-front,
 .card.matched.match-color-5 .card-back {
     background-color: var(--match5) !important;
+}
+/* Unique color for pair 6 */
+.card.matched.match-color-6 .card-front,
+.card.matched.match-color-6 .card-back {
+    background-color: var(--match6) !important;
+}
+/* Unique color for pair 7 */
+.card.matched.match-color-7 .card-front,
+.card.matched.match-color-7 .card-back {
+    background-color: var(--match7) !important;
+}
+/* Unique color for pair 8 */
+.card.matched.match-color-8 .card-front,
+.card.matched.match-color-8 .card-back {
+    background-color: var(--match8) !important;
 }
 /* Unique color for pair 6 */
 .card.matched.match-color-6 .card-front,

@@ -2,33 +2,31 @@
     background: var(--lockedBackground);
 }
 
+.highscore-wrapper {
+    padding: var(--page-padding);
+    user-select: none;
+    width: 100%;
+}
+
 .highscore-table {
-    display: flex;
-    flex-direction: column;
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
-    padding: var(--page-padding);
+    border-collapse: collapse;
 }
 
 .highscore-header {
-    display: flex;
-    width: 100%;
-    font-weight: bold;
     background: var(--background);
     border-bottom: 1px solid #ccc;
 }
 
 .header {
-    flex: 1;
     text-align: center;
     padding: 8px;
+    font-weight: bold;
 }
 
 .highscore-row {
-    display: flex;
-    width: 100%;
     border-bottom: 1px solid #eee;
     min-height: 40px;
-    align-items: center;
 }

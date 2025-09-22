@@ -1,13 +1,53 @@
-import "./InstructionBox.css";
-import { useInstruction } from "../../context/InstructionContext";
+import './InstructionBox.css';
+import { useInstruction } from '../../context/InstructionContext';
+import { useEffect, useState } from 'react';
+import Button from '../UI/Button/Button';
 
-const InstructionBox = ({ title }) => {
+const InstructionBox = () => {
   const { message } = useInstruction();
+  const [isSpeakingEnabled, setIsSpeakingEnabled] = useState(false);
+
+  // Automatic speech synthesis when message changes
+  useEffect(() => {
+    if (!message || !isSpeakingEnabled) return;
+
+    // Stop any ongoing speech synthesis
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(message);
+    utterance.lang = 'sv-SE';
+    window.speechSynthesis.speak(utterance);
+
+    return () => window.speechSynthesis.cancel();
+  }, [message, isSpeakingEnabled]);
+
+  // Toggle function for the button
+  const toggleSpeaking = () => {
+    setIsSpeakingEnabled((prev) => !prev);
+    window.speechSynthesis.cancel(); // Stop speech synthesis when turning off
+  };
 
   return (
-    <div className="instruction-box">
+    <aside className="instruction-box">
       <div className="instruction-box-content">{message}</div>
-    </div>
+      <Button
+        className={`button speak-button ${isSpeakingEnabled ? 'speak-button-on' : ''}`}
+        onClick={toggleSpeaking}
+        aria-label={isSpeakingEnabled ? 'Stäng av uppläsning' : 'Slå på uppläsning'}
+        title={isSpeakingEnabled ? 'Stäng av uppläsning' : 'Slå på uppläsning'}
+        label={
+          isSpeakingEnabled ? (
+            <span className="speaker-icon">
+              <i className="fa-solid fa-volume-high"></i>
+            </span>
+          ) : (
+            <span className="speaker-icon">
+              <i className="fa-solid fa-volume-xmark"></i>
+            </span>
+          )
+        }
+      ></Button>
+    </aside>
   );
 };
 

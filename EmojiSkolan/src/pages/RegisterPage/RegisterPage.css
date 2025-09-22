@@ -1,47 +1,30 @@
 .register-container {
   max-width: 400px;
-  margin: auto;
   padding: var(--page-padding);
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.register-form {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: var(--section-gap);
 }
 
-.password-input-group {
+.register-form {
   display: flex;
-  align-items: flex-end;
-  gap: var(--element-gap);
+  flex-direction: column;
+  gap: var(--form-gap);
 }
 
-.password-input-group .form-group {
-  flex: 1;
-}
-
-.password-toggle-btn {
-  height: 2.5rem;
-  padding: 0 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #f5f5f5;
-  cursor: pointer;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  min-width: 60px;
-}
-
-.password-toggle-btn:hover {
-  background: #e5e5e5;
+.input-field {
+  width: 100%;
 }
 
 .avatar-selection {
   margin: var(--section-gap) 0;
+}
+
+.avatar-selection .label-title {
+  display: block;
+  margin-bottom: var(--element-gap);
+  color: #333;
+  font-weight: 600;
 }
 
 .avatar-options {
@@ -56,11 +39,16 @@
   font-size: 2rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--element-gap);
+}
+
+.avatar-option input[type="radio"] {
+  margin-right: 0.5rem;
 }
 
 .terms-section {
-  margin: 1rem 0;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -75,40 +63,4 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.submit-section {
-  margin-top: auto;
-  padding-top: var(--section-gap);
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 0.75rem;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.submit-btn:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
-.submit-btn:not(:disabled):hover {
-  background: #0056b3;
-}
-
-.error-message {
-  color: red;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  border: 1px solid red;
-  border-radius: 4px;
-  background: #ffe6e6;
 }

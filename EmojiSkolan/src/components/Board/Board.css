@@ -4,6 +4,27 @@
     gap: 0.625rem;
 }
 
+ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .board {
+    gap: 1.2rem; /* Mer gap på tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .board {
+    gap: 0.7rem; /* Lite mer gap på desktop */
+  }
+}
+
 .board-container {
   display: flex;
   flex-direction: column;
@@ -23,8 +44,8 @@
 
 .scoreboard {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  width: 100%;
   margin-bottom: var(--section-gap);
 }
 
@@ -32,6 +53,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-around;
+  width: 100%;
   font-weight: bold;
   gap: 1rem;
   margin-bottom: 0.5rem;
@@ -41,4 +64,8 @@
   padding: 0.4rem 1.2rem;
   margin: 0 0.2rem;
   transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.fa-rotate-right {
+  margin-right: 0.5rem;
 }

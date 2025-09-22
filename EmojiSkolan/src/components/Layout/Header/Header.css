@@ -1,3 +1,41 @@
+/* Logotypstorlek */
+
+.header-logo {
+    height: 4rem;
+    width: auto;
+    transition: height 0.2s;
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+    .header-logo {
+        height: 7rem;
+    }
+    .summary-fields {
+        gap: 1rem;
+        padding: 0.5rem 1rem;
+    }
+    .header-title {
+        font-size: 2rem;
+        max-width: 75% !important; /* Lagom begränsat orange streck på tablet */
+    }
+}
+
+@media (min-width: 1024px) {
+    .header-logo {
+        height: 8rem; 
+    }
+    .header-top {
+        margin-top: 0; 
+    }
+    .summary-fields {
+        gap: 0.2rem; 
+        padding: 0.05rem 0.1rem;
+    }
+}
+/* Luft ovanför hela headern */
+.header-top {
+    margin-top: var(--spacing);
+}
 fieldset {
     border-radius: 8px;
     overflow: hidden;
@@ -9,7 +47,7 @@ fieldset {
 
 @media (max-width: 600px) {
     .header-top {
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
 
 
@@ -17,19 +55,33 @@ fieldset {
 
 .header-title {
     font-family: var(--f2), var(--f1), sans-serif;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 4vw, 3.2rem); /* Responsiv storlek */
     margin: 0;
-    padding: 0;
+    padding: calc(var(--spacing) * 2) 0 0 0;
     color: var(--headerFontColor);
     font-weight: 700;
     letter-spacing: 0.04em;
     text-shadow: 0 2px 8px rgba(44,62,80,0.10);
     border-bottom: 3px solid var(--accent1);
-    display: inline-block;
+    display: block;
+    max-width: 85%;     
     padding-bottom: 0.15em;
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+}
+
+/* Mobil - lite mer orange streck än tidigare */
+@media (max-width: 599px) {
+    .header-title {
+        max-width: 75% !important; /* Mindre bredd för att skapa gap på mobil */
+    }
+}
+
+@media (min-width: 1024px) {
+    .header-title {
+        font-size: 2.2rem;
+    }
 }
 
 .summary-fields {
@@ -41,8 +93,6 @@ fieldset {
     padding: 0.2rem 0.5rem;
 }
 
-
-
 .avatar {
     min-width: 50px;
     max-width: 220px;
@@ -52,11 +102,7 @@ fieldset {
     min-width: 130px;
 }
 
-.fieldset-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 
 .start-content {
@@ -66,6 +112,7 @@ fieldset {
     justify-content: flex-start;
     gap: 1rem;
     width: 100%;
+    cursor: pointer;
 }
 
 .start-content h1 {
@@ -79,6 +126,7 @@ fieldset {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .fieldset-content {

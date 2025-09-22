@@ -41,16 +41,22 @@ function Board({}) {
   // Displays correct colors for matching cards when game is won
   const displayCards = isGameWon ? cards.map((card) => ({ ...card, isGameWon: true })) : cards;
 
-  // Reset game state if user logs out
+  const showWelcomeMessage = () => {
+    if (!user) {
+      showMessage(instructionMessages.get('welcomeGuest'));
+    } else {
+      showMessage(instructionMessages.get('newGame'));
+    }
+  };
+
+  // Detect user login/logout to setup a new game or show welcome message
   useEffect(() => {
     const prevUser = prevUserRef.current;
 
     if (prevUser && !user) {
       setupNewGame();
-    } else if (!user) {
-      showMessage(instructionMessages.get('welcomeGuest'));
     } else {
-      showMessage(instructionMessages.get('newGame'));
+      showWelcomeMessage();
     }
 
     prevUserRef.current = user;
@@ -126,6 +132,7 @@ function Board({}) {
       setFirstCard(null);
       setCards(createShuffledCards(allEmojis, currentLevel));
       setDisableClick(false);
+      showWelcomeMessage();
     }, 600);
   };
 
@@ -194,24 +201,28 @@ function Board({}) {
   };
 
   return (
-    <div className="board-container">
-      <div className="scoreboard">
+    <section className="board-container" aria-label="Spelbräde">
+      <aside className="scoreboard">
         <div className="stats">
-          <p className="tries">Antal försök: {roundCounter}</p>
-          <p className="timer">Tid: {formatTime(seconds)}</p>
+          <ul>
+            <li>Rundor: {roundCounter}</li>
+            <li>Tid: {formatTime(seconds)}</li>
+          </ul>
           <Button
-            label="Omstart"
+            label={<><i className="fa-solid fa-rotate-right"></i> Omstart</>}
             className="button"
+            aria-label="Starta om spelet"
+            title="Starta om spelet"
             onClick={protectedAction(setupNewGame, 'Ett spel pågår! Vill du verkligen starta om?')}
           />
         </div>
-      </div>
+      </aside>
       <div className="board">
         {displayCards.map((card, i) => (
           <Card key={i} card={card} onClick={() => handleCardClick(card)} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -1,39 +1,23 @@
-import { Link } from "react-router-dom";
-import "./Button.css";
-
-// function Button({ label, type = "button", onClick, className = "", path, disabled = false }) {
-//   // Gör så man kan ta emot true false för disabled också
-
-//   if (path) {
-//     return (
-//       <Link to={path} className={className} onClick={onClick}>
-//         {label}
-//       </Link>
-//     );
-//   }
-
-//   return (
-//     <button type={type} onClick={onClick} className={className}>
-//       {label}
-//     </button>
-//   );
-// }
-
-// export default Button;
+import { Link } from 'react-router-dom';
+import './Button.css';
 
 function Button({
   label,
-  type = "button",
+  type = 'button',
   onClick,
-  className = "",
+  className = '',
   path,
   disabled = false,
+  ariaLabel,
+  title,
 }) {
   if (path) {
     return (
       <Link
-        to={disabled ? "#" : path}
-        className={`${className}${disabled ? " button-disabled" : ""}`}
+        to={disabled ? '#' : path}
+        className={`${className}${disabled ? ' button-disabled' : ''}`}
+        aria-label={ariaLabel}
+        title={title}
         onClick={disabled ? (e) => e.preventDefault() : onClick}
       >
         {label}
@@ -45,8 +29,10 @@ function Button({
     <button
       type={type}
       onClick={onClick}
-      className={`${className}${disabled ? " button-disabled" : ""}`}
+      className={`${className}${disabled ? ' button-disabled' : ''}`}
       disabled={disabled}
+      aria-label={ariaLabel}
+      title={title}
     >
       {label}
     </button>

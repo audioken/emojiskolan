@@ -1,17 +1,10 @@
-/*Importerar*/
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+
 :root {
-  /* --header-height: clamp(3.75rem, 8vw, 6rem); */
-  /* --footerNavEx: #881600; Se om vi ska använda får se */
-
-  /* --buttonsAndDetails: #4a6fa5;
-    --buttonsAndDetailsClicked: #4a6fa5; */
-
-
-  --accent1: #ffb347; /* orange */
-
+  --accent1: #ffb347;
   --headerFontColor: #3498db;
   --headerFontColorContrast: #f5f5f5;
   --footerNav: #8c2f39;
@@ -19,7 +12,7 @@
   --lockedBackground: #e0e0e0;
   --buttonsAndDetails: #e6e9f2;
   --buttonsAndDetailsClicked: #cfd8e6;
-  --buttonsFontColor: #1a2a4a; /* Mörkblå text för bättre kontrast */
+  --buttonsFontColor: #1a2a4a;
   --cardB: #47BCFD;
   --cardF: #d9d9d9;
   --cardFontColor: #1a2a4a;
@@ -27,40 +20,133 @@
   --correct: #37de2e;
   --incorrect: #ed2323;
 
-  --match1: #ffb347; /* orange */
-  --match2: #77dd77; /* green */
-  --match3: #3498db; /* blue*/
-  --match4: #f49ac2; /* pink */
-  --match5: #fdfd96; /* yellow */
-  --match6: #c23b22; /* redbrown */
-  --match7: #836953; /* brown */
-  --match8: #b57edc; /* purple*/
+  --on: #75d375;
+  --off: #e77973;
+
+  --match1: #ffb347;
+  --match2: #77dd77;
+  --match3: #3498db;
+  --match4: #f49ac2;
+  --match5: #fdfd96;
+  --match6: #c23b22;
+  --match7: #836953;
+  --match8: #b57edc;
 
   --f1: 'Quicksand', sans-serif;
-  --f2: 'Fredoka', cursive;
+  --f2: 'Fredoka', 'Quicksand', Arial, sans-serif;
   --f3: 'Roboto', sans-serif;
-  
-  /* Layout spacing variables */
-  --spacing: clamp(0.75rem, 2vw, 2rem);
-  --page-padding: 1rem;
-  --section-gap: 1rem;
-  --component-margin: 0.5rem;
-  --element-gap: 0.5rem;
 
-  --card-size-mobile: 80px;
+  --spacing: 1.2rem;
+  --page-padding: 1.5rem;
+  --instruction-box-padding: 4rem;
+  --section-gap: 1rem;
+  --form-gap: 1rem;
+  --component-margin: 1rem;
+  --element-gap: 0.8rem;
+
+  --card-size-mobile: 85px;
+  --card-size-tablet: 130px;
+  --card-size-desktop: 100px;
+}
+
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+body, #root {
+  height: 100%;
+  font-family: var(--f1), sans-serif;
+  background-color: var(--background);
+  margin: 0;
+  padding: 0;
+}
+
+.header-instruction-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-margin);
 }
 
 .app-container {
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
   min-height: 100vh;
   max-width: 1240px;
   margin: 0 auto;
-  /* margin-top: var(--header-height); */
   width: 100%;
   gap: var(--spacing);
+  flex: 1 1 auto;
+  height: 100%;
 }
 
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.75rem;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin-bottom: var(--section-gap);
+  text-align: center;
+  font-weight: 500;
+}
+
+.invisible-btn {
+  display: none;
+}
+
+/* Tablet */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .app-container {
+    min-height: 100vh;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  html, body, #root {
+    min-height: 100vh;
+    background-color: #e6e9f2 !important;
+    overflow: hidden;
+  }
+  #root {
+    background-color: transparent !important;
+  }
+  .app-container {
+    border-left: 3px solid var(--cardB);
+    border-right: 3px solid var(--cardB);
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100vh;
+    max-width: 900px;
+    background: var(--background);
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
+  .header-instruction-wrapper {
+    gap: 0.5rem;
+  }
+  :root {
+    --spacing: 0.5rem;
+    --page-padding: 0.5rem;
+    --section-gap: 0.5rem;
+    --component-margin: 0.5rem;
+    --element-gap: 0.5rem;
+    --card-size-desktop: 80px;
+    font-size: 14px;
+  }
+}
+
+/* Enkel fontstorlek utan clamp */
 html {
   font-size: 16px;
 }
@@ -71,4 +157,70 @@ body,
   height: 100%;
   font-family: var(--f1), sans-serif;
   background-color: var(--background);
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Behåll bara desktop overflow för no-scroll */
+@media (min-width: 1024px) {
+  html, body, #root {
+    min-height: 100vh;
+    background-color: #e6e9f2 !important;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  #root {
+    background-color: transparent !important;
+  }
+  .app-container {
+    border-left: 3px solid var(--cardB);
+    border-right: 3px solid var(--cardB);
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100vh;
+    max-width: 900px; /* Mindre maxbredd på desktop */
+    background: var(--background);
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: 0.5rem; /* Mindre gap på desktop */
+    padding: 0.5rem 0; /* Mindre padding på desktop */
+  }
+  .header-instruction-wrapper {
+    gap: 0.5rem;
+  }
+  :root {
+    --spacing: 0.5rem;
+    --page-padding: 1.5rem;
+    --section-gap: 0.5rem;
+    --component-margin: 0.5rem;
+    --element-gap: 0.5rem;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  html, body, #root {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  .app-container {
+    min-height: 100vh;
+  }
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  gap: var(--spacing);
+  flex: 1 1 auto;
+}
+
+header{
+  user-select: none;
 }
