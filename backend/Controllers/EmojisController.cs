@@ -31,7 +31,7 @@ namespace backend.Controllers
 
             if (emoji == null)
             {
-                return NotFound();
+                return NotFound("Emoji not found.");
             }
 
             return emoji;
@@ -53,7 +53,7 @@ namespace backend.Controllers
         {
             if (id != emoji.Id)
             {
-                return BadRequest();
+                return BadRequest("Id in URL does not match emoji Id.");
             }
 
             _context.Entry(emoji).State = EntityState.Modified;
@@ -66,7 +66,7 @@ namespace backend.Controllers
             {
                 if (!EmojiExists(id))
                 {
-                    return NotFound();
+                    return NotFound("Emoji not found.");
                 }
                 else
                 {
@@ -84,7 +84,7 @@ namespace backend.Controllers
             var emoji = await _context.Emojis.FindAsync(id);
             if (emoji == null)
             {
-                return NotFound();
+                return NotFound("Emoji not found.");
             }
 
             _context.Emojis.Remove(emoji);
