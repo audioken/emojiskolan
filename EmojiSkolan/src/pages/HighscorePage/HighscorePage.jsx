@@ -27,8 +27,8 @@ const HighscorePage = () => {
         <table className="highscore-table">
           <thead className="highscore-header">
             <tr>
-              <th className="header">Level</th>
-              <th className="header">Highscore</th>
+              <th className="header">Nivå</th>
+              <th className="header">Rundor</th>
               <th className="header">Tid</th>
             </tr>
           </thead>
