@@ -113,7 +113,7 @@ namespace backend.Controllers
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
-            return NoContent("User deleted successfully.");
+            return NoContent();
         }
 
         private bool UserExists(int id)
