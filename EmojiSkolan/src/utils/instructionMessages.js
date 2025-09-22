@@ -4,33 +4,30 @@ const messages = {
   ],
   pleaseRegister: [
     'Bra jobbat! Vill du spara din poäng? Registrera dig nu genom att klicka på registrera! 🡇',
-    'Bra jobbat! Registrera dig för att spara dina framsteg genom att klicka på registrera! 🡇',
   ],
   registrationSuccess: [
     'Registrering lyckades! Logga in för att börja spela.',
   ],
   newGame: [
     'Starta ett spel genom att välja en bricka!',
-    'Redo för en ny spelomgång? Välj en bricka!',
-    'Nytt spel, nya möjligheter! Välj en bricka!',
   ],
   selectCard: [
     'Välj en bricka och försök matcha',
     'Dags att välja ännu en bricka!',
     'Vilken bricka tar du nu?',
   ],
-  selectEmoji: [
-    'Välj en bricka till och hitta en matchande beskrivning till denna emoji!',
-    'Hitta en beskrivning som passar till den här emojin genom att välja en bricka!',
-    'Kan du hitta rätt beskrivning till den här emojin? Välj en bricka!',
+  selectSymbol: [
+    'Hitta en matchande beskrivning till denna symbol!',
+    'Hitta en beskrivning som passar till den här symbolen?',
+    'Kan du hitta rätt beskrivning till den här symbolen?',
   ],
   selectDescription: [
-    'Välj en bricka till och hitta en matchande emoji till denna beskrivning!',
-    'Hitta en emoji som passar till den här beskrivningen genom att välja en bricka!',
-    'Kan du hitta rätt emoji till den här beskrivningen? Välj en bricka!',
+    'Leta efter en matchande symbol till denna beskrivning!',
+    'Hitta en symbol som passar till den här beskrivningen!',
+    'Kan du hitta rätt symbol till den här beskrivningen?',
   ],
   matchFail: [
-    'Oops, det var fel. Försök igen!',
+    'Tyvärr, det var fel. Försök igen!',
     'Inte riktigt rätt. Testa en gång till!',
     'Missade den här gången – du fixar det nästa gång!',
   ],
@@ -66,7 +63,7 @@ const messages = {
   ],
 };
 
-// export an object with a get method to fetch a random message from the array
+// Export an object with a get method to fetch a random message from the array
 const instructionMessages = {
   get(type) {
     const arr = messages[type];
