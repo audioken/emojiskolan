@@ -3,8 +3,8 @@ const messages = {
     'Välkommen! Spela som gäst genom att välja en bricka.',
   ],
   pleaseRegister: [
-    'Bra jobbat! Vill du spara din poäng? Registrera dig nu!',
-    'Bra jobbat! Registrera dig för att spara dina framsteg.',
+    'Bra jobbat! Vill du spara din poäng? Registrera dig nu genom att klicka på registrera! 🡇',
+    'Bra jobbat! Registrera dig för att spara dina framsteg genom att klicka på registrera! 🡇',
   ],
   registrationSuccess: [
     'Registrering lyckades! Logga in för att börja spela.',
@@ -41,9 +41,9 @@ const messages = {
   ],
   newRound: ['Välja ett kort!'],
   gameWon: [
-    'Grattis! Du har vunnit spelet!',
-    'Fantastiskt! Du klarade spelet!',
-    'Du är en mästare! Spelet är ditt!',
+    `Grattis! Du har vunnit spelet! Klicka på bästa resultat 🡅 för att se dina poäng.`,
+    `Fantastiskt! Du klarade spelet! Klicka på bästa resultat 🡅 för att se dina poäng.`,
+    `Du är en mästare! Spelet är ditt! Klicka på bästa resultat 🡅 för att se dina poäng.`,
   ],
   login: ['Skriv in ditt användarnamn och lösenord och klicka sedan på Logga in.'],
   register: ['Redo att bli medlem? Registrera dig nu genom att fylla i hela formuläret.'],

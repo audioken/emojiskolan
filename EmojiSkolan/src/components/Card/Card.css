@@ -76,18 +76,13 @@
   overflow-wrap: break-word;
   hyphens: auto;
   flex-direction: column;
-  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
   transition: box-shadow 0.3s;
   box-sizing: border-box;
   padding: 4px;
   line-height: 1.1;
 }
 
-/* Hide box-shadow when card is flipped (rotating) */
-.card.flipped .card-front,
-.card.flipped .card-back {
-  box-shadow: none;
-}
 
 .card-front {
   background-color: var(--cardF);
@@ -97,7 +92,7 @@
 .card-back {
   background-color: var(--cardB);
   transform: rotateY(0deg);
-  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
 }
 
 .card-front.text-content {
