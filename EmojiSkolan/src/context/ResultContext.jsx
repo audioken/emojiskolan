@@ -52,7 +52,7 @@ export const ResultProvider = ({ children }) => {
 
         const globalResults = {};
 
-        // För varje nivå (1-10), hitta bästa resultatet
+        // Find the best result for each level
         for (let level = 1; level <= 10; level++) {
           let bestRecord = null;
           let bestUser = null;
@@ -61,7 +61,7 @@ export const ResultProvider = ({ children }) => {
             if (user.records && Array.isArray(user.records)) {
               const levelRecord = user.records.find((record) => record.levelId === level);
               if (levelRecord) {
-                // Jämför om detta är bättre (färre rundor, eller samma rundor men snabbare tid)
+                // Compare if this is better (fewer rounds, or same rounds but faster time)
                 if (
                   !bestRecord ||
                   levelRecord.rounds < bestRecord.rounds ||
@@ -114,7 +114,7 @@ export const ResultProvider = ({ children }) => {
           console.error('Failed to refresh user records:', error);
         });
 
-      // Uppdatera även global highscore
+      // Update global highscores
       refreshGlobalHighscores();
     }
   };

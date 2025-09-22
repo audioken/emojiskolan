@@ -23,6 +23,13 @@
     gap: 10px;
 }
 
+.toggle-text{
+    width: 8rem;
+    white-space: nowrap;
+    text-align: center;
+
+}
+
 .toggle-checkbox {
     width: 50px;
     height: 25px;
@@ -35,7 +42,7 @@
 }
 
 .toggle-checkbox:checked {
-    background: var(--primary-color, #007bff);
+    background: var(--primary-color, var(--on));
 }
 
 .toggle-checkbox::before {
@@ -54,9 +61,13 @@
     transform: translateX(25px);
 }
 
-.toggle-text {
-    font-size: 16px;
-    color: var(--text-color, #333);
+.selectedGlobal {
+    font-weight: bold;
+}
+
+.unselectedGlobal {
+    font-weight: normal;
+    opacity: 0.6;
 }
 
 .highscore-table {

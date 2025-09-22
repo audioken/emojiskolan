@@ -9,11 +9,12 @@ const HighscoreCard = ({
   onClick,
   selected,
   username,
+  className,
   isGlobal,
 }) => {
   return (
     <tr
-      className={`highscore-row${isUnlocked ? ' unlocked' : ' locked'}${selected ? ' selected' : ''}`}
+      className={`highscore-row${isUnlocked ? ' unlocked' : ' locked'}${selected ? ' selected' : ''} ${className || ''}`}
       onClick={isUnlocked ? onClick : undefined}
       title={
         isGlobal

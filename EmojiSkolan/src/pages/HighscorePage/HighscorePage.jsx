@@ -37,15 +37,19 @@ const HighscorePage = () => {
     <main>
       <div className="highscore-wrapper">
         <div className="highscore-toggle">
-          <label className="toggle-label">
+          <label
+            className="toggle-label"
+            aria-label="Klicka för att växla mellan global och personlig highscore"
+            title="Växla mellan global och personlig highscore"
+          >
             <input
               type="checkbox"
               checked={showGlobal}
               onChange={toggleHighscoreView}
               className="toggle-checkbox"
             />
-            <span className="toggle-text">
-              {showGlobal ? 'Global highscore' : `${user.username}'s highscore`}
+            <span className={`toggle-text ${showGlobal ? 'selectedGlobal' : 'unselectedGlobal'}`}>
+              Global highscore
             </span>
           </label>
         </div>
@@ -62,10 +66,10 @@ const HighscorePage = () => {
           <tbody>
             {levels.map((level) => {
               const result = currentResults[level];
-              const personalResult = bestResults[level]; // Använd personlig data för låsning
+              const personalResult = bestResults[level];
 
               if (showGlobal) {
-                // Global view - använd personlig progress för låsning/upplåsning
+                // Global view - use personal progress for locking/unlocking
                 const isUnlocked = level === 1 || !!personalResult;
                 const isNextUnlocked = !!bestResults[level - 1] && !isUnlocked;
                 const isSelectable = isUnlocked || isNextUnlocked;
@@ -81,6 +85,7 @@ const HighscorePage = () => {
                     username={result?.username}
                     selected={isSelected}
                     isGlobal={true}
+                    className={user.username === result?.username ? 'highlightedUser' : ''}
                     onClick={isSelectable ? () => handleLevelClick(level) : undefined}
                   />
                 );
