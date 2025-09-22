@@ -1,9 +1,11 @@
 import { createContext, useContext, useState } from 'react';
 import ConfirmDialog from '../components/UI/ConfirmDialog/ConfirmDialog';
+import { useBoard } from './BoardContext';
 
 const ConfirmContext = createContext();
 
 export const ConfirmProvider = ({ children }) => {
+  const { setTimerActive } = useBoard();
   const [confirmState, setConfirmState] = useState({
     isOpen: false,
     message: '',
@@ -26,6 +28,7 @@ export const ConfirmProvider = ({ children }) => {
         cancelText,
         onConfirm: () => {
           setConfirmState((prev) => ({ ...prev, isOpen: false }));
+          setTimerActive(false);
           resolve(true);
         },
         onCancel: () => {
