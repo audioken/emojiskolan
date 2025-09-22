@@ -1,11 +1,13 @@
 const messages = {
   welcomeGuest: [
     'Välkommen! Spela som gäst genom att välja en bricka.',
-    'Hej där! Välj en bricka för att börja spela som gäst.',
   ],
   pleaseRegister: [
     'Bra jobbat! Vill du spara din poäng? Registrera dig nu!',
     'Bra jobbat! Registrera dig för att spara dina framsteg.',
+  ],
+  registrationSuccess: [
+    'Registrering lyckades! Logga in för att börja spela.',
   ],
   newGame: [
     'Starta ett spel genom att välja en bricka!',
@@ -46,6 +48,7 @@ const messages = {
   login: ['Skriv in ditt användarnamn och lösenord och klicka sedan på Logga in.'],
   register: ['Redo att bli medlem? Registrera dig nu genom att fylla i hela formuläret.'],
   profile: ['Här kan du uppdatera dina profiluppgifter.'],
+  profileUpdateSuccess: ['Din profil har uppdaterats!'],
   highscore: [
     'Här kan du se dina bästa resultat för varje nivå. Välj en nivå för att börja spela igen!',
   ],

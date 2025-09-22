@@ -1,6 +1,6 @@
 import './LoginPage.css';
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useMultiForm } from '../../context/MultiFormContext';
 import { useInstruction } from '../../context/InstructionContext';
@@ -9,6 +9,8 @@ import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 
 const LoginPage = () => {
+  const location = useLocation();
+  const registrationSuccess = location.state?.registrationSuccess;
   const { login } = useAuth();
   const { showMessage } = useInstruction();
   const { setFormRef, setFormValidStatus } = useMultiForm();
@@ -21,7 +23,7 @@ const LoginPage = () => {
   const formRef = useRef();
 
   useEffect(() => {
-    showMessage(instructionMessages.get('login'));
+    registrationSuccess ? showMessage(instructionMessages.get('registrationSuccess')) : showMessage(instructionMessages.get('login'));
   }, []);
 
   useEffect(() => {

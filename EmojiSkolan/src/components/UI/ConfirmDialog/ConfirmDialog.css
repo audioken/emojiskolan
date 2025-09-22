@@ -100,7 +100,6 @@
     }
 }
 
-/* Responsiv design */
 @media (max-width: 480px) {
     .confirm-dialog {
         margin: 10px;

@@ -110,7 +110,7 @@ const ProfilePage = () => {
       });
 
       if (response.ok) {
-        alert('Profilen är uppdaterad!');
+        showMessage(instructionMessages.get('profileUpdateSuccess'));
 
         setProfile((prev) => ({
           ...prev,

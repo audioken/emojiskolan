@@ -7,7 +7,6 @@ import { validateInputs } from '../../utils/validateInputs';
 import { avatars } from '../../utils/avatars';
 import instructionMessages from '../../utils/instructionMessages';
 import Input from '../../components/UI/Input/Input';
-import Button from '../../components/UI/Button/Button';
 import bcrypt from 'bcryptjs';
 
 const RegisterPage = () => {
@@ -138,12 +137,10 @@ const RegisterPage = () => {
           }
         }
 
-        alert('Registrering lyckades!');
-        navigate('/login');
+        navigate('/login', { state: { registrationSuccess: true } });
       }
     } catch (err) {
       console.error('Registration failed:', err);
-      alert('Registrering misslyckades!');
     }
   };
 
