@@ -170,6 +170,7 @@ const RegisterPage = () => {
         />
 
         <Input
+          className="input-field"
           label="E-post"
           type="email"
           name="email"
@@ -182,49 +183,37 @@ const RegisterPage = () => {
           setHovered={(val) => setHoveredField(val ? 'email' : null)}
         />
 
-        <div className="password-input-group">
-          <Input
-            label="Lösenord"
-            type={showPassword ? 'text' : 'password'}
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            onClear={() => handleClear('password')}
-            error={errors.password}
-            valid={valid.password}
-            hovered={hoveredField === 'password'}
-            setHovered={(val) => setHoveredField(val ? 'password' : null)}
-          />
-          <Button
-            type="button"
-            onClick={() => setShowPassword((prev) => !prev)}
-            className="password-toggle-btn"
-            tabIndex={-1}
-            label={showPassword ? 'Dölj' : 'Visa'}
-          />
-        </div>
+        <Input
+          className="input-field"
+          label="Lösenord"
+          type={showPassword ? 'text' : 'password'}
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          onClear={() => handleClear('password')}
+          error={errors.password}
+          valid={valid.password}
+          hovered={hoveredField === 'password'}
+          setHovered={(val) => setHoveredField(val ? 'password' : null)}
+          showPasswordToggle={true}
+          onPasswordToggle={() => setShowPassword((prev) => !prev)}
+        />
 
-        <div className="password-input-group">
-          <Input
-            label="Bekräfta lösenord"
-            type={showConfirmPassword ? 'text' : 'password'}
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            onClear={() => handleClear('confirmPassword')}
-            error={errors.confirmPassword}
-            valid={valid.confirmPassword}
-            hovered={hoveredField === 'confirmPassword'}
-            setHovered={(val) => setHoveredField(val ? 'confirmPassword' : null)}
-          />
-          <Button
-            type="button"
-            onClick={() => setShowConfirmPassword((prev) => !prev)}
-            className="password-toggle-btn"
-            tabIndex={-1}
-            label={showConfirmPassword ? 'Dölj' : 'Visa'}
-          ></Button>
-        </div>
+        <Input
+          className="input-field"
+          label="Bekräfta lösenord"
+          type={showConfirmPassword ? 'text' : 'password'}
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          onClear={() => handleClear('confirmPassword')}
+          error={errors.confirmPassword}
+          valid={valid.confirmPassword}
+          hovered={hoveredField === 'confirmPassword'}
+          setHovered={(val) => setHoveredField(val ? 'confirmPassword' : null)}
+          showPasswordToggle={true}
+          onPasswordToggle={() => setShowConfirmPassword((prev) => !prev)}
+        />
 
         <div className="avatar-selection">
           <label className="label-title" htmlFor="avatar">

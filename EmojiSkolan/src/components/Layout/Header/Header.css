@@ -55,7 +55,7 @@ fieldset {
 
 .header-title {
     font-family: var(--f2), var(--f1), sans-serif;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 4vw, 3.2rem); /* Responsiv storlek */
     margin: 0;
     padding: calc(var(--spacing) * 2) 0 0 0;
     color: var(--headerFontColor);
