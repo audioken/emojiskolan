@@ -5,6 +5,7 @@ import { useInstruction } from '../../context/InstructionContext';
 import { useAuth } from '../../context/AuthContext';
 import HighscoreCard from '../../components/HighscoreCard/HighscoreCard';
 import instructionMessages from '../../utils/instructionMessages';
+import levelCategories from '../../utils/levelCategories';
 
 const TOTAL_LEVELS = 10;
 
@@ -58,6 +59,7 @@ const HighscorePage = () => {
           <thead className="highscore-header">
             <tr>
               <th className="header">Nivå</th>
+              <th className="header">Kategori</th>
               {showGlobal && <th className="header">Användare</th>}
               <th className="header">Rundor</th>
               <th className="header">Tid</th>
@@ -79,6 +81,7 @@ const HighscorePage = () => {
                   <HighscoreCard
                     key={level}
                     level={level}
+                    category={levelCategories[level]}
                     isUnlocked={isUnlocked || isNextUnlocked}
                     rounds={result?.rounds}
                     time={result?.time}
@@ -87,6 +90,7 @@ const HighscorePage = () => {
                     isGlobal={true}
                     className={user.username === result?.username ? 'highlightedUser' : ''}
                     onClick={isSelectable ? () => handleLevelClick(level) : undefined}
+                    currentUser={user.username}
                   />
                 );
               } else {
@@ -99,6 +103,7 @@ const HighscorePage = () => {
                   <HighscoreCard
                     key={level}
                     level={level}
+                    category={levelCategories[level]}
                     isUnlocked={isUnlocked || isNextUnlocked}
                     rounds={result?.rounds}
                     time={result?.time}
