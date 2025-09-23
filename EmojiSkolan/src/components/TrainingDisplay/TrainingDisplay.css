@@ -14,7 +14,7 @@
 
 .training-tbody {
     display: block;
-    max-height: 31rem;
+    height: 100%;
     overflow-y: auto;
     width: 100%;
 
@@ -82,3 +82,18 @@
     text-align: center;
     font-size: 1.5rem;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+    .training-table-container {
+        max-width: 100%;
+    }
+
+    .emoji-col {
+        font-size: 3rem;
+    }
+
+    .meaning-col {
+        font-size: 1.2rem;
+    }
+}   

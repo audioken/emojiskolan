@@ -31,7 +31,7 @@ const InstructionBox = () => {
     <aside className="instruction-box">
       <div className="instruction-box-content">{message}</div>
       <Button
-        className={`button speak-button ${isSpeakingEnabled ? 'speak-button-on' : ''}`}
+        className={`speak-button ${isSpeakingEnabled ? 'speak-button-on' : ''}`}
         onClick={toggleSpeaking}
         aria-label={isSpeakingEnabled ? 'Stäng av uppläsning' : 'Slå på uppläsning'}
         title={isSpeakingEnabled ? 'Stäng av uppläsning' : 'Slå på uppläsning'}

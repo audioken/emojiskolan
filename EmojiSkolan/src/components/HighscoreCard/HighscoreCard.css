@@ -31,3 +31,10 @@
   font-weight: bold;
   font-size: 1.1rem;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+.highlightedUser {
+    font-size: 0.8rem;
+  }
+}

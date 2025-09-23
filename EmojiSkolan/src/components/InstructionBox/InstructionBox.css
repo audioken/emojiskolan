@@ -16,21 +16,23 @@
 
 .speak-button {
   position: absolute;
-  width: 2.2rem;
-  height: 2.2rem;
   bottom: 0.5rem;
   right: 0.5rem;
-  background: transparent;
-  background: var(--buttonsAndDetails);
+  width: 2.5rem;
+  height: 2.5rem;
   background: var(--off);
   border: none;
   border-radius: 50%;
   box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .speaker-icon {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .speak-button:hover {
@@ -59,7 +61,6 @@
 @media (max-width: 480px) {
   .instruction-box-content {
     font-size: 0.8rem;
-    max-width: 200px;
     margin: 0 auto;
   }
 
@@ -68,6 +69,9 @@
     height: 2rem;
     bottom: 0.4rem;
     right: 0.4rem;
+  }
+  .speaker-icon {
+    font-size: 1.2rem;
   }
 }
 

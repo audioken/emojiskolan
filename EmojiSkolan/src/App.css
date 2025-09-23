@@ -45,7 +45,7 @@
 
   --card-size-mobile: 50px;
   --card-size-desktop: 100px;
-  --card-size: clamp(55px, 15vw, 100px);
+  --card-size: clamp(55px, 15vw, 90px);
 }
 
 html {
@@ -173,37 +173,27 @@ main {
   scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
 
-/* ===============================
-   RESPONSIVE DESIGN - MOBILE FIRST
-   =============================== */
-
 /* Extra small devices (phones, 320px and up) */
 @media (max-width: 480px) {
   :root {
-    --spacing: 0.8rem;
+    --spacing: 0.5rem;
     --page-padding: 1rem;
     --instruction-box-padding: 2rem;
     --section-gap: 0.8rem;
     --form-gap: 0.8rem;
     --component-margin: 0.8rem;
     --element-gap: 0.6rem;
-    /* --card-size-mobile: 50px; */
     font-size: 14px;
   }
 
   .app-container {
     padding: 1rem;
-    gap: 0.8rem;
     max-height: none;
     width: 100%;
   }
 
   .header-title {
     font-size: 2.2rem;
-  }
-
-  main {
-    padding: 0.5rem;
   }
 
   .instruction-box {

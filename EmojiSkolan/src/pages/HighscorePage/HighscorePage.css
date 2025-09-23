@@ -3,7 +3,6 @@
 }
 
 .highscore-wrapper {
-    padding: var(--page-padding);
     user-select: none;
     width: 100%;
     width: 400px;
@@ -89,63 +88,35 @@
     font-weight: bold;
 }
 
-/* Left align category and username headers */
-.header.category-col {
-    text-align: left;
-    padding-left: 12px;
-}
-
-.header.username-col {
-    text-align: left;
-    padding-left: 12px;
-}
-
-/* Fixed column widths */
-.level-col {
-    width: 15%;
-}
-
-.category-col {
-    width: 35%;
-    text-align: left;
-    padding-left: 12px;
-}
-
-.score-col {
-    width: 20%;
-    white-space: nowrap;
-}
-
-/* Left align username column when in global mode */
-.score-col.username-col {
-    text-align: left;
-    padding-left: 12px;
-}
-
-.time-col {
-    width: 30%;
-}
-
 /* When in global mode, redistribute widths */
 .highscore-table.global-mode .level-col {
-    width: 12%;
+    width: 10%;
 }
 
 .highscore-table.global-mode .category-col {
-    width: 28%;
+    width: 25%;
 }
 
-.highscore-table.global-mode .score-col {
+.highscore-table.global-mode .username-col {
+  width: 40%;
+}
+
+.highscore-table.global-mode .rounds-col {
     width: 20%;
 }
 
 .highscore-table.global-mode .time-col {
-    width: 20%;
+    width: 10%;
 }
 
 .highscore-row {
     border-bottom: 1px solid #eee;
     min-height: 40px;
+}
+
+.highscore-row td {
+    text-align: center;
+    padding: 8px;
 }
 
 /* Mobile responsiveness */
@@ -173,6 +144,7 @@
 
   .highscore-row td {
     padding: 4px 2px;
+    text-align: center;
   }
 
   .toggle-text {

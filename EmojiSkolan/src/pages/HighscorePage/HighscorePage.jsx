@@ -60,8 +60,8 @@ const HighscorePage = () => {
             <tr>
               <th className="header level-col">Nivå</th>
               <th className="header category-col">Kategori</th>
-              {showGlobal && <th className="header score-col username-col">Användare</th>}
-              <th className="header score-col">Rundor</th>
+              {showGlobal && <th className="header username-col">Användare</th>}
+              <th className="header rounds-col">Rundor</th>
               <th className="header time-col">Tid</th>
             </tr>
           </thead>

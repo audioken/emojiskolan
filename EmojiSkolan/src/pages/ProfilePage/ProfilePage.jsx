@@ -99,7 +99,7 @@ const ProfilePage = () => {
       );
 
       if (exists) {
-        setServerError('Användarnamn eller e-post är redan registrerat.');
+        setServerError('Användaren finns redan..');
         return;
       }
 
@@ -134,93 +134,95 @@ const ProfilePage = () => {
   };
 
   return (
-    <main className="profile-container">
-      {serverError && <div className="error-message">{serverError}</div>}
+    <main>
+      <div>
+        {serverError && <div className="error-message">{serverError}</div>}
 
-      <form ref={formRef} onSubmit={handleSubmit} className="profile-form">
-        <Input
-          className="input-field"
-          label="Användarnamn"
-          type="text"
-          name="username"
-          value={profile.username}
-          onChange={handleChange}
-          onClear={() => setProfile((prev) => ({ ...prev, username: '' }))}
-          error={errors.username}
-          valid={valid.username}
-          hovered={hoveredField === 'username'}
-          setHovered={(val) => setHoveredField(val ? 'username' : null)}
-          autoFocus
-        />
+        <form ref={formRef} onSubmit={handleSubmit} className="profile-form">
+          <Input
+            className="input-field"
+            label="Användarnamn"
+            type="text"
+            name="username"
+            value={profile.username}
+            onChange={handleChange}
+            onClear={() => setProfile((prev) => ({ ...prev, username: '' }))}
+            error={errors.username}
+            valid={valid.username}
+            hovered={hoveredField === 'username'}
+            setHovered={(val) => setHoveredField(val ? 'username' : null)}
+            autoFocus
+          />
 
-        <Input
-          className="input-field"
-          label="E-post"
-          type="email"
-          name="email"
-          value={profile.email}
-          onChange={handleChange}
-          onClear={() => setProfile((prev) => ({ ...prev, email: '' }))}
-          error={errors.email}
-          valid={valid.email}
-          hovered={hoveredField === 'email'}
-          setHovered={(val) => setHoveredField(val ? 'email' : null)}
-        />
+          <Input
+            className="input-field"
+            label="E-post"
+            type="email"
+            name="email"
+            value={profile.email}
+            onChange={handleChange}
+            onClear={() => setProfile((prev) => ({ ...prev, email: '' }))}
+            error={errors.email}
+            valid={valid.email}
+            hovered={hoveredField === 'email'}
+            setHovered={(val) => setHoveredField(val ? 'email' : null)}
+          />
 
-        <Input
-          className="input-field"
-          label="Lösenord"
-          type={showPassword ? 'text' : 'password'}
-          name="password"
-          value={profile.password}
-          onChange={handleChange}
-          onClear={() => setProfile((prev) => ({ ...prev, password: '' }))}
-          error={errors.password}
-          valid={valid.password}
-          hovered={hoveredField === 'password'}
-          setHovered={(val) => setHoveredField(val ? 'password' : null)}
-          showPasswordToggle={true}
-          onPasswordToggle={() => setShowPassword((prev) => !prev)}
-        />
+          <Input
+            className="input-field"
+            label="Lösenord"
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            value={profile.password}
+            onChange={handleChange}
+            onClear={() => setProfile((prev) => ({ ...prev, password: '' }))}
+            error={errors.password}
+            valid={valid.password}
+            hovered={hoveredField === 'password'}
+            setHovered={(val) => setHoveredField(val ? 'password' : null)}
+            showPasswordToggle={true}
+            onPasswordToggle={() => setShowPassword((prev) => !prev)}
+          />
 
-        <Input
-          className="input-field"
-          label="Bekräfta lösenord"
-          type={showConfirmPassword ? 'text' : 'password'}
-          name="confirmPassword"
-          value={profile.confirmPassword}
-          onChange={handleChange}
-          onClear={() => setProfile((prev) => ({ ...prev, confirmPassword: '' }))}
-          error={errors.confirmPassword}
-          valid={valid.confirmPassword}
-          hovered={hoveredField === 'confirmPassword'}
-          setHovered={(val) => setHoveredField(val ? 'confirmPassword' : null)}
-          showPasswordToggle={true}
-          onPasswordToggle={() => setShowConfirmPassword((prev) => !prev)}
-        />
+          <Input
+            className="input-field"
+            label="Bekräfta lösenord"
+            type={showConfirmPassword ? 'text' : 'password'}
+            name="confirmPassword"
+            value={profile.confirmPassword}
+            onChange={handleChange}
+            onClear={() => setProfile((prev) => ({ ...prev, confirmPassword: '' }))}
+            error={errors.confirmPassword}
+            valid={valid.confirmPassword}
+            hovered={hoveredField === 'confirmPassword'}
+            setHovered={(val) => setHoveredField(val ? 'confirmPassword' : null)}
+            showPasswordToggle={true}
+            onPasswordToggle={() => setShowConfirmPassword((prev) => !prev)}
+          />
 
-        <div className="avatar-selection">
-          <label className="label-title">Välj avatar:</label>
-          <div className="avatar-options">
-            {avatars.map((a, idx) => (
-              <label key={idx} className="avatar-option">
-                <input
-                  id={`avatar-${idx}`}
-                  type="radio"
-                  name="avatar"
-                  value={idx}
-                  checked={profile.avatar === idx}
-                  onChange={() => setProfile((prev) => ({ ...prev, avatar: idx }))}
-                />
-                {a.emoji}
-              </label>
-            ))}
+          <div className="avatar-selection">
+            <label className="label-title">Välj avatar:</label>
+            <div className="avatar-options">
+              {avatars.map((a, idx) => (
+                <label key={idx} className="avatar-option">
+                  <input
+                    id={`avatar-${idx}`}
+                    type="radio"
+                    name="avatar"
+                    value={idx}
+                    checked={profile.avatar === idx}
+                    onChange={() => setProfile((prev) => ({ ...prev, avatar: idx }))}
+                  />
+                  {a.emoji}
+                </label>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Invisible submit button to allow form submission via MultiFormContext */}
-        <button type="submit" className="invisible-btn" />
-      </form>
+          {/* Invisible submit button to allow form submission via MultiFormContext */}
+          <button type="submit" className="invisible-btn" />
+        </form>
+      </div>
     </main>
   );
 };

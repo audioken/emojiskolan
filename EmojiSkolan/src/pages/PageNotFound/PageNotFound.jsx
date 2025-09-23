@@ -11,9 +11,11 @@ export default function PageNotFound() {
   }, []);
 
   return (
-    <main className="page-not-found-container">
-      <h1 className="text-6xl font-bold mb-4">404</h1>
-      <p className="text-lg mb-6">Sidan du letar efter finns inte.</p>
+    <main>
+      <div className="page-not-found-content">
+        <h1 className="text-6xl font-bold mb-4">404</h1>
+        <p className="text-lg mb-6">Sidan du letar efter finns inte.</p>
+      </div>
     </main>
   );
 }

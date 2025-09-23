@@ -80,7 +80,7 @@ const RegisterPage = () => {
       );
 
       if (exists) {
-        setServerError('Användarnamn eller e-post är redan registrerat.');
+        setServerError('Användaren finns redan..');
         return;
       }
 
@@ -146,90 +146,90 @@ const RegisterPage = () => {
 
   return (
     <main>
-      {serverError && <div className="error-message">{serverError}</div>}
+      <div>
+        {serverError && <div className="error-message">{serverError}</div>}
 
-      <form ref={formRef} onSubmit={handleSubmit} className="register-form">
-        <Input
-          className="input-field"
-          label="Användarnamn"
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-          onClear={() => handleClear('username')}
-          error={errors.username}
-          valid={valid.username}
-          hovered={hoveredField === 'username'}
-          setHovered={(val) => setHoveredField(val ? 'username' : null)}
-          autoFocus
-        />
+        <form ref={formRef} onSubmit={handleSubmit} className="register-form">
+          <Input
+            className="input-field"
+            label="Användarnamn"
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            onClear={() => handleClear('username')}
+            error={errors.username}
+            valid={valid.username}
+            hovered={hoveredField === 'username'}
+            setHovered={(val) => setHoveredField(val ? 'username' : null)}
+            autoFocus
+          />
 
-        <Input
-          className="input-field"
-          label="E-post"
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          onClear={() => handleClear('email')}
-          error={errors.email}
-          valid={valid.email}
-          hovered={hoveredField === 'email'}
-          setHovered={(val) => setHoveredField(val ? 'email' : null)}
-        />
+          <Input
+            className="input-field"
+            label="E-post"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            onClear={() => handleClear('email')}
+            error={errors.email}
+            valid={valid.email}
+            hovered={hoveredField === 'email'}
+            setHovered={(val) => setHoveredField(val ? 'email' : null)}
+          />
 
-        <Input
-          className="input-field"
-          label="Lösenord"
-          type={showPassword ? 'text' : 'password'}
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          onClear={() => handleClear('password')}
-          error={errors.password}
-          valid={valid.password}
-          hovered={hoveredField === 'password'}
-          setHovered={(val) => setHoveredField(val ? 'password' : null)}
-          showPasswordToggle={true}
-          onPasswordToggle={() => setShowPassword((prev) => !prev)}
-        />
+          <Input
+            className="input-field"
+            label="Lösenord"
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            onClear={() => handleClear('password')}
+            error={errors.password}
+            valid={valid.password}
+            hovered={hoveredField === 'password'}
+            setHovered={(val) => setHoveredField(val ? 'password' : null)}
+            showPasswordToggle={true}
+            onPasswordToggle={() => setShowPassword((prev) => !prev)}
+          />
 
-        <Input
-          className="input-field"
-          label="Bekräfta lösenord"
-          type={showConfirmPassword ? 'text' : 'password'}
-          name="confirmPassword"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-          onClear={() => handleClear('confirmPassword')}
-          error={errors.confirmPassword}
-          valid={valid.confirmPassword}
-          hovered={hoveredField === 'confirmPassword'}
-          setHovered={(val) => setHoveredField(val ? 'confirmPassword' : null)}
-          showPasswordToggle={true}
-          onPasswordToggle={() => setShowConfirmPassword((prev) => !prev)}
-        />
+          <Input
+            className="input-field"
+            label="Bekräfta lösenord"
+            type={showConfirmPassword ? 'text' : 'password'}
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            onClear={() => handleClear('confirmPassword')}
+            error={errors.confirmPassword}
+            valid={valid.confirmPassword}
+            hovered={hoveredField === 'confirmPassword'}
+            setHovered={(val) => setHoveredField(val ? 'confirmPassword' : null)}
+            showPasswordToggle={true}
+            onPasswordToggle={() => setShowConfirmPassword((prev) => !prev)}
+          />
 
-        <div className="avatar-selection">
-          <label className="label-title" htmlFor="avatar">
-            Välj en avatar:
-          </label>
-          <div className="avatar-options">
-            {avatars.map((a) => (
-              <label key={a.id} className="avatar-option">
-                <input
-                  type="radio"
-                  name="avatar"
-                  value={a.id}
-                  checked={formData.avatar === a.id}
-                  onChange={handleChange}
-                />
-                {a.emoji}
-              </label>
-            ))}
+          <div className="avatar-selection">
+            <label className="label-title" htmlFor="avatar">
+              Välj en avatar:
+            </label>
+            <div className="avatar-options">
+              {avatars.map((a) => (
+                <label key={a.id} className="avatar-option">
+                  <input
+                    type="radio"
+                    name="avatar"
+                    value={a.id}
+                    checked={formData.avatar === a.id}
+                    onChange={handleChange}
+                  />
+                  {a.emoji}
+                </label>
+              ))}
+            </div>
           </div>
-        </div>
-
 
           <label className="terms-checkbox">
             <input
@@ -240,9 +240,10 @@ const RegisterPage = () => {
             Jag godkänner villkoren
           </label>
 
-        {/* Invisible submit button to allow form submission via MultiFormContext */}
-        <button type="submit" className="invisible-btn"></button>
-      </form>
+          {/* Invisible submit button to allow form submission via MultiFormContext */}
+          <button type="submit" className="invisible-btn"></button>
+        </form>
+      </div>
     </main>
   );
 };
