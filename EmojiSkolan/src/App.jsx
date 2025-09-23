@@ -21,16 +21,14 @@ import PageNotFound from './pages/PageNotFound/PageNotFound';
 function App() {
   return (
     <div className="app-container">
-      <ConfirmProvider>
-        <EmojiProvider>
-          <BoardProvider>
+      <EmojiProvider>
+        <BoardProvider>
+          <ConfirmProvider>
             <MultiFormProvider>
               <ResultProvider>
                 <InstructionProvider>
-                  <div className="header-instruction-wrapper">
-                    <Header />
-                    <InstructionBox />
-                  </div>
+                  <Header />
+                  <InstructionBox />
                   <Routes>
                     <Route path="/" element={<StartPage />} />
                     <Route path="/login" element={<LoginPage />} />
@@ -68,9 +66,9 @@ function App() {
                 <Footer />
               </ResultProvider>
             </MultiFormProvider>
-          </BoardProvider>
-        </EmojiProvider>
-      </ConfirmProvider>
+          </ConfirmProvider>
+        </BoardProvider>
+      </EmojiProvider>
     </div>
   );
 }

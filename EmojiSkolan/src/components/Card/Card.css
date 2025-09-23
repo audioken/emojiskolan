@@ -1,141 +1,128 @@
 @keyframes flashIncorrectBg {
-    0% { background-color: var(--cardF); }
-    50% { background-color: var(--incorrect); }
-    100% { background-color: var(--cardF); }
+  0% {
+    background-color: var(--cardF);
+  }
+  50% {
+    background-color: var(--incorrect);
+  }
+  100% {
+    background-color: var(--cardF);
+  }
 }
 .flash-wrong {
-    animation: flashIncorrectBg 0.6s;
-    animation-delay: 0.4s;
-    border-radius: 4px;
+  animation: flashIncorrectBg 0.6s;
+  animation-delay: 0.4s;
+  border-radius: 4px;
 }
 .card {
-    width: var(--card-size-mobile);
-    height: var(--card-size-mobile);
-    perspective: 600px;
-    font-family: var(--f1), sans-serif;
-    font-weight: bolder;
-    color: var(--buttonsFontColor);
+  width: var(--card-size);
+  height: var(--card-size);
+  perspective: 600px;
+  font-family: var(--f1), sans-serif;
+  font-weight: bolder;
+  color: var(--buttonsFontColor);
+  cursor: pointer;
+  transition: transform 0.1s ease;
 }
 
-/* Större kort på tablet */
-@media (min-width: 600px) {
-  .card {
-    width: var(--card-size-tablet);
-    height: var(--card-size-tablet);
-  }
-}
-
-/* Mindre kort på desktop för att spara plats */
-@media (min-width: 1024px) {
-  .card {
-    width: var(--card-size-desktop);
-    height: var(--card-size-desktop);
-  }
+.card:hover {
+  transform: scale(1.04);
 }
 
 .card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
 }
 
 .card.flipped .card-inner {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    border-radius: 4px;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    font-size: 2.5rem;
-    user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    flex-direction: column;
-    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
-    transition: box-shadow 0.3s;
-    box-sizing: border-box;
-    padding: 4px;
-    line-height: 1.1;
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 4px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  font-size: 4rem; /* Change this value to adjust emoji size on the card */
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
+  transition: box-shadow 0.3s;
+  box-sizing: border-box;
+  padding: 4px;
+  line-height: 1.1;
 }
 
-/* Hide box-shadow when card is flipped (rotating) */
-.card.flipped .card-front,
-.card.flipped .card-back {
-    box-shadow: none;
-}
 
 .card-front {
-    background-color: var(--cardF);
-    transform: rotateY(180deg);
-    /* Ingen box-shadow på fronten */
+  background-color: var(--cardF);
+  transform: rotateY(180deg);
 }
 
 .card-back {
-    background-color: var(--cardB);
-    transform: rotateY(0deg);
-    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+  background-color: var(--cardB);
+  transform: rotateY(0deg);
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
 }
 
-/* Text content with dynamic sizing based on length */
 .card-front.text-content {
-    font-size: 1rem; /* Default size - good for short words */
-    word-break: normal;
-    overflow-wrap: break-word;
-    hyphens: none;
-    white-space: normal;
-    padding: 4px;
-    line-height: 1.1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  font-size: 1rem;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
+  white-space: normal;
+  padding: 4px;
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-/* For longer text - automatically applied via JavaScript */
 .card-front.text-content.long-text {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 
-/* For very long text */
 .card-front.text-content.very-long-text {
-    font-size: 0.65rem;
-    line-height: 1;
+  font-size: 0.65rem;
+  line-height: 1;
 }
 
 .card-front {
-    background-color: var(--cardF);
-    transform: rotateY(180deg);
+  background-color: var(--cardF);
+  transform: rotateY(180deg);
 }
 
 .card-back {
-    background-color: var(--cardB);
+  background-color: var(--cardB);
 }
-
 
 .card.matched .card-front,
 .card.matched .card-back {
-    transition: background-color 0.3s 0.5s;
-    background-color: var(--correct);
+  transition: background-color 0.3s 0.5s;
+  background-color: var(--correct);
 }
 
 /*
@@ -145,56 +132,105 @@
 */
 .card.matched.match-color-1 .card-front,
 .card.matched.match-color-1 .card-back {
-    background-color: var(--match1) !important;
+  background-color: var(--match1) !important;
 }
 /* Unique color for pair 2 */
 .card.matched.match-color-2 .card-front,
 .card.matched.match-color-2 .card-back {
-    background-color: var(--match2) !important;
+  background-color: var(--match2) !important;
 }
 /* Unique color for pair 3 */
 .card.matched.match-color-3 .card-front,
 .card.matched.match-color-3 .card-back {
-    background-color: var(--match3) !important;
+  background-color: var(--match3) !important;
 }
 /* Unique color for pair 4 */
 .card.matched.match-color-4 .card-front,
 .card.matched.match-color-4 .card-back {
-    background-color: var(--match4) !important;
+  background-color: var(--match4) !important;
 }
 /* Unique color for pair 5 */
 .card.matched.match-color-5 .card-front,
 .card.matched.match-color-5 .card-back {
-    background-color: var(--match5) !important;
+  background-color: var(--match5) !important;
 }
 /* Unique color for pair 6 */
 .card.matched.match-color-6 .card-front,
 .card.matched.match-color-6 .card-back {
-    background-color: var(--match6) !important;
+  background-color: var(--match6) !important;
 }
 /* Unique color for pair 7 */
 .card.matched.match-color-7 .card-front,
 .card.matched.match-color-7 .card-back {
-    background-color: var(--match7) !important;
+  background-color: var(--match7) !important;
 }
 /* Unique color for pair 8 */
 .card.matched.match-color-8 .card-front,
 .card.matched.match-color-8 .card-back {
-    background-color: var(--match8) !important;
+  background-color: var(--match8) !important;
 }
 /* Unique color for pair 6 */
 .card.matched.match-color-6 .card-front,
 .card.matched.match-color-6 .card-back {
-    background-color: var(--match6) !important;
+  background-color: var(--match6) !important;
 }
 /* Unique color for pair 7 */
 .card.matched.match-color-7 .card-front,
 .card.matched.match-color-7 .card-back {
-    background-color: var(--match7) !important;
+  background-color: var(--match7) !important;
 }
 /* Unique color for pair 8 */
 .card.matched.match-color-8 .card-front,
 .card.matched.match-color-8 .card-back {
-    background-color: var(--match8) !important;
+  background-color: var(--match8) !important;
 }
 
+.card-back .fa-question {
+  color: #1a2a4a; /* Dark blue that matches --buttonsFontColor for good contrast */
+  font-size: 2.5rem;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* Mobile responsiveness for cards */
+@media (max-width: 480px) {
+  .card-front,
+  .card-back {
+    font-size: 3rem;
+  }
+
+  .card-front.text-content {
+    font-size: 0.8rem;
+    padding: 3px;
+  }
+
+  .card-back .fa-question {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .card-front,
+  .card-back {
+    font-size: 3.5rem;
+  }
+
+  .card-front.text-content {
+    font-size: 0.9rem;
+  }
+
+  .card-back .fa-question {
+    font-size: 2.2rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card-front,
+  .card-back {
+    font-size: 5rem;
+  }
+
+  .card-front.text-content {
+    font-size: 1.1rem;
+  }
+}

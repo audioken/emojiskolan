@@ -12,10 +12,40 @@
     font-weight: bold;
 }
 
-/* Knapparna har fast bredd för att undvika att de ändrar storlek vid olika textinnehåll */
 .lvl-nav {
     width: 56px;
 }
-/* .lock-overlay borttagen, endast pil syns på disabled-knapp */
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+    .level-navigation {
+        gap: 6px;
+    }
+
+    .level-indicator {
+        gap: 2px;
+        font-size: 0.8rem;
+    }
+
+    .lvl-nav {
+        width: 48px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .level-navigation {
+        gap: 8px;
+    }
+
+    .level-indicator {
+        gap: 3px;
+        font-size: 0.9rem;
+    }
+
+    .lvl-nav {
+        width: 52px;
+    }
+}
+
 
 

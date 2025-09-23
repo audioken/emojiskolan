@@ -1,6 +1,6 @@
 import './LoginPage.css';
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useMultiForm } from '../../context/MultiFormContext';
 import { useInstruction } from '../../context/InstructionContext';
@@ -9,6 +9,8 @@ import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 
 const LoginPage = () => {
+  const location = useLocation();
+  const registrationSuccess = location.state?.registrationSuccess;
   const { login } = useAuth();
   const { showMessage } = useInstruction();
   const { setFormRef, setFormValidStatus } = useMultiForm();
@@ -19,9 +21,12 @@ const LoginPage = () => {
   });
   const navigate = useNavigate();
   const formRef = useRef();
+  const [serverError, setServerError] = useState('');
 
   useEffect(() => {
-    showMessage(instructionMessages.get('login'));
+    registrationSuccess
+      ? showMessage(instructionMessages.get('registrationSuccess'))
+      : showMessage(instructionMessages.get('login'));
   }, []);
 
   useEffect(() => {
@@ -48,43 +53,49 @@ const LoginPage = () => {
       await login(formData.identifier, formData.password);
       navigate('/');
     } catch (err) {
-      setError(err.message);
+      setServerError(err.message);
     }
   };
 
   return (
-    <main className="login-container">
-      <h2>Logga in här</h2>
+    <main>
+      <div>
+        {serverError && <div className="error-message">{serverError}</div>}
 
-      <form ref={formRef} onSubmit={handleSubmit} className="login-form">
-        <Input
-          className="input-field"
-          label="Användarnamn eller E-post"
-          type="text"
-          name="identifier"
-          value={formData.identifier}
-          onChange={handleChange}
-          autoFocus
-        />
+        <form ref={formRef} onSubmit={handleSubmit} className="login-form">
+          <Input
+            className="input-field"
+            label="Användarnamn eller E-post"
+            type="text"
+            name="identifier"
+            value={formData.identifier}
+            onChange={handleChange}
+            autoFocus
+          />
 
-        <Input
-          className="input-field"
-          label="Lösenord"
-          type={showPassword ? 'text' : 'password'}
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          showPasswordToggle={true}
-          onPasswordToggle={() => setShowPassword((prev) => !prev)}
-        />
+          <Input
+            className="input-field"
+            label="Lösenord"
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            showPasswordToggle={true}
+            onPasswordToggle={() => setShowPassword((prev) => !prev)}
+          />
 
-        <div className="forgot-password-section">
-          <Button label="Glömt lösenord?" path="/forgot-password" className="forgot-password-btn" />
-        </div>
+          <div className="forgot-password-section">
+            <Button
+              label="Glömt lösenord?"
+              path="/forgot-password"
+              className="forgot-password-btn"
+            />
+          </div>
 
-        {/* Invisible submit button to allow form submission via MultiFormContext */}
-        <button type="submit" className="invisible-btn"></button>
-      </form>
+          {/* Invisible submit button to allow form submission via MultiFormContext */}
+          <button type="submit" className="invisible-btn"></button>
+        </form>
+      </div>
     </main>
   );
 };

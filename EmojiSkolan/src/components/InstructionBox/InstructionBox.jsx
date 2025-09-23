@@ -16,6 +16,9 @@ const InstructionBox = () => {
 
     const utterance = new SpeechSynthesisUtterance(message);
     utterance.lang = 'sv-SE';
+    utterance.pitch = 0.1;
+    utterance.rate = 1.2;
+    utterance.volume = 0.7;
     window.speechSynthesis.speak(utterance);
 
     return () => window.speechSynthesis.cancel();
@@ -31,7 +34,7 @@ const InstructionBox = () => {
     <aside className="instruction-box">
       <div className="instruction-box-content">{message}</div>
       <Button
-        className={`button speak-button ${isSpeakingEnabled ? 'speak-button-on' : ''}`}
+        className={`speak-button ${isSpeakingEnabled ? 'speak-button-on' : ''}`}
         onClick={toggleSpeaking}
         aria-label={isSpeakingEnabled ? 'Stäng av uppläsning' : 'Slå på uppläsning'}
         title={isSpeakingEnabled ? 'Stäng av uppläsning' : 'Slå på uppläsning'}

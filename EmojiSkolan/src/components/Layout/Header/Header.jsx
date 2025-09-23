@@ -54,7 +54,7 @@ function Header() {
           <div className="summary-fields">
             <fieldset>
               <legend className="fieldset-title best-result">Bästa Resultat</legend>
-              <span className="fieldset-content">
+              <span className="fieldset-content best-result-value">
                 {roundsString} rundor / {timeString} min
               </span>
             </fieldset>

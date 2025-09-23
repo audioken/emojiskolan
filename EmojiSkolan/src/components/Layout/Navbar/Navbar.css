@@ -18,3 +18,32 @@
   transform: scaleX(-1);
   margin-right: 0.5rem;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .btns-nav {
+    gap: 0.4rem;
+  }
+
+  .fa-right-to-bracket, .fa-address-card, .fa-user, .fa-graduation-cap, .fa-right-to-bracket, .fa-floppy-disk {
+    margin-right: 0.3rem;
+  }
+
+  .flip-horizontal {
+    margin-right: 0.3rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .btns-nav {
+    gap: 0.5rem;
+  }
+
+  .fa-right-to-bracket, .fa-address-card, .fa-user, .fa-graduation-cap, .fa-right-to-bracket, .fa-floppy-disk {
+    margin-right: 0.4rem;
+  }
+
+  .flip-horizontal {
+    margin-right: 0.4rem;
+  }
+}

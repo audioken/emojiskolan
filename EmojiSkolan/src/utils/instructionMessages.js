@@ -1,16 +1,15 @@
 const messages = {
   welcomeGuest: [
     'Välkommen! Spela som gäst genom att välja en bricka.',
-    'Hej där! Välj en bricka för att börja spela som gäst.',
   ],
   pleaseRegister: [
-    'Bra jobbat! Vill du spara din poäng? Registrera dig nu!',
-    'Bra jobbat! Registrera dig för att spara dina framsteg.',
+    'Bra jobbat! Vill du spara din poäng? Registrera dig nu genom att klicka på registrera! 🡇',
+  ],
+  registrationSuccess: [
+    'Registrering lyckades! Logga in för att börja spela.',
   ],
   newGame: [
     'Starta ett spel genom att välja en bricka!',
-    'Redo för en ny spelomgång? Välj en bricka!',
-    'Nytt spel, nya möjligheter! Välj en bricka!',
   ],
   selectCard: [
     'Välj en bricka och försök matcha',
@@ -18,17 +17,17 @@ const messages = {
     'Vilken bricka tar du nu?',
   ],
   selectEmoji: [
-    'Välj en bricka till och hitta en matchande beskrivning till denna emoji!',
-    'Hitta en beskrivning som passar till den här emojin genom att välja en bricka!',
-    'Kan du hitta rätt beskrivning till den här emojin? Välj en bricka!',
+    'Hitta en matchande beskrivning till denna symbol!',
+    'Hitta en beskrivning som passar till den här symbolen?',
+    'Kan du hitta rätt beskrivning till den här symbolen?',
   ],
   selectDescription: [
-    'Välj en bricka till och hitta en matchande emoji till denna beskrivning!',
-    'Hitta en emoji som passar till den här beskrivningen genom att välja en bricka!',
-    'Kan du hitta rätt emoji till den här beskrivningen? Välj en bricka!',
+    'Leta efter en matchande symbol till denna beskrivning!',
+    'Hitta en symbol som passar till den här beskrivningen!',
+    'Kan du hitta rätt symbol till den här beskrivningen?',
   ],
   matchFail: [
-    'Oops, det var fel. Försök igen!',
+    'Tyvärr, det var fel. Försök igen!',
     'Inte riktigt rätt. Testa en gång till!',
     'Missade den här gången – du fixar det nästa gång!',
   ],
@@ -39,15 +38,19 @@ const messages = {
   ],
   newRound: ['Välja ett kort!'],
   gameWon: [
-    'Grattis! Du har vunnit spelet!',
-    'Fantastiskt! Du klarade spelet!',
-    'Du är en mästare! Spelet är ditt!',
+    `Grattis! Du har vunnit spelet! Klicka på bästa resultat 🡅 för att se dina poäng.`,
+    `Fantastiskt! Du klarade spelet! Klicka på bästa resultat 🡅 för att se dina poäng.`,
+    `Du är en mästare! Spelet är ditt! Klicka på bästa resultat 🡅 för att se dina poäng.`,
   ],
   login: ['Skriv in ditt användarnamn och lösenord och klicka sedan på Logga in.'],
   register: ['Redo att bli medlem? Registrera dig nu genom att fylla i hela formuläret.'],
   profile: ['Här kan du uppdatera dina profiluppgifter.'],
+  profileUpdateSuccess: ['Din profil har uppdaterats!'],
   highscore: [
     'Här kan du se dina bästa resultat för varje nivå. Välj en nivå för att börja spela igen!',
+  ],
+  highscoreGlobal: [
+    'Här kan du se de bästa resultaten från alla spelare för varje nivå. Välj en nivå för att börja spela!',
   ],
   training: ['Här kan du träna på betydelsen av olika emojis!'],
   forgottenPasswordPrompt: [
@@ -63,7 +66,7 @@ const messages = {
   ],
 };
 
-// export an object with a get method to fetch a random message from the array
+// Export an object with a get method to fetch a random message from the array
 const instructionMessages = {
   get(type) {
     const arr = messages[type];

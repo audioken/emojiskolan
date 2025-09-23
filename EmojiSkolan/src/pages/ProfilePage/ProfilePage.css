@@ -1,17 +1,9 @@
-.profile-container {
-  max-width: 400px;
-  /* padding: var(--page-padding); */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: var(--section-gap);
-}
-
 .profile-form {
   display: flex;
   flex-direction: column;
   gap: var(--form-gap);
+  width: 100%;
+  max-width: 400px;
 }
 
 .input-field {
@@ -34,6 +26,7 @@
   gap: var(--section-gap);
   margin-top: var(--element-gap);
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .avatar-option {
@@ -46,4 +39,31 @@
 
 .avatar-option input[type="radio"] {
   margin-right: 0.5rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .profile-form {
+    max-width: 100%;
+    gap: 0.8rem;
+  }
+
+  .avatar-options {
+    gap: 0.5rem;
+  }
+
+  .avatar-option {
+    font-size: 1.5rem;
+    gap: 0.3rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .profile-form {
+    max-width: 350px;
+  }
+
+  .avatar-option {
+    font-size: 1.8rem;
+  }
 }

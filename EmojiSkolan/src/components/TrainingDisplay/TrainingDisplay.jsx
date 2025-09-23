@@ -26,7 +26,7 @@ function TrainingDisplay() {
             <th className="training-header-col">Betydelse</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="training-tbody">
           {levelEmojis.map((emoji) => (
             <tr className="training-row" key={emoji.id}>
               <td className="training-col emoji-col">{emoji.symbol}</td>

@@ -4,35 +4,35 @@
   border: none;
   height: 7rem;
   padding: var(--instruction-box-padding);
-  margin: var(--component-margin) auto;
-  margin-bottom: 0;
   border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44, 62, 80, 0.10);
+  box-shadow:
+    0 4px 16px rgba(44, 62, 80, 0.18),
+    0 1.5px 6px rgba(44, 62, 80, 0.1);
   color: var(--headerFontColorContrast);
   width: 100%;
-  max-width: calc(4 * var(--card-size-mobile) + 3 * 0.625rem);
   box-sizing: border-box;
   text-align: center;
 }
 
-/* Speak-knapp för att läsa upp instruktionen */
 .speak-button {
   position: absolute;
-  width: 2.2rem;
-  height: 2.2rem;
   bottom: 0.5rem;
   right: 0.5rem;
-  background: transparent;
-  background: var(--buttonsAndDetails);
+  width: 2.5rem;
+  height: 2.5rem;
   background: var(--off);
   border: none;
   border-radius: 50%;
   box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .speaker-icon {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .speak-button:hover {
@@ -44,7 +44,7 @@
   transform: scale(0.96);
 }
 
-.speak-button-on{
+.speak-button-on {
   background: var(--on);
 }
 
@@ -57,38 +57,46 @@
   justify-content: center;
 }
 
-@media (min-width: 600px) and (max-width: 1023px) {
-  .instruction-box {
-    max-width: calc(4 * var(--card-size-tablet) + 3 * 1.2rem);
-    height: 9rem;
-    font-size: 1.3rem;
-    padding: var(--page-padding);
-  }
-  
+/* Mobile responsiveness */
+@media (max-width: 480px) {
   .instruction-box-content {
-    font-size: 1.3rem;
+    font-size: 0.8rem;
+    margin: 0 auto;
   }
-  
+
   .speak-button {
-    width: 3rem;
-    height: 3rem;
-    font-size: 1.6rem;
+    width: 2rem;
+    height: 2rem;
+    bottom: 0.4rem;
+    right: 0.4rem;
+  }
+  .speaker-icon {
+    font-size: 1.2rem;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 481px) and (max-width: 768px) {
   .instruction-box {
-    max-width: calc(4 * var(--card-size-desktop) + 3 * 0.7rem);
-    height: 6rem; /* Lite högre på desktop */
+    height: 6.5rem;
+    padding: 2.5rem;
   }
 
   .instruction-box-content {
-    font-size: 1.2rem;
+    font-size: 0.95rem;
   }
 
   .speak-button {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.1rem;
+    height: 2.1rem;
+  }
+
+  .speaker-icon {
     font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .instruction-box-content {
+    font-size: 1rem;
   }
 }

@@ -2,13 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
 
-
 :root {
   --accent1: #ffb347;
   --headerFontColor: #3498db;
   --headerFontColorContrast: #f5f5f5;
   --footerNav: #8c2f39;
-  --background: #f5f5f5;
+  --background: rgba(227, 230, 241, 0.9);
   --lockedBackground: #e0e0e0;
   --buttonsAndDetails: #e6e9f2;
   --buttonsAndDetailsClicked: #cfd8e6;
@@ -44,49 +43,55 @@
   --component-margin: 1rem;
   --element-gap: 0.8rem;
 
-  --card-size-mobile: 85px;
-  --card-size-tablet: 130px;
+  --card-size-mobile: 50px;
   --card-size-desktop: 100px;
+  --card-size: clamp(55px, 15vw, 90px);
 }
 
 html {
   font-size: 16px;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
 body, #root {
   height: 100%;
   font-family: var(--f1), sans-serif;
-  background-color: var(--background);
+  background-color: #e6e9f2;
+  position: relative;
   margin: 0;
   padding: 0;
-}
-
-.header-instruction-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--component-margin);
-}
-
-.app-container {
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
-  min-height: 100vh;
-  max-width: 1240px;
-  margin: 0 auto;
-  width: 100%;
-  gap: var(--spacing);
-  flex: 1 1 auto;
-  height: 100%;
-}
-
-main {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('src/public/images/EmojiSkolanArvidFinal.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(3px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+#root {
+  backdrop-filter: none;
+  background-color: transparent !important;
+  position: relative;
+  z-index: 0;
+}
+
+header {
+  user-select: none;
 }
 
 .error-message {
@@ -104,123 +109,193 @@ main {
   display: none;
 }
 
-/* Tablet */
-@media (min-width: 600px) and (max-width: 1023px) {
-  .app-container {
-    min-height: 100vh;
-  }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-  html, body, #root {
-    min-height: 100vh;
-    background-color: #e6e9f2 !important;
-    overflow: hidden;
-  }
-  #root {
-    background-color: transparent !important;
-  }
-  .app-container {
-    border-left: 3px solid var(--cardB);
-    border-right: 3px solid var(--cardB);
-    border-radius: 0;
-    box-shadow: none;
-    min-height: 100vh;
-    max-width: 900px;
-    background: var(--background);
-    gap: 0.5rem;
-    padding: 0.5rem 0;
-  }
-  .header-instruction-wrapper {
-    gap: 0.5rem;
-  }
-  :root {
-    --spacing: 0.5rem;
-    --page-padding: 0.5rem;
-    --section-gap: 0.5rem;
-    --component-margin: 0.5rem;
-    --element-gap: 0.5rem;
-    --card-size-desktop: 80px;
-    font-size: 14px;
-  }
-}
-
-/* Enkel fontstorlek utan clamp */
-html {
-  font-size: 16px;
-}
-
-html,
-body,
-#root {
-  height: 100%;
-  font-family: var(--f1), sans-serif;
-  background-color: var(--background);
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Behåll bara desktop overflow för no-scroll */
-@media (min-width: 1024px) {
-  html, body, #root {
-    min-height: 100vh;
-    background-color: #e6e9f2 !important;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  #root {
-    background-color: transparent !important;
-  }
-  .app-container {
-    border-left: 3px solid var(--cardB);
-    border-right: 3px solid var(--cardB);
-    border-radius: 0;
-    box-shadow: none;
-    min-height: 100vh;
-    max-width: 900px; /* Mindre maxbredd på desktop */
-    background: var(--background);
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-    gap: 0.5rem; /* Mindre gap på desktop */
-    padding: 0.5rem 0; /* Mindre padding på desktop */
-  }
-  .header-instruction-wrapper {
-    gap: 0.5rem;
-  }
-  :root {
-    --spacing: 0.5rem;
-    --page-padding: 1.5rem;
-    --section-gap: 0.5rem;
-    --component-margin: 0.5rem;
-    --element-gap: 0.5rem;
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 600px) and (max-width: 1023px) {
-  html, body, #root {
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-  }
-  .app-container {
-    min-height: 100vh;
-  }
+.header-instruction-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-margin);
 }
 
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  max-width: 800px;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  max-height: 900px;
+  width: 500px;
+  background: var(--background);
   margin: 0 auto;
+  width: 100%;
   gap: var(--spacing);
   flex: 1 1 auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
-header{
-  user-select: none;
+header,
+footer {
+  flex-shrink: 0;
+}
+
+main {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 0;
+  padding: 1rem;
+}
+
+/* Minimalistic custom scrollbar */
+/* WebKit browsers (Chrome, Safari, Edge) */
+main::-webkit-scrollbar {
+  width: 6px;
+}
+
+main::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+main::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Firefox */
+main {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* Extra small devices (phones, 320px and up) */
+@media (max-width: 480px) {
+  :root {
+    --spacing: 0.5rem;
+    --page-padding: 1rem;
+    --instruction-box-padding: 2rem;
+    --section-gap: 0.8rem;
+    --form-gap: 0.8rem;
+    --component-margin: 0.8rem;
+    --element-gap: 0.6rem;
+    font-size: 14px;
+  }
+
+  .app-container {
+    padding: 1rem;
+    max-height: none;
+    width: 100%;
+  }
+
+  .header-title {
+    font-size: 2.2rem;
+  }
+
+  .instruction-box {
+    height: 6rem;
+    padding: 2rem 1rem;
+  }
+
+  .avatar-options {
+    gap: 0.5rem;
+  }
+
+  .avatar-option {
+    font-size: 1.5rem;
+  }
+}
+
+/* Small devices (landscape phones, 481px and up) */
+@media (min-width: 481px) and (max-width: 768px) {
+  :root {
+    --spacing: 1rem;
+    --page-padding: 1.2rem;
+    --instruction-box-padding: 3rem;
+    --section-gap: 0.9rem;
+    --form-gap: 0.9rem;
+    --component-margin: 0.9rem;
+    --element-gap: 0.7rem;
+    --card-size-mobile: 80px;
+    font-size: 15px;
+  }
+
+  .header-title {
+    font-size: 2.6rem;
+  }
+
+  main {
+    padding: 0.8rem;
+  }
+
+  .instruction-box {
+    height: 6.5rem;
+    padding: 2.5rem;
+  }
+}
+
+/* Medium devices (tablets, 769px and up) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --card-size-tablet: 110px;
+    font-size: 15px;
+  }
+
+  .app-container {
+    max-width: 600px;
+    padding: 1.8rem;
+  }
+
+  .header-title {
+    font-size: 2.8rem;
+  }
+
+  .board {
+    gap: 1rem;
+  }
+}
+
+/* Large devices (desktops, 1025px and up) */
+@media (min-width: 1025px) {
+  :root {
+    --spacing: 1rem;
+    --page-padding: 1rem;
+    --instruction-box-padding: 3rem;
+    --section-gap: 1rem;
+    --form-gap: 1rem;
+    --component-margin: 1rem;
+    --element-gap: 0.8rem;
+    --card-size-desktop: 90px;
+    font-size: 16px;
+  }
+
+  .app-container {
+    max-width: 500px;
+    padding: 2rem;
+    gap: 1rem;
+  }
+
+  .header-title {
+    font-size: 3rem;
+  }
+
+  .instruction-box {
+    height: 7rem;
+    padding: var(--instruction-box-padding);
+  }
+
+  .board {
+    gap: 0.8rem;
+  }
+}
+
+/* Very large devices (large desktops, 1440px and up) */
+@media (min-width: 1440px) {
+  .app-container {
+    max-width: 500px;
+  }
 }
