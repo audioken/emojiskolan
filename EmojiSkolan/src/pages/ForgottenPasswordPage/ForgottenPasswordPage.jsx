@@ -59,8 +59,6 @@ const ForgottenPasswordPage = () => {
 
   return (
     <main className="forgotten-password-container">
-      <h2>Glömt lösenord</h2>
-
       <form ref={formRef} onSubmit={handleResetPassword} className="forgotten-password-form">
         <Input
           className="input-field"

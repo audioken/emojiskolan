@@ -27,10 +27,8 @@ function App() {
             <MultiFormProvider>
               <ResultProvider>
                 <InstructionProvider>
-                  <div className="header-instruction-wrapper">
-                    <Header />
-                    <InstructionBox />
-                  </div>
+                  <Header />
+                  <InstructionBox />
                   <Routes>
                     <Route path="/" element={<StartPage />} />
                     <Route path="/login" element={<LoginPage />} />

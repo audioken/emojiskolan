@@ -58,40 +58,44 @@ const LoginPage = () => {
   };
 
   return (
-    <main className="login-container">
-      <h2>Logga in här</h2>
+    <main>
+      <div>
+        {serverError && <div className="error-message">{serverError}</div>}
 
-      {serverError && <div className="error-message">{serverError}</div>}
+        <form ref={formRef} onSubmit={handleSubmit} className="login-form">
+          <Input
+            className="input-field"
+            label="Användarnamn eller E-post"
+            type="text"
+            name="identifier"
+            value={formData.identifier}
+            onChange={handleChange}
+            autoFocus
+          />
 
-      <form ref={formRef} onSubmit={handleSubmit} className="login-form">
-        <Input
-          className="input-field"
-          label="Användarnamn eller E-post"
-          type="text"
-          name="identifier"
-          value={formData.identifier}
-          onChange={handleChange}
-          autoFocus
-        />
+          <Input
+            className="input-field"
+            label="Lösenord"
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            showPasswordToggle={true}
+            onPasswordToggle={() => setShowPassword((prev) => !prev)}
+          />
 
-        <Input
-          className="input-field"
-          label="Lösenord"
-          type={showPassword ? 'text' : 'password'}
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          showPasswordToggle={true}
-          onPasswordToggle={() => setShowPassword((prev) => !prev)}
-        />
+          <div className="forgot-password-section">
+            <Button
+              label="Glömt lösenord?"
+              path="/forgot-password"
+              className="forgot-password-btn"
+            />
+          </div>
 
-        <div className="forgot-password-section">
-          <Button label="Glömt lösenord?" path="/forgot-password" className="forgot-password-btn" />
-        </div>
-
-        {/* Invisible submit button to allow form submission via MultiFormContext */}
-        <button type="submit" className="invisible-btn"></button>
-      </form>
+          {/* Invisible submit button to allow form submission via MultiFormContext */}
+          <button type="submit" className="invisible-btn"></button>
+        </form>
+      </div>
     </main>
   );
 };

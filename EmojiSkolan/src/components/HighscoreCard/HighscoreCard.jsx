@@ -43,11 +43,14 @@ const HighscoreCard = ({
       {isGlobal ? (
         <>
           <td
-            className={`highscore-col score-col${username && currentUser && username === currentUser ? ' highlightedUser' : ''}`}
+            className={`highscore-col score-col username-col${username && currentUser && username === currentUser ? ' highlightedUser' : ''}`}
           >
             {username || '-'}
             {username && currentUser && username === currentUser ? (
-              <span role="img" aria-label="pokal" title="Du har rekordet!"> 🏆</span>
+              <span role="img" aria-label="pokal" title="Du har rekordet!">
+                {' '}
+                🏆
+              </span>
             ) : null}
           </td>
           <td className="highscore-col score-col">{rounds !== undefined ? rounds : '-'}</td>

@@ -41,15 +41,15 @@
 
 .button:hover:not(:disabled):not(.button-disabled) {
     background-color: var(--buttonsAndDetailsClicked);
-    box-shadow: 0 3px 0 rgba(44, 62, 80, 0.3); /* Keep sharp shadow on hover */
+    box-shadow: 0 3px 0 rgba(44, 62, 80, 0.3);
     cursor: pointer;
     transform: scale(1.04);
 }
 
 .button:active {
     background-color: var(--buttonsAndDetailsClicked);
-    transform: scale(0.96); /* Knappen blir mindre när man klickar */
-    box-shadow: 0 2px 0 rgba(44, 62, 80, 0.3); /* Slightly smaller shadow when pressed */
+    transform: scale(0.96); 
+    box-shadow: 0 2px 0 rgba(44, 62, 80, 0.3); 
 }
 
 /* Makes the clickable area bigger for smaller screens */
@@ -64,5 +64,40 @@
         z-index: 0;
         pointer-events: auto;
         background: transparent;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+    .button {
+        min-width: 40px;
+        min-height: 30px;
+        font-size: 0.8rem;
+        padding: 0 0.8rem;
+        font-weight: 500;
+    }
+
+    .lvl-nav {
+        width: 48px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .button {
+        min-width: 42px;
+        min-height: 42px;
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+
+    .lvl-nav {
+        width: 52px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .button {
+        font-size: 0.95rem;
     }
 }
