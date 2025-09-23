@@ -10,6 +10,7 @@ export const ResultProvider = ({ children }) => {
   const [time, setTime] = useState(0);
   const [currentLevel, setCurrentLevel] = useState(1);
   const [bestResults, setBestResults] = useState({});
+  const [globalBestResults, setGlobalBestResults] = useState({});
 
   useEffect(() => {
     if (!user) {
@@ -42,6 +43,55 @@ export const ResultProvider = ({ children }) => {
     }
   }, [user]);
 
+  // Fetch global highscores
+  useEffect(() => {
+    const fetchGlobalHighscores = async () => {
+      try {
+        const response = await fetch('http://localhost:5132/api/users');
+        const allUsers = await response.json();
+
+        const globalResults = {};
+
+        // Find the best result for each level
+        for (let level = 1; level <= 10; level++) {
+          let bestRecord = null;
+          let bestUser = null;
+
+          allUsers.forEach((user) => {
+            if (user.records && Array.isArray(user.records)) {
+              const levelRecord = user.records.find((record) => record.levelId === level);
+              if (levelRecord) {
+                // Compare if this is better (fewer rounds, or same rounds but faster time)
+                if (
+                  !bestRecord ||
+                  levelRecord.rounds < bestRecord.rounds ||
+                  (levelRecord.rounds === bestRecord.rounds && levelRecord.time < bestRecord.time)
+                ) {
+                  bestRecord = levelRecord;
+                  bestUser = user.username;
+                }
+              }
+            }
+          });
+
+          if (bestRecord) {
+            globalResults[level] = {
+              rounds: bestRecord.rounds,
+              time: bestRecord.time,
+              username: bestUser,
+            };
+          }
+        }
+
+        setGlobalBestResults(globalResults);
+      } catch (error) {
+        console.error('Failed to fetch global highscores:', error);
+      }
+    };
+
+    fetchGlobalHighscores();
+  }, []);
+
   const updateBestResult = async (rounds, time, level, userId) => {
     await saveUserRecord(userId, level, rounds, time);
 
@@ -63,6 +113,51 @@ export const ResultProvider = ({ children }) => {
         .catch((error) => {
           console.error('Failed to refresh user records:', error);
         });
+
+      // Update global highscores
+      refreshGlobalHighscores();
+    }
+  };
+
+  const refreshGlobalHighscores = async () => {
+    try {
+      const response = await fetch('http://localhost:5132/api/users');
+      const allUsers = await response.json();
+
+      const globalResults = {};
+
+      for (let level = 1; level <= 10; level++) {
+        let bestRecord = null;
+        let bestUser = null;
+
+        allUsers.forEach((user) => {
+          if (user.records && Array.isArray(user.records)) {
+            const levelRecord = user.records.find((record) => record.levelId === level);
+            if (levelRecord) {
+              if (
+                !bestRecord ||
+                levelRecord.rounds < bestRecord.rounds ||
+                (levelRecord.rounds === bestRecord.rounds && levelRecord.time < bestRecord.time)
+              ) {
+                bestRecord = levelRecord;
+                bestUser = user.username;
+              }
+            }
+          }
+        });
+
+        if (bestRecord) {
+          globalResults[level] = {
+            rounds: bestRecord.rounds,
+            time: bestRecord.time,
+            username: bestUser,
+          };
+        }
+      }
+
+      setGlobalBestResults(globalResults);
+    } catch (error) {
+      console.error('Failed to refresh global highscores:', error);
     }
   };
 
@@ -124,7 +219,9 @@ export const ResultProvider = ({ children }) => {
         currentLevel,
         setCurrentLevel,
         bestResults,
+        globalBestResults,
         updateBestResult,
+        refreshGlobalHighscores,
       }}
     >
       {children}

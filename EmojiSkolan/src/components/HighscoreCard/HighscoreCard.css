@@ -25,3 +25,9 @@
 	text-align: center;
 	padding: 8px 0;
 }
+
+.highlightedUser {
+	color: #c4bf28;
+	font-weight: bold;
+	font-size: 1.1rem;
+}
