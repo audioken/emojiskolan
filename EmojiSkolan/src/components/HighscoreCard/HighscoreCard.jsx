@@ -3,6 +3,7 @@ import { formatTimeHighScore } from '../../utils/formatTime';
 
 const HighscoreCard = ({
   level,
+  category,
   isUnlocked,
   rounds,
   time,
@@ -11,6 +12,7 @@ const HighscoreCard = ({
   username,
   className,
   isGlobal,
+  currentUser,
 }) => {
   return (
     <tr
@@ -22,7 +24,7 @@ const HighscoreCard = ({
             ? `Nivå ${level} - Global bästa (Klicka för att välja nivå)`
             : `Lås upp nivå ${level} genom att klara föregående nivå`
           : isUnlocked
-            ? `Välj nivå ${level}`
+            ? `Nivå ${level} - Din bästa (Klicka för att välja nivå)`
             : `Lås upp nivå ${level} genom att klara föregående nivå`
       }
     >
@@ -36,10 +38,18 @@ const HighscoreCard = ({
           ''
         )}
       </td>
+      <td className="highscore-col category-col">{category || '-'}</td>
 
       {isGlobal ? (
         <>
-          <td className="highscore-col score-col">{username || '-'}</td>
+          <td
+            className={`highscore-col score-col${username && currentUser && username === currentUser ? ' highlightedUser' : ''}`}
+          >
+            {username || '-'}
+            {username && currentUser && username === currentUser ? (
+              <span role="img" aria-label="pokal" title="Du har rekordet!"> 🏆</span>
+            ) : null}
+          </td>
           <td className="highscore-col score-col">{rounds !== undefined ? rounds : '-'}</td>
         </>
       ) : (
