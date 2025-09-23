@@ -59,8 +59,6 @@ const LoginPage = () => {
 
   return (
     <main className="login-container">
-      <h2>Logga in här</h2>
-
       {serverError && <div className="error-message">{serverError}</div>}
 
       <form ref={formRef} onSubmit={handleSubmit} className="login-form">

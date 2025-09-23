@@ -5,5 +5,5 @@
 }
 
 .footer-container > .copyright {
-	margin-top: 2rem;
+	margin-top: var(--spacing);
 }

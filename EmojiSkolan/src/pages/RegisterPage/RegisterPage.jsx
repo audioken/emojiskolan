@@ -146,8 +146,6 @@ const RegisterPage = () => {
 
   return (
     <main className="register-container">
-      <h2>Registrera här</h2>
-
       {serverError && <div className="error-message">{serverError}</div>}
 
       <form ref={formRef} onSubmit={handleSubmit} className="register-form">

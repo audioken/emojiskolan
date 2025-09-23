@@ -135,8 +135,6 @@ const ProfilePage = () => {
 
   return (
     <main className="profile-container">
-      <h2>Profil</h2>
-
       {serverError && <div className="error-message">{serverError}</div>}
 
       <form ref={formRef} onSubmit={handleSubmit} className="profile-form">
