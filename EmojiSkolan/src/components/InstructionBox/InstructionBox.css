@@ -58,25 +58,6 @@
   justify-content: center;
 }
 
-@media (min-width: 600px) and (max-width: 1023px) {
-  .instruction-box {
-    max-width: calc(4 * var(--card-size-tablet) + 3 * 1.2rem);
-    height: 9rem;
-    font-size: 1.3rem;
-    padding: var(--page-padding);
-  }
-
-  .instruction-box-content {
-    font-size: 1.3rem;
-  }
-
-  .speak-button {
-    width: 3rem;
-    height: 3rem;
-    font-size: 1.6rem;
-  }
-}
-
 @media (min-width: 1024px) {
   .instruction-box {
     max-width: calc(4 * var(--card-size-desktop) + 3 * 0.7rem);

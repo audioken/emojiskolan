@@ -126,6 +126,9 @@ header {
   width: 100%;
   gap: var(--spacing);
   flex: 1 1 auto;
+  padding: var(--page-padding);
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 header,
@@ -153,7 +156,7 @@ main {
     height: 100vh;
     width: 500px;
     background: var(--background);
-    gap: 0.5rem;
+    gap: var(--spacing);
     padding: 2rem;
     border-radius: 8px;
     -webkit-border-radius: 8px;
