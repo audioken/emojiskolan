@@ -8,7 +8,7 @@
   --headerFontColor: #3498db;
   --headerFontColorContrast: #f5f5f5;
   --footerNav: #8c2f39;
-  --background: rgba(227, 230, 241, 0.85);
+  --background: rgba(227, 230, 241, 0.9);
   --lockedBackground: #e0e0e0;
   --buttonsAndDetails: #e6e9f2;
   --buttonsAndDetailsClicked: #cfd8e6;
@@ -47,8 +47,6 @@
   --card-size-mobile: 85px;
   --card-size-tablet: 130px;
   --card-size-desktop: 100px;
-
-  
 }
 
 html {
@@ -59,9 +57,17 @@ html {
 body, #root {
   height: 100%;
   font-family: var(--f1), sans-serif;
-  background-color: var(--background);
+  background-color: #e6e9f2;
+  background-image: url('src/public/images/EmojiSkolanArvidFinal.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
+}
+
+#root {
+  backdrop-filter: blur(3px);
 }
 
 header {
@@ -94,9 +100,9 @@ header {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  max-width: 500px;
+  max-width: none; /* Full width on mobile */
   background: var(--background);
-  margin: 0 auto;
+  margin: 0;
   width: 100%;
   gap: var(--spacing);
   flex: 1 1 auto;
@@ -119,32 +125,23 @@ main {
 @media (min-width: 1024px) {
   html, body {
     min-height: 100vh;
-    background-color: #e6e9f2 !important;
-    background-image: url('src/public/images/EmojiSkolanArvidFinal.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     overflow: hidden;
     margin: 0;
     padding: 0;
-  }
-  
-  #root {
-    background-color: transparent !important;
-    backdrop-filter: blur(3px);
   }
   
   .app-container {
     border-radius: 0;
     box-shadow: none;
     min-height: 100vh;
-    max-width: 500px;
+    max-width: 500px; /* Constrained width on desktop */
     background: var(--background);
     gap: 0.5rem;
     padding: 0.5rem 0;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
+    margin: 0 auto; /* Center on desktop */
   }
   
   .header-instruction-wrapper {
