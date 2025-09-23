@@ -21,9 +21,12 @@ const LoginPage = () => {
   });
   const navigate = useNavigate();
   const formRef = useRef();
+  const [serverError, setServerError] = useState('');
 
   useEffect(() => {
-    registrationSuccess ? showMessage(instructionMessages.get('registrationSuccess')) : showMessage(instructionMessages.get('login'));
+    registrationSuccess
+      ? showMessage(instructionMessages.get('registrationSuccess'))
+      : showMessage(instructionMessages.get('login'));
   }, []);
 
   useEffect(() => {
@@ -50,13 +53,15 @@ const LoginPage = () => {
       await login(formData.identifier, formData.password);
       navigate('/');
     } catch (err) {
-      setError(err.message);
+      setServerError(err.message);
     }
   };
 
   return (
     <main className="login-container">
       <h2>Logga in här</h2>
+
+      {serverError && <div className="error-message">{serverError}</div>}
 
       <form ref={formRef} onSubmit={handleSubmit} className="login-form">
         <Input
