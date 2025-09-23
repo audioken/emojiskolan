@@ -16,6 +16,9 @@ const InstructionBox = () => {
 
     const utterance = new SpeechSynthesisUtterance(message);
     utterance.lang = 'sv-SE';
+    utterance.pitch = 0.1;
+    utterance.rate = 1.2;
+    utterance.volume = 0.7;
     window.speechSynthesis.speak(utterance);
 
     return () => window.speechSynthesis.cancel();
