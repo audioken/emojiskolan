@@ -38,6 +38,7 @@
   --spacing: 1.2rem;
   --page-padding: 1.5rem;
   --instruction-box-padding: 4rem;
+  --instruction-box-width: clamp(290px, 70vw, 436px);
   --section-gap: 1rem;
   --form-gap: 1rem;
   --component-margin: 1rem;
