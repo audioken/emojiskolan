@@ -58,16 +58,31 @@ body, #root {
   height: 100%;
   font-family: var(--f1), sans-serif;
   background-color: #e6e9f2;
-  background-image: url('src/public/images/EmojiSkolanArvidFinal.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  position: relative;
   margin: 0;
   padding: 0;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('src/public/images/EmojiSkolanArvidFinal.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(3px);
+  z-index: -1;
+  pointer-events: none;
+}
+
 #root {
-  backdrop-filter: blur(3px);
+  backdrop-filter: none; /* Remove this if present */
+  background-color: transparent !important;
+  position: relative;
+  z-index: 0;
 }
 
 header {
