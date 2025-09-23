@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
 
-
 :root {
   --accent1: #ffb347;
   --headerFontColor: #3498db;
@@ -52,6 +51,9 @@
 html {
   font-size: 16px;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
 body, #root {
@@ -126,7 +128,7 @@ header {
   width: 100%;
   gap: var(--spacing);
   flex: 1 1 auto;
-  padding: var(--page-padding);
+  padding: 2rem;
   border-radius: 8px;
   box-sizing: border-box;
 }
@@ -137,14 +139,40 @@ footer {
 }
 
 main {
-  flex-shrink: 0;
-  overflow: hidden;
+  flex: 1;
+  overflow-y: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  min-height: 0;
+  padding: 1rem;
 }
 
-@media (min-width: 1024px) {
+/* Minimalistisk scrollbar för main */
+main::-webkit-scrollbar {
+  width: 6px;
+}
+
+main::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+main::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* För Firefox */
+main {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* @media (min-width: 1024px) {
   html, body {
     margin: 0;
     padding: 0;
@@ -180,4 +208,4 @@ main {
     --card-size-desktop: 80px;
     font-size: 14px;
   }
-}
+} */

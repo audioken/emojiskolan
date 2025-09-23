@@ -4,8 +4,8 @@
   border: none;
   height: 7rem;
   padding: var(--instruction-box-padding);
-  margin: var(--component-margin) auto;
-  margin-bottom: 0;
+  /* margin: var(--component-margin) auto; */
+  /* margin-bottom: 0; */
   border-radius: 8px;
   box-shadow:
     0 4px 16px rgba(44, 62, 80, 0.18),
@@ -58,7 +58,7 @@
   justify-content: center;
 }
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .instruction-box {
     max-width: calc(4 * var(--card-size-desktop) + 3 * 0.7rem);
     height: 6rem;
@@ -73,4 +73,4 @@
     height: 2.5rem;
     font-size: 1.3rem;
   }
-}
+} */

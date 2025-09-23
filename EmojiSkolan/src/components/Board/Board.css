@@ -30,8 +30,8 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: var(--page-padding);
-  margin-bottom: var(--section-gap); 
+  /* padding: var(--page-padding); */
+  /* margin-bottom: var(--section-gap);  */
 }
 
 .temp-level-control {
@@ -57,7 +57,7 @@ ul {
   width: 100%;
   font-weight: bold;
   gap: 1rem;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
 }
 
 .tries {

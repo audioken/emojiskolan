@@ -1,11 +1,11 @@
-.profile-container {
+/* .profile-container {
   max-width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: var(--section-gap);
-}
+} */
 
 .profile-form {
   display: flex;
