@@ -9,7 +9,7 @@
     0 4px 16px rgba(44, 62, 80, 0.18),
     0 1.5px 6px rgba(44, 62, 80, 0.1);
   color: var(--headerFontColorContrast);
-  width: 100%;
+  width: var(--instruction-box-width);
   box-sizing: border-box;
   text-align: center;
 }
