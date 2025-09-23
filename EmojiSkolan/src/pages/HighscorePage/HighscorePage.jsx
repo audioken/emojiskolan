@@ -88,7 +88,6 @@ const HighscorePage = () => {
                     username={result?.username}
                     selected={isSelected}
                     isGlobal={true}
-                    className={user.username === result?.username ? 'highlightedUser' : ''}
                     onClick={isSelectable ? () => handleLevelClick(level) : undefined}
                     currentUser={user.username}
                   />

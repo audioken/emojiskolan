@@ -42,7 +42,9 @@ const HighscoreCard = ({
 
       {isGlobal ? (
         <>
-          <td className="highscore-col score-col">
+          <td
+            className={`highscore-col score-col${username && currentUser && username === currentUser ? ' highlightedUser' : ''}`}
+          >
             {username || '-'}
             {username && currentUser && username === currentUser ? (
               <span role="img" aria-label="pokal" title="Du har rekordet!"> 🏆</span>
