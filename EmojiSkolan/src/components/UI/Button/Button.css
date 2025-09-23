@@ -11,7 +11,8 @@
     text-decoration: none;
     user-select: none;
 }
-.button{
+
+.button {
     border: 1px solid var(--buttonsAndDetailsClicked); 
     min-width: 44px;
     min-height: 44px;
@@ -30,7 +31,8 @@
     font-weight: 600;
     letter-spacing: 0.02em;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
+    box-shadow: 0 3px 0 rgba(44, 62, 80, 0.3);
+    cursor: pointer;
 }
 
 .button-cancel {
@@ -39,13 +41,15 @@
 
 .button:hover:not(:disabled):not(.button-disabled) {
     background-color: var(--buttonsAndDetailsClicked);
-    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
+    box-shadow: 0 3px 0 rgba(44, 62, 80, 0.3); /* Keep sharp shadow on hover */
+    cursor: pointer;
+    transform: scale(1.04);
 }
 
 .button:active {
     background-color: var(--buttonsAndDetailsClicked);
-    transform: scale(0.96);
-    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
+    transform: scale(0.96); /* Knappen blir mindre när man klickar */
+    box-shadow: 0 2px 0 rgba(44, 62, 80, 0.3); /* Slightly smaller shadow when pressed */
 }
 
 /* Makes the clickable area bigger for smaller screens */

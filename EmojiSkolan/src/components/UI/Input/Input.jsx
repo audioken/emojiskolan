@@ -39,9 +39,9 @@ function Input({
             tabIndex={-1}
           >
             {type === 'password' ? (
-              <i className="fa-solid fa-eye" aria-label="Göm lösenord" title="Göm lösenord"></i>
+              <i className="fa-solid fa-eye" aria-label="Hide password" title="Hide password"></i>
             ) : (
-              <i className="fa-solid fa-eye-slash" aria-label="Visa lösenord" title="Visa lösenord"></i>
+              <i className="fa-solid fa-eye-slash" aria-label="Show password" title="Show password"></i>
             )}
           </button>
         )}

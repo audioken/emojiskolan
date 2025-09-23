@@ -31,7 +31,7 @@ function Card({ card, onClick }) {
           {card.isTurnedOver || isMatched ? card.content : ""}
         </div>
         <div className="card-back">
-          <i className="fa-solid fa-question" aria-label="Dolt kort"></i>
+          <i className="fa-solid fa-question" aria-label="Hidden card"></i>
         </div>
       </div>
     </div>

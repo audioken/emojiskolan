@@ -121,6 +121,15 @@ fieldset {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.summary-content:hover {
+  transform: scale(1.02);
+}
+
+.summary-content:active {
+  transform: scale(0.96);
 }
 
 .fieldset-content {
