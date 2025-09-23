@@ -205,11 +205,15 @@ function Board({}) {
       <aside className="scoreboard">
         <div className="stats">
           <ul>
-            <li>Rundor: {roundCounter}</li>
-            <li>Tid: {formatTime(seconds)}</li>
+            <li className="stats-rounds">Rundor: {roundCounter}</li>
+            <li className="stats-time">Tid: {formatTime(seconds)}</li>
           </ul>
           <Button
-            label={<><i className="fa-solid fa-rotate-right"></i> Omstart</>}
+            label={
+              <>
+                <i className="fa-solid fa-rotate-right"></i> Omstart
+              </>
+            }
             className="button"
             aria-label="Starta om spelet"
             title="Starta om spelet"

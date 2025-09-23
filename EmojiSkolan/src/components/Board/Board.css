@@ -45,6 +45,14 @@ ul {
   gap: 1rem;
 }
 
+.stats-rounds {
+  width: 90px;
+}
+
+.stats-time {
+  width: 90px;
+}
+
 .tries {
   padding: 0.4rem 1.2rem;
   margin: 0 0.2rem;
