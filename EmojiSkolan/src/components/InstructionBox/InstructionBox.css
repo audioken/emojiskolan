@@ -10,7 +10,6 @@
     0 1.5px 6px rgba(44, 62, 80, 0.1);
   color: var(--headerFontColorContrast);
   width: 100%;
-  max-width: calc(4 * var(--card-size-mobile) + 3 * 0.625rem);
   box-sizing: border-box;
   text-align: center;
 }
@@ -58,14 +57,10 @@
 
 /* Mobile responsiveness */
 @media (max-width: 480px) {
-  .instruction-box {
-    height: 6rem;
-    padding: 2rem 1rem;
-    max-width: calc(4 * var(--card-size-mobile) + 3 * 0.5rem);
-  }
-
   .instruction-box-content {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    max-width: 200px;
+    margin: 0 auto;
   }
 
   .speak-button {
@@ -74,17 +69,12 @@
     bottom: 0.4rem;
     right: 0.4rem;
   }
-
-  .speaker-icon {
-    font-size: 1.2rem;
-  }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
   .instruction-box {
     height: 6.5rem;
     padding: 2.5rem;
-    max-width: calc(4 * var(--card-size-mobile) + 3 * 0.6rem);
   }
 
   .instruction-box-content {
@@ -102,28 +92,7 @@
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .instruction-box {
-    max-width: calc(4 * var(--card-size-tablet) + 3 * 0.8rem);
-  }
-
   .instruction-box-content {
     font-size: 1rem;
   }
 }
-
-/* @media (min-width: 1024px) {
-  .instruction-box {
-    max-width: calc(4 * var(--card-size-desktop) + 3 * 0.7rem);
-    height: 6rem;
-  }
-
-  .instruction-box-content {
-    font-size: 1.2rem;
-  }
-
-  .speak-button {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 1.3rem;
-  }
-} */

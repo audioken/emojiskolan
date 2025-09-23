@@ -75,6 +75,7 @@
     max-width: 500px;
     margin: 0 auto;
     border-collapse: collapse;
+    table-layout: fixed; /* Fixed layout for consistent widths */
 }
 
 .highscore-header {
@@ -88,7 +89,188 @@
     font-weight: bold;
 }
 
+/* Left align category and username headers */
+.header.category-col {
+    text-align: left;
+    padding-left: 12px;
+}
+
+.header.username-col {
+    text-align: left;
+    padding-left: 12px;
+}
+
+/* Fixed column widths */
+.level-col {
+    width: 15%;
+}
+
+.category-col {
+    width: 35%;
+    text-align: left;
+    padding-left: 12px;
+}
+
+.score-col {
+    width: 20%;
+    white-space: nowrap;
+}
+
+/* Left align username column when in global mode */
+.score-col.username-col {
+    text-align: left;
+    padding-left: 12px;
+}
+
+.time-col {
+    width: 30%;
+}
+
+/* When in global mode, redistribute widths */
+.highscore-table.global-mode .level-col {
+    width: 12%;
+}
+
+.highscore-table.global-mode .category-col {
+    width: 28%;
+}
+
+.highscore-table.global-mode .score-col {
+    width: 20%;
+}
+
+.highscore-table.global-mode .time-col {
+    width: 20%;
+}
+
 .highscore-row {
     border-bottom: 1px solid #eee;
     min-height: 40px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .highscore-wrapper {
+    padding: 0.8rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .highscore-table {
+    max-width: 100%;
+    font-size: 0.8rem;
+  }
+
+  .header {
+    padding: 6px 4px;
+    font-size: 0.8rem;
+  }
+
+  .highscore-row {
+    min-height: 35px;
+    font-size: 0.8rem;
+  }
+
+  .highscore-row td {
+    padding: 4px 2px;
+  }
+
+  .toggle-text {
+    width: 6rem;
+    font-size: 0.8rem;
+  }
+
+  /* Mobile column widths */
+  .level-col {
+    width: 12%;
+  }
+
+  .category-col {
+    width: 30%;
+  }
+
+  .score-col {
+    width: 18%;
+  }
+
+  .time-col {
+    width: 22%;
+  }
+
+  /* Mobile global mode adjustments */
+  .highscore-table.global-mode .level-col {
+    width: 10%;
+  }
+
+  .highscore-table.global-mode .category-col {
+    width: 25%;
+  }
+
+  .highscore-table.global-mode .score-col {
+    width: 18%;
+  }
+
+  .highscore-table.global-mode .time-col {
+    width: 17%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .highscore-wrapper {
+    padding: 1rem;
+    width: 350px;
+  }
+
+  .highscore-table {
+    font-size: 0.9rem;
+  }
+
+  .header {
+    padding: 7px 6px;
+    font-size: 0.9rem;
+  }
+
+  .highscore-row {
+    min-height: 38px;
+    font-size: 0.9rem;
+  }
+
+  .toggle-text {
+    width: 7rem;
+    font-size: 0.9rem;
+  }
+
+  /* Tablet column widths */
+  .level-col {
+    width: 14%;
+  }
+
+  .category-col {
+    width: 32%;
+  }
+
+  .score-col {
+    width: 19%;
+  }
+
+  .time-col {
+    width: 25%;
+  }
+
+  /* Tablet global mode adjustments */
+  .highscore-table.global-mode .level-col {
+    width: 11%;
+  }
+
+  .highscore-table.global-mode .category-col {
+    width: 27%;
+  }
+
+  .highscore-table.global-mode .score-col {
+    width: 19%;
+  }
+
+  .highscore-table.global-mode .time-col {
+    width: 19%;
+  }
 }

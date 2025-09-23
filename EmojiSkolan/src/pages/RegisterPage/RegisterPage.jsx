@@ -145,7 +145,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <main className="register-container">
+    <main>
       {serverError && <div className="error-message">{serverError}</div>}
 
       <form ref={formRef} onSubmit={handleSubmit} className="register-form">
@@ -230,8 +230,7 @@ const RegisterPage = () => {
           </div>
         </div>
 
-        <div className="terms-section">
-          <div className="terms-text">Villkor för att bli bäst och äga detta spelet!</div>
+
           <label className="terms-checkbox">
             <input
               type="checkbox"
@@ -240,7 +239,6 @@ const RegisterPage = () => {
             />
             Jag godkänner villkoren
           </label>
-        </div>
 
         {/* Invisible submit button to allow form submission via MultiFormContext */}
         <button type="submit" className="invisible-btn"></button>

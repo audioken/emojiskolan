@@ -55,14 +55,14 @@ const HighscorePage = () => {
           </label>
         </div>
 
-        <table className="highscore-table">
+        <table className={`highscore-table${showGlobal ? ' global-mode' : ''}`}>
           <thead className="highscore-header">
             <tr>
-              <th className="header">Nivå</th>
-              <th className="header">Kategori</th>
-              {showGlobal && <th className="header">Användare</th>}
-              <th className="header">Rundor</th>
-              <th className="header">Tid</th>
+              <th className="header level-col">Nivå</th>
+              <th className="header category-col">Kategori</th>
+              {showGlobal && <th className="header score-col username-col">Användare</th>}
+              <th className="header score-col">Rundor</th>
+              <th className="header time-col">Tid</th>
             </tr>
           </thead>
           <tbody>

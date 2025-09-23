@@ -15,8 +15,8 @@
   border-radius: 4px;
 }
 .card {
-  width: var(--card-size-mobile);
-  height: var(--card-size-mobile);
+  width: var(--card-size);
+  height: var(--card-size);
   perspective: 600px;
   font-family: var(--f1), sans-serif;
   font-weight: bolder;
@@ -190,4 +190,47 @@
   font-size: 2.5rem;
   opacity: 0.85;
   pointer-events: none;
+}
+
+/* Mobile responsiveness for cards */
+@media (max-width: 480px) {
+  .card-front,
+  .card-back {
+    font-size: 3rem;
+  }
+
+  .card-front.text-content {
+    font-size: 0.8rem;
+    padding: 3px;
+  }
+
+  .card-back .fa-question {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .card-front,
+  .card-back {
+    font-size: 3.5rem;
+  }
+
+  .card-front.text-content {
+    font-size: 0.9rem;
+  }
+
+  .card-back .fa-question {
+    font-size: 2.2rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card-front,
+  .card-back {
+    font-size: 5rem;
+  }
+
+  .card-front.text-content {
+    font-size: 1.1rem;
+  }
 }
